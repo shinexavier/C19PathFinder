@@ -24,7 +24,7 @@ function getPathList(json) {
                         walkObject(keyPath, value);
                         break;
                     default:
-                        pathList.push(`${keyPath}.${value}`);
+                        pathList.push(`${keyPath}.${typeof value}`);
                 }
             }
         }

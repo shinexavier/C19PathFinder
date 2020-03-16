@@ -1,0 +1,30 @@
+{
+  "name": "fileuploader",
+  "version": "1.0.0",
+  "description": "A utility to generate location history of last 14 days",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js \"C:\\Users\\vaisa\\OneDrive\\Documents\\Open Source\\C19PathFinder\\takeout-20200315T074626Z-001\\Takeout\\Location History\\Location History.json\"",
+    "debug": "node --inspect-brk app.js \"C:\\Users\\vaisa\\OneDrive\\Documents\\Open Source\\C19PathFinder\\takeout-20200315T074626Z-001\\Takeout\\Location History\\Location History.json\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shinexavier/C19PathFinder.git"
+  },
+  "keywords": [
+    "corona",
+    "google",
+    "location",
+    "history",
+    "takeout"
+  ],
+  "author": "bVaisakh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shinexavier/C19PathFinder/issues"
+  },
+  "homepage": "https://github.com/shinexavier/C19PathFinder#readme",
+  "dependencies": {
+    "JSONStream": "^1.3.5"
+  }
+}
