@@ -1,7 +1,0 @@
-class ActivitySegment {
-    constructor() {
-       
-    }
-}
-
-// placeVisit

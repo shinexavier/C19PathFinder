@@ -1,8 +1,8 @@
 const express = require('express');
 const logger = require('morgan');
 
-const indexRouter  = require('./routes/index');
-const locationHistoryRouter  = require('./routes/locationHistory');
+const indexRouter  = require('./controllers/indexController');
+const locationRouter  = require('./controllers/locationController');
 
 const app = express();
 
@@ -11,6 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
-app.use('/location-history', locationHistoryRouter);
+app.use('/location', locationRouter);
 
 module.exports = app;
