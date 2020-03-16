@@ -20,7 +20,7 @@ router.post('/get-schema/key-set', upload.single('file'), function (req, res, ne
   res.json(utils.getKeySet(locationHistoryJSON));
 });
 
-router.post('/get-crosspoints', async function (req, res, next) {
+router.get('/get-affected-location-points', async function (req, res, next) {
   locationService.getAffectedLocationPoints()
     .then(function (data) {
       res.json(data);
