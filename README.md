@@ -6,7 +6,7 @@ This project is an earnest attempt by a group of passionate software engineers t
 
 To contain this virus it is absolutely critical to understand the path of it's transmission so that safety and preventive measures can be taken. The project intends to capture the path of virus through an infected person or potential *vectors (virus carriers)*. At this point the authorities are desperately trying to find, isolate and help the victims plus more importantly find potential *vectors*.
 
-> <ins> The sad or scariest thing is that people are **unaware** of their pathway crossings with any victims (making them potential *vectors*) and thus are unable to prevent further transmission to others including their near and loved ones. </ins> 
+> The sad or scariest thing is that people are <ins>unaware</ins> of their pathway crossings with any victims (making them potential *vectors*) and thus are <ins>unable to prevent</ins> further transmission to others including their near and loved ones.
 
 This critical information that the project intends to unearth would be of grave help to everyone (including Govt. and Health authorities) in terms of understanding the virus transmission path, potential *vectors*, associated geographically safe and affected zones.
 
