@@ -8,7 +8,11 @@ To contain this virus it is absolutely critical to understand the path of it's t
 
 > The sad or scariest thing is that people are <ins>unaware</ins> of their pathway crossings with any victims (making them potential *vectors*) and thus are <ins>unable to prevent</ins> further transmission to others including their near and loved ones.
 
-This critical information that the project intends to unearth would be of grave help to everyone (including Govt. and Health authorities) in terms of understanding the virus transmission path, potential *vectors*, associated geographically safe and affected zones.
+This critical information that the project intends to unearth would be of grave help to everyone (including Govt. and Health authorities) in terms of having an understanding on the 
+* virus transmission path
+* potential *vectors*
+* geographically affected zones
+* geographically safe zones
 
 ## Approach
 
