@@ -4,11 +4,13 @@ Program to test Geopandas location crosschecking capabilities
 
 import json
 import datetime
+import csv
 from shapely.geometry import Point
 import geopandas as gpd
 
-FILE_NAME_VAISAKH = '/mnt/c/Users/vaisa/workspace/C19PathFinder/repo/Location-History-Vaisakh.json'
-FILE_NAME_SHINE = '/mnt/c/Users/vaisa/workspace/C19PathFinder/repo/Location-History-Shine.json'
+FILE_NAME_VAISAKH = '/home/vaisakhb/workspace/Location-History-Vaisakh.json'
+FILE_NAME_SHINE = '/home/vaisakhb/workspace/Location-History-Shine.json'
+FILE_NAME_CROSSPOINTS = './crosspoints.csv'
 
 
 def read_file(file_path):
@@ -19,7 +21,7 @@ def read_file(file_path):
     return data
 
 
-def format_locations(locations):
+def format_locations(locations, buffer):
     '''Create a new dictionary that will contain the transformed data,
     which we will use to create the new GeoDataFrame
     '''
@@ -28,10 +30,14 @@ def format_locations(locations):
         # coordinates
         location['longitude'] = location['longitudeE7'] * 0.0000001
         location['latitude'] = location['latitudeE7'] * 0.0000001
-        # location['geometry'] = Point(location['longitude'],
-        # location['latitude']).buffer(1)
-        location['geometry'] = Point(
-            location['longitude'], location['latitude'])
+
+        if buffer == 0:
+            location['geometry'] = Point(
+                location['longitude'], location['latitude'])
+        else:
+            location['geometry'] = Point(
+                location['longitude'],
+                location['latitude']).buffer(buffer, mitre_limit=1.0)
 
         # Convert timestamp from ms to s, create datetime object
         location['timestamp_sec'] = int(location['timestampMs']) * 0.001
@@ -62,7 +68,8 @@ def create_geo_data_frame(locations):
     '''
     gdf = gpd.GeoDataFrame(locations)
     gdf = gdf.drop(['velocity', 'latitudeE7', 'longitudeE7',
-                    'timestampMs', 'heading'], axis=1)
+                    'timestampMs', 'heading', 'timestamp_sec', 'activity',
+                    'accuracy', 'altitude', 'verticalAccuracy', 'conf'], axis=1)
     gdf.crs = {'init': 'epsg:4326'}
 
     return gdf
@@ -71,6 +78,8 @@ def create_geo_data_frame(locations):
 def main():
     '''main method
     '''
+    start = datetime.datetime.now()
+
     location_history_json_vai = read_file(FILE_NAME_VAISAKH)
     location_history_json_shine = read_file(FILE_NAME_SHINE)
 
@@ -86,21 +95,33 @@ def main():
             FILE_NAME_SHINE,
             len(locations_shine)))
 
-    geo_data_frame_vai = create_geo_data_frame(format_locations(locations_vai))
+    geo_data_frame_vai = create_geo_data_frame(
+        format_locations(locations_vai, 0.00001))
     print('Vaisakh\'s location geo data frame info:')
     print('Contains {} filtered location points'.format(len(geo_data_frame_vai)))
     print(geo_data_frame_vai.head())
 
     geo_data_frame_shine = create_geo_data_frame(
-        format_locations(locations_shine))
+        format_locations(locations_shine, 0))
     print('Shine\'s location geo data frame info:')
     print(
         'Contains {} filtered location points'.format(
             len(geo_data_frame_shine)))
     print(geo_data_frame_shine.head())
 
-    crosspoints = gpd.sjoin(geo_data_frame_vai, geo_data_frame_shine, how='inner', op='intersects')
-    print(crosspoints.head())
+    crosspoints = gpd.sjoin(
+        geo_data_frame_shine,
+        geo_data_frame_vai,
+        how='inner',
+        op='within')
+    print(crosspoints.shape)
+    crosspoints.to_csv(
+        FILE_NAME_CROSSPOINTS,
+        quoting=csv.QUOTE_ALL,
+        encoding='utf-8')
+    end = datetime.datetime.now()
+    elapsed_time = end - start
+    print('Time taken: {}'.format(elapsed_time))
 
 
 if __name__ == '__main__':
