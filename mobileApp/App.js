@@ -16,15 +16,33 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import MyRiskScreen from './MyRiskScreen';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import MyRiskScreen from './src/MyRiskScreen'
 import DashboardScreen from './DashboardScreen';
-
-
-const Stack = createStackNavigator();
 
 const TabView = () => {
   const Tab = createBottomTabNavigator();
-  return (<Tab.Navigator>
+  return (<Tab.Navigator screenOptions={({ route }) => ({
+    tabBarIcon: ({ focused, color, size }) => {
+      let iconName;
+
+      if (route.name === 'Dashboard') {
+        iconName = focused
+          ? 'chart-line'
+          : 'chart-line';
+      } else if (route.name === 'My Risk') {
+        iconName = focused ? 'exclamation-triangle' : 'exclamation-triangle';
+      }
+
+      // You can return any component that you like here!
+      return <Icon name={iconName} size={size} color={color} />;
+    },
+  })}
+    tabBarOptions={{
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    }}>
     <Tab.Screen name="Dashboard" component={DashboardScreen} />
     <Tab.Screen name="My Risk" component={MyRiskScreen} />
   </Tab.Navigator>);
@@ -33,8 +51,8 @@ const TabView = () => {
 const DrawerView = () => {
   const Drawer = createDrawerNavigator();
   return (
-    <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Home" component={TabView} />
+    <Drawer.Navigator initialRouteName="Path Finder">
+      <Drawer.Screen name="Path Finder" component={TabView} />
       <Drawer.Screen name="Guide" component={TabView} />
       <Drawer.Screen name="Test Centres" component={TabView} />
       <Drawer.Screen name="Helpline Numbers" component={TabView} />
@@ -44,14 +62,15 @@ const DrawerView = () => {
 
 
 const App: () => React$Node = () => {
+  const Stack = createStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={DrawerView}
           options={({ navigation, route }) => ({
             headerLeft: props => <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
-              <Text>Menu</Text>
-              </TouchableOpacity>,
+              <Icon style={{ paddingLeft: 20 }} name="bars" size={30} color="black" />
+            </TouchableOpacity>,
           })} />
       </Stack.Navigator>
     </NavigationContainer>);
