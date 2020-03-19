@@ -76,66 +76,87 @@ const DashboardScreen: () => React$Node = () => {
           {
             finalNumbers &&
             <>
-          <Card>
-            <CardItem header>
-                <H1>Passengers Screened</H1>
-              </CardItem>
-            <CardItem>
-              <Body>
-                      <Text style={styles.numbers}>{finalNumbers.passengersScreened.airport}</Text>
-              </Body>
-            </CardItem>
-          </Card>
+            <Grid>
+              <Col>
+                <Row>
+                <Card style={{width: '100%'}}>
+                  <CardItem header>
+                      <H1>Passengers Screened</H1>
+                    </CardItem>
+                  <CardItem>
+                    <Body>
+                            <Text style={styles.numbers}>{finalNumbers.passengersScreened.airport}</Text>
+                    </Body>
+                  </CardItem>
+                </Card>
+                </Row>
+                <Row>
+                <Card style={{width: '100%'}}>
+                  <CardItem header>
+                      <H1>Confirmed</H1>
+                    </CardItem>
+                  <CardItem>
+                    <Body>
+                      <Grid>
+                        <Col>
+                          <Row>
+                            <H1>Indians</H1>
+                          </Row>
+                          <Row>
+                            <Text style={styles.numbers}>{finalNumbers.confirmedCases.indian}</Text>
+                          </Row>
+                        </Col>
+                        <Col>
+                          <Row>
+                            <H1>Foreigners</H1>
+                          </Row>
+                          <Row>
+                            <Text style={styles.numbers}>{finalNumbers.confirmedCases.foreign}</Text>
+                          </Row>
+                        </Col>
+                      </Grid>
+                    </Body>
+                  </CardItem>
+                </Card>
+                </Row>
+                <Row>
 
-          <Card>
-            <CardItem header>
-                <H1>Confirmed</H1>
-              </CardItem>
-            <CardItem>
-              <Body>
                 <Grid>
                   <Col>
-                    <Row>
-                      <H1>Indians</H1>
-                    </Row>
-                    <Row>
-                      <Text style={styles.numbers}>{finalNumbers.confirmedCases.indian}</Text>
-                    </Row>
+                  <Card>
+                    <CardItem header>
+                        <H1>Discharged</H1>
+                      </CardItem>
+                    <CardItem>
+                      <Body>
+                              <Text style={styles.numbers}>{finalNumbers.dischargedCases}</Text>
+                      </Body>
+                    </CardItem>
+                  </Card>
                   </Col>
                   <Col>
-                    <Row>
-                      <H1>Foreigners</H1>
-                    </Row>
-                    <Row>
-                      <Text style={styles.numbers}>{finalNumbers.confirmedCases.foreign}</Text>
-                    </Row>
+                  <Card>
+                    <CardItem header>
+                        <H1>Died</H1>
+                      </CardItem>
+                    <CardItem>
+                      <Body>
+                              <Text style={styles.numbers}>{finalNumbers.deathCases}</Text>
+                      </Body>
+                    </CardItem>
+                  </Card>
                   </Col>
                 </Grid>
-              </Body>
-            </CardItem>
-          </Card>
+                </Row>
+              </Col>
+            </Grid>
 
-          <Card>
-            <CardItem header>
-                <H1>Discharged</H1>
-              </CardItem>
-            <CardItem>
-              <Body>
-                      <Text style={styles.numbers}>{finalNumbers.dischargedCases}</Text>
-              </Body>
-            </CardItem>
-          </Card>
 
-          <Card>
-            <CardItem header>
-                <H1>Died</H1>
-              </CardItem>
-            <CardItem>
-              <Body>
-                      <Text style={styles.numbers}>{finalNumbers.deathCases}</Text>
-              </Body>
-            </CardItem>
-          </Card>
+
+
+
+
+
 
           </>
 
