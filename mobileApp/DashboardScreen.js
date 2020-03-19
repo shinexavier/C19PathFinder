@@ -6,13 +6,12 @@
  * @flow
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
-  Text,
   StatusBar,
   Button,
   Alert,
@@ -25,6 +24,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import DocumentPicker from 'react-native-document-picker';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { Container, Header, Content, Card, CardItem, Body, Text } from 'native-base';
+
+import axios from "axios";
 
 async function uploadFile() {
   try {
@@ -47,7 +49,23 @@ async function uploadFile() {
 }
 
 const DashboardScreen: () => React$Node = () => {
-  
+
+  const [finalNumbers, setFinalNumbers] = useState();
+
+  useEffect(() => {
+    console.log("use effect")
+    axios
+      .get(
+        "http://192.168.0.12:8080/finalnumbers"
+      )
+      .then(({ data }) => {
+        console.log(data.confirmedCases)
+        setFinalNumbers(data);
+        //setNextTodoId(data.length);
+      })
+      .catch(error => console.log(error));
+  }, []);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -56,7 +74,15 @@ const DashboardScreen: () => React$Node = () => {
         style={styles.scrollView}>
         <View style={styles.sectionContainer}>
           <Text style={styles.sectionTitle}>Dashboard</Text>
-          <Text style={styles.sectionDescription}>Basic data and embedded map goes here</Text>
+          <Card>
+            <CardItem>
+              <Body>
+                <Text>
+                   //Your text here
+                </Text>
+              </Body>
+            </CardItem>
+          </Card>
         </View>
       </ScrollView>
     </>
