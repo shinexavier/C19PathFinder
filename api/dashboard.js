@@ -9,8 +9,11 @@ let covid19DashBoard = function(server){
       "passengersScreened": {
         "airport": "13,93,301"
       },
-      "confirmedCases": 134,
-      "dischargedCases": 14,
+      "confirmedCases": {
+        "indian": 141,
+        "foreign": 25
+      },
+      "dischargedCases": 15,
       "deathCases": 3
     }
     res.send(latestFigures);
@@ -37,7 +40,7 @@ let covid19DashBoard = function(server){
         {
           "state": "Delhi",
           "confirmedCases": {
-            "indian": 9,
+            "indian": 11,
             "foreign": 1
           },
           "dischargedCases": 2,
@@ -55,7 +58,7 @@ let covid19DashBoard = function(server){
         {
           "state": "Karnataka",
           "confirmedCases": {
-            "indian": 11,
+            "indian": 14,
             "foreign": 0
           },
           "dischargedCases": 0,
@@ -73,7 +76,7 @@ let covid19DashBoard = function(server){
         {
           "state": "Maharashtra",
           "confirmedCases": {
-            "indian": 39,
+            "indian": 42,
             "foreign": 3
           },
           "dischargedCases": 0,
@@ -109,7 +112,7 @@ let covid19DashBoard = function(server){
         {
           "state": "Rajasthan",
           "confirmedCases": {
-            "indian": 2,
+            "indian": 5,
             "foreign": 2
           },
           "dischargedCases": 3,
@@ -118,10 +121,10 @@ let covid19DashBoard = function(server){
         {
           "state": "Tamil Nadu",
           "confirmedCases": {
-            "indian": 1,
+            "indian": 2,
             "foreign": 0
           },
-          "dischargedCases": 0,
+          "dischargedCases": 1,
           "deathCases": 0
         },
         {
@@ -134,9 +137,18 @@ let covid19DashBoard = function(server){
           "deathCases": 0
         },
         {
+          "state": "Chandigarh",
+          "confirmedCases": {
+            "indian": 1,
+            "foreign": 0
+          },
+          "dischargedCases": 0,
+          "deathCases": 0
+        },
+        {
           "state": "Jammu & Kashmir",
           "confirmedCases": {
-            "indian": 3,
+            "indian": 4,
             "foreign": 0
           },
           "dischargedCases": 0,
@@ -154,7 +166,7 @@ let covid19DashBoard = function(server){
         {
           "state": "Uttar Pradesh",
           "confirmedCases": {
-            "indian": 15,
+            "indian": 16,
             "foreign": 1
           },
           "dischargedCases": 5,
