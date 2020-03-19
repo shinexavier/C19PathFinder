@@ -1,0 +1,32 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "C19PathFinder APIs",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shinexavier/C19PathFinder.git"
+  },
+  "keywords": [
+    "Corona",
+    "Covid19",
+    "Tracker"
+  ],
+  "author": "Jacob Nelson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shinexavier/C19PathFinder/issues"
+  },
+  "homepage": "https://github.com/shinexavier/C19PathFinder#readme",
+  "dependencies": {
+    "restify-cors-middleware": "^1.1.1",
+    "restify": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

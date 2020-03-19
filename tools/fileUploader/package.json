@@ -4,8 +4,8 @@
   "description": "A utility to generate location history of last 14 days",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js \"C:\\Users\\vaisa\\OneDrive\\Documents\\Open Source\\C19PathFinder\\takeout-20200315T074626Z-001\\Takeout\\Location History\\Location History.json\"",
-    "debug": "node --inspect-brk app.js \"C:\\Users\\vaisa\\OneDrive\\Documents\\Open Source\\C19PathFinder\\takeout-20200315T074626Z-001\\Takeout\\Location History\\Location History.json\""
+    "start": "node src\\app.js \"C:\\Users\\vaisa\\OneDrive\\Documents\\Open Source\\C19PathFinder\\takeout-20200315T074626Z-001\\Takeout\\Location History\\Location History.json\"",
+    "debug": "node --inspect-brk src\\app.js \"C:\\Users\\vaisa\\OneDrive\\Documents\\Open Source\\C19PathFinder\\takeout-20200315T074626Z-001\\Takeout\\Location History\\Location History.json\""
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 ### 
 
-`bash
-node app.js "<absolute-path-of-the-file>"
+`
+node src/app.js "<absolute-path-of-the-file>"
 `
