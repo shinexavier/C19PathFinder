@@ -24,7 +24,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import DocumentPicker from 'react-native-document-picker';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { Container, Header, Content, Card, CardItem, Body, Text } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Body, Text, Grid, Col, Row, H1 } from 'native-base';
 
 import axios from "axios";
 
@@ -59,7 +59,7 @@ const DashboardScreen: () => React$Node = () => {
         "http://192.168.0.12:8080/finalnumbers"
       )
       .then(({ data }) => {
-        console.log(data.confirmedCases)
+        console.log(data)
         setFinalNumbers(data);
         //setNextTodoId(data.length);
       })
@@ -73,16 +73,73 @@ const DashboardScreen: () => React$Node = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Dashboard</Text>
+          {
+            finalNumbers &&
+            <>
           <Card>
+            <CardItem header>
+                <H1>Passengers Screened</H1>
+              </CardItem>
             <CardItem>
               <Body>
-                <Text>
-                   //Your text here
-                </Text>
+                      <Text style={styles.numbers}>{finalNumbers.passengersScreened.airport}</Text>
               </Body>
             </CardItem>
           </Card>
+
+          <Card>
+            <CardItem header>
+                <H1>Confirmed</H1>
+              </CardItem>
+            <CardItem>
+              <Body>
+                <Grid>
+                  <Col>
+                    <Row>
+                      <H1>Indians</H1>
+                    </Row>
+                    <Row>
+                      <Text style={styles.numbers}>{finalNumbers.confirmedCases.indian}</Text>
+                    </Row>
+                  </Col>
+                  <Col>
+                    <Row>
+                      <H1>Foreigners</H1>
+                    </Row>
+                    <Row>
+                      <Text style={styles.numbers}>{finalNumbers.confirmedCases.foreign}</Text>
+                    </Row>
+                  </Col>
+                </Grid>
+              </Body>
+            </CardItem>
+          </Card>
+
+          <Card>
+            <CardItem header>
+                <H1>Discharged</H1>
+              </CardItem>
+            <CardItem>
+              <Body>
+                      <Text style={styles.numbers}>{finalNumbers.dischargedCases}</Text>
+              </Body>
+            </CardItem>
+          </Card>
+
+          <Card>
+            <CardItem header>
+                <H1>Died</H1>
+              </CardItem>
+            <CardItem>
+              <Body>
+                      <Text style={styles.numbers}>{finalNumbers.deathCases}</Text>
+              </Body>
+            </CardItem>
+          </Card>
+
+          </>
+
+        }
         </View>
       </ScrollView>
     </>
@@ -128,6 +185,13 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
+  numbers: {
+    fontSize: 50,
+  },
+  danger: {
+    backgroundColor: 'red',
+    color: '#fff',
+  }
 });
 
 export default DashboardScreen;
