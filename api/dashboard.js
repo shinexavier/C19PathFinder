@@ -1,20 +1,21 @@
 let covid19DashBoard = function(server){
   server.get('/finalnumbers', function(req, res, next){
+    console.log("recieved call for finalnumbers")
     let latestFigures = {
       "version": 1,
       "lastUpdated": {
         "date": "19 March 2020",
-        "time": "6.20 AM"
+        "time": "8.20 PM"
       },
       "passengersScreened": {
-        "airport": "13,93,301"
+        "airport": "14,31,734"
       },
       "confirmedCases": {
-        "indian": 141,
+        "indian": 148,
         "foreign": 25
       },
-      "dischargedCases": 15,
-      "deathCases": 3
+      "dischargedCases": 20,
+      "deathCases": 4
     }
     res.send(latestFigures);
     return next()
@@ -31,7 +32,7 @@ let covid19DashBoard = function(server){
         {
           "state": "Andhra Pradesh",
           "confirmedCases": {
-            "indian": 1,
+            "indian": 2,
             "foreign": 0
           },
           "dischargedCases": 0,
@@ -43,7 +44,7 @@ let covid19DashBoard = function(server){
             "indian": 11,
             "foreign": 1
           },
-          "dischargedCases": 2,
+          "dischargedCases": 3,
           "deathCases": 1
         },
         {
@@ -76,7 +77,7 @@ let covid19DashBoard = function(server){
         {
           "state": "Maharashtra",
           "confirmedCases": {
-            "indian": 42,
+            "indian": 44,
             "foreign": 3
           },
           "dischargedCases": 0,
@@ -103,11 +104,11 @@ let covid19DashBoard = function(server){
         {
           "state": "Punjab",
           "confirmedCases": {
-            "indian": 1,
+            "indian": 2,
             "foreign": 0
           },
           "dischargedCases": 0,
-          "deathCases": 0
+          "deathCases": 1
         },
         {
           "state": "Rajasthan",
@@ -166,10 +167,10 @@ let covid19DashBoard = function(server){
         {
           "state": "Uttar Pradesh",
           "confirmedCases": {
-            "indian": 16,
+            "indian": 18,
             "foreign": 1
           },
-          "dischargedCases": 5,
+          "dischargedCases": 9,
           "deathCases": 0
         },
         {
