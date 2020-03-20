@@ -2,6 +2,23 @@
 
 This repository contains the code for the server application. It is built on NodeJS - Express Framework. And will be deployed as Azure App Service.
 
+## Initial Setup
+
+- Open Command Prompt
+- cd to `server` folder
+- run the command `npm install`
+
+## Running API Server
+
+run the command `npm start`
+
+## Available APIs
+
+* Dashboard
+  * http://localhost:8080/finalnumbers
+  * http://localhost:8080/finalnumbers/statewise
+  * http://localhost:8080/testingsites 
+
 ### Algorithm to findout the crosspoints
 - Add `isUserLocationPoint` flag to `userLocationPoints`
 - Create `masterListOfLocationPoints` by merging `userLocationPoints` and `affectedLocationPoints`
