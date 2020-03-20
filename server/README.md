@@ -132,6 +132,7 @@ run the command `npm start`
 [ ] Victim's Location History API [POST]
 [ ] Victim's Location History API - FILE UPLOAD [POST]
 [ ] Victim's Location History API [GET]
+[ ] Refactoring finalNumbers and testingSites APIs
 
 #### Technical
 [x] Datamodel definition
