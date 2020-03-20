@@ -7,10 +7,9 @@ function respond(req, res, next) {
 }
 
 var server = restify.createServer();
-server.get('/hello/:name', respond);
-server.head('/hello/:name', respond);
 
 require('./dashboard.js')(server);
+require('./testing-sites.js')(server);
 
 server.listen(8080, function() {
   console.log('%s listening at %s', server.name, server.url);
