@@ -20,6 +20,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import MyRiskScreen from './src/MyRiskScreen'
 import DashboardScreen from './DashboardScreen';
+import FAQ from './faq';
 
 const TabView = () => {
   const Tab = createBottomTabNavigator();
@@ -56,6 +57,7 @@ const DrawerView = () => {
       <Drawer.Screen name="Guide" component={TabView} />
       <Drawer.Screen name="Test Centres" component={TabView} />
       <Drawer.Screen name="Helpline Numbers" component={TabView} />
+      <Drawer.Screen name="FAQ" component={FAQ} />
       <Drawer.Screen name="About" component={TabView} />
     </Drawer.Navigator>);
 };
