@@ -2,6 +2,23 @@
 
 This repository contains the code for the server application. It is built on NodeJS - Express Framework. And will be deployed as Azure App Service.
 
+### Initial Setup
+- [Prerequisites](https://docs.microsoft.com/en-gb/azure/app-service/containers/quickstart-nodejs#prerequisites)
+- Open Command Prompt
+- cd to `server` folder
+- run the command `npm install`
+
+### Running API Server
+run the command `npm start`
+
+### Available APIs
+[Postman Collection](https://www.getpostman.com/collections/408465756d4682e64e12)
+* Dashboard
+  * http://localhost:3000/finalnumbers
+  * http://localhost:3000/finalnumbers/statewise
+* List of Laboratories
+  * http://localhost:3000/testingsites 
+
 ### Data Model
 
 #### LocationPoint
@@ -114,6 +131,7 @@ This repository contains the code for the server application. It is built on Nod
   }
 }
 ```
+
 ### Tasks
 #### Functional 
 [ ] Victim's Location History API [POST]
@@ -123,5 +141,3 @@ This repository contains the code for the server application. It is built on Nod
 #### Technical
 [x] Datamodel definition
 [ ] Connecting to Azure Cosmos DB
-
-### [Prerequisites](https://docs.microsoft.com/en-gb/azure/app-service/containers/quickstart-nodejs#prerequisites)
