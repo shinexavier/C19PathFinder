@@ -18,9 +18,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import MyRiskScreen from './src/MyRiskScreen'
-import DashboardScreen from './DashboardScreen';
-import FAQ from './faq';
+import MyRiskScreen from './src/MyRiskScreen';
+import DashboardScreen from './src/DashboardScreen';
+import TestCentresScreen from './src/TestCentresScreen';
+import FAQ from './src/FAQScreen';
 
 const TabView = () => {
   const Tab = createBottomTabNavigator();
@@ -30,8 +31,8 @@ const TabView = () => {
 
       if (route.name === 'Dashboard') {
         iconName = focused
-          ? 'chart-line'
-          : 'chart-line';
+          ? 'bar-chart'
+          : 'bar-chart';
       } else if (route.name === 'My Risk') {
         iconName = focused ? 'exclamation-triangle' : 'exclamation-triangle';
       }
@@ -52,10 +53,10 @@ const TabView = () => {
 const DrawerView = () => {
   const Drawer = createDrawerNavigator();
   return (
-    <Drawer.Navigator initialRouteName="Path Finder">
-      <Drawer.Screen name="Path Finder" component={TabView} />
+    <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Screen name="Home" component={TabView} />
       <Drawer.Screen name="Guide" component={TabView} />
-      <Drawer.Screen name="Test Centres" component={TabView} />
+      <Drawer.Screen name="Test Centres" component={TestCentresScreen} />
       <Drawer.Screen name="Helpline Numbers" component={TabView} />
       <Drawer.Screen name="FAQ" component={FAQ} />
       <Drawer.Screen name="About" component={TabView} />
@@ -68,7 +69,7 @@ const App: () => React$Node = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={DrawerView}
+        <Stack.Screen name="C19 Path Finder" component={DrawerView}
           options={({ navigation, route }) => ({
             headerLeft: props => <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
               <Icon style={{ paddingLeft: 20 }} name="bars" size={30} color="black" />

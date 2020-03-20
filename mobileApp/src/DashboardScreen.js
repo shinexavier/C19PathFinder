@@ -6,13 +6,12 @@
  * @flow
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
-  Text,
   StatusBar,
   Button,
   Alert,
@@ -25,29 +24,28 @@ import { NavigationContainer } from '@react-navigation/native';
 import DocumentPicker from 'react-native-document-picker';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { Container, Header, Content, Card, CardItem, Body, Text, Grid, Col, Row, H1 } from 'native-base';
 
-async function uploadFile() {
-  try {
-    const res = await DocumentPicker.pick({
-      type: [DocumentPicker.types.allFiles],
-    });
-    Alert.alert(
-      `${res.uri},
-      ${res.type}, // mime type
-      ${res.name},
-      ${res.size}`
-    );
-  } catch (err) {
-    if (DocumentPicker.isCancel(err)) {
-      // User cancelled the picker, exit any dialogs or menus and move on
-    } else {
-      throw err;
-    }
-  }
-}
+import axios from "axios";
 
 const DashboardScreen: () => React$Node = () => {
-  
+
+  const [finalNumbers, setFinalNumbers] = useState();
+
+  useEffect(() => {
+    console.log("use effect")
+    axios
+      .get(
+        "http://192.168.225.29:8080/finalnumbers"
+      )
+      .then(({ data }) => {
+        console.log(data)
+        setFinalNumbers(data);
+        //setNextTodoId(data.length);
+      })
+      .catch(error => console.log(error));
+  }, []);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -55,8 +53,85 @@ const DashboardScreen: () => React$Node = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Dashboard</Text>
-          <Text style={styles.sectionDescription}>Basic data and embedded map goes here</Text>
+          {
+            finalNumbers &&
+            <>
+              <Grid>
+                <Col>
+                  <Row>
+                    <Card style={{ width: '100%' }}>
+                      <CardItem header>
+                        <H1>Passengers Screened</H1>
+                      </CardItem>
+                      <CardItem>
+                        <Body>
+                          <Text style={styles.numbers}>{finalNumbers.passengersScreened.airport}</Text>
+                        </Body>
+                      </CardItem>
+                    </Card>
+                  </Row>
+                  <Row>
+                    <Card style={{ width: '100%' }}>
+                      <CardItem header>
+                        <H1>Confirmed</H1>
+                      </CardItem>
+                      <CardItem>
+                        <Body>
+                          <Grid>
+                            <Col>
+                              <Row>
+                                <H1>Indians</H1>
+                              </Row>
+                              <Row>
+                                <Text style={styles.numbers}>{finalNumbers.confirmedCases.indian}</Text>
+                              </Row>
+                            </Col>
+                            <Col>
+                              <Row>
+                                <H1>Foreigners</H1>
+                              </Row>
+                              <Row>
+                                <Text style={styles.numbers}>{finalNumbers.confirmedCases.foreign}</Text>
+                              </Row>
+                            </Col>
+                          </Grid>
+                        </Body>
+                      </CardItem>
+                    </Card>
+                  </Row>
+                  <Row>
+
+                    <Grid>
+                      <Col>
+                        <Card>
+                          <CardItem header>
+                            <H1>Discharged</H1>
+                          </CardItem>
+                          <CardItem>
+                            <Body>
+                              <Text style={styles.numbers}>{finalNumbers.dischargedCases}</Text>
+                            </Body>
+                          </CardItem>
+                        </Card>
+                      </Col>
+                      <Col>
+                        <Card>
+                          <CardItem header>
+                            <H1>Died</H1>
+                          </CardItem>
+                          <CardItem>
+                            <Body>
+                              <Text style={styles.numbers}>{finalNumbers.deathCases}</Text>
+                            </Body>
+                          </CardItem>
+                        </Card>
+                      </Col>
+                    </Grid>
+                  </Row>
+                </Col>
+              </Grid>
+            </>
+          }
         </View>
       </ScrollView>
     </>
@@ -102,6 +177,13 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
+  numbers: {
+    fontSize: 50,
+  },
+  danger: {
+    backgroundColor: 'red',
+    color: '#fff',
+  }
 });
 
 export default DashboardScreen;
