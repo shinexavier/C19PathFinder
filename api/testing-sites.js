@@ -15,7 +15,7 @@ let covid19TestingSites = function(server){
       "sites": [
         {
           "state": "Andhra Pradesh",
-          "vrdl": [
+          "data": [
             "Sri Venkateswara Institute of Medical Sciences, Tirupati",
             "Rangaraya Medical College, Kakinada",
             "Sidhartha Medical College, Vijayawada",
@@ -24,13 +24,13 @@ let covid19TestingSites = function(server){
         },
         {
           "state": "Andaman & Nicobar islands",
-          "vrdl": [
+          "data": [
             "Regional Medical Research Centre, Port Blair, Andaman and Nicobar"
           ]
         },
         {
           "state": "Assam",
-          "vrdl": [
+          "data": [
             "Gauhati Medical College, Guwahati",
             "Regional Medical Research Center, Dibrugarh",
             "Silchar Medical College, Silchar",
@@ -39,52 +39,52 @@ let covid19TestingSites = function(server){
         },
         {
           "state": "Bihar",
-          "vrdl": [
+          "data": [
             "Rajendra Memorial Research Institute of Medical Sciences, Patna"
           ]
         },
         {
           "state": "Chandigarh",
-          "vrdl": [
+          "data": [
             "Post Graduate Institute of Medical Education & Research, Chandigarh"
           ]
         },
         {
           "state": "Chhattisgarh",
-          "vrdl": [
+          "data": [
             "All India Institute Medical Sciences, Raipur"
           ]
         },
         {
           "state": "Delhi-NCT",
-          "vrdl": [
+          "data": [
             "All India Institute Medical Sciences, Delhi"
           ]
         },
         {
           "state": "Gujarat",
-          "vrdl": [
+          "data": [
             "BJ Medical College, Ahmedabad",
             "M.P.Shah Government Medical College, Jamnagar"
           ]
         },
         {
           "state": "Haryana",
-          "vrdl": [
+          "data": [
             "Pt. B.D. Sharma Post Graduate Inst. of Med. Sciences, Rohtak, Haryana",
             "BPS Govt Medical College, Sonipat"
           ]
         },
         {
           "state": "Himachal pradesh",
-          "vrdl": [
+          "data": [
             "Indira Gandhi Medical College, Shimla, Himachal Pradesh",
             "Dr.Rajendra Prasad Govt. Med. College, Kangra, Tanda, HP"
           ]
         },
         {
           "state": "Jammu and Kashmir",
-          "vrdl": [
+          "data": [
             "Sher-e- Kashmir Institute of Medical Sciences, Srinagar",
             "Government Medical College, Jammu",
             "Government Medical College, Srinagar"
@@ -92,13 +92,13 @@ let covid19TestingSites = function(server){
         },
         {
           "state": "Jharkhand",
-          "vrdl": [
+          "data": [
             "MGM Medical College, Jamshedpur"
           ]
         },
         {
           "state": "Karnataka",
-          "vrdl": [
+          "data": [
             "Bangalore Medical College & Research Institute, Bangalore",
             "National Institute of Virology Field Unit Bangalore",
             "Mysore Medical College & Research Institute, Mysore",
@@ -108,7 +108,7 @@ let covid19TestingSites = function(server){
         },
         {
           "state": "Kerala",
-          "vrdl": [
+          "data": [
             "National Institute of Virology Field Unit, Kerala",
             "Govt. Medical College, Thriuvananthapuram, Kerala",
             "Govt. Medical College, Kozhikode, Kerala",
@@ -117,20 +117,20 @@ let covid19TestingSites = function(server){
         },
         {
           "state": "Madhya Pradesh",
-          "vrdl": [
+          "data": [
             "All India Institute Medical Sciences, Bhopal",
             "National Institute of Research in Tribal Health (NIRTH), Jabalpur"
           ]
         },
         {
           "state": "Meghalaya",
-          "vrdl": [
+          "data": [
             "NEIGRI of Health and Medical Sciences, Shillong, Meghalaya"
           ]
         },
         {
           "state": "Maharashtra",
-          "vrdl": [
+          "data": [
             "Indira Gandhi Government Medical College, Nagpur",
             "Kasturba Hospital for Infectious Diseases, Mumbai",
             "NIV Mumbai Unit"
@@ -138,33 +138,33 @@ let covid19TestingSites = function(server){
         },
         {
           "state": "Manipur",
-          "vrdl": [
+          "data": [
             "J N Inst. of Med. Sciences Hospital, Imphal-East, Manipur",
             "Regional Institute of Medical Sciences, Imphal"
           ]
         },
         {
           "state": "Odisha",
-          "vrdl": [
+          "data": [
             "Regional Medical Research Center, Bhubaneswar"
           ]
         },
         {
           "state": "Puducherry",
-          "vrdl": [
+          "data": [
             "Jawaharlal Institute of Postgraduate Medical Education & Research, Puducherry"
           ]
         },
         {
           "state": "Punjab",
-          "vrdl": [
+          "data": [
             "Government Medical College, Patiala, Punjab",
             "Government Medical College, Amritsar"
           ]
         },
         {
           "state": "Rajasthan",
-          "vrdl": [
+          "data": [
             "Sawai Man Singh, Jaipur",
             "Dr. S.N Medical College, Jodhpur",
             "Jhalawar Medical College, Jhalawar, Rajasthan",
@@ -174,7 +174,7 @@ let covid19TestingSites = function(server){
         },
         {
           "state": "Tamil Nadu",
-          "vrdl": [
+          "data": [
             "King's Institute of Preventive Medicine & Research, Chennai",
             "Government Medical College, Theni",
             "Tirunelveli Medical College, Tirunelveli",
@@ -183,20 +183,20 @@ let covid19TestingSites = function(server){
         },
         {
           "state": "Tripura",
-          "vrdl": [
+          "data": [
             "Government Medical College, Agartala"
           ]
         },
         {
           "state": "Telangana",
-          "vrdl": [
+          "data": [
             "Gandhi Medical College, Secunderabad",
             "Osmania Medical College, Hyderabad"
           ]
         },
         {
           "state": "Uttar Pradesh",
-          "vrdl": [
+          "data": [
             "King's George Medical University, Lucknow",
             "Institute of Medical Sciences, Banaras Hindu University, Varanasi",
             "Jawaharlal Nehru Medical College, Aligarh"
@@ -204,13 +204,13 @@ let covid19TestingSites = function(server){
         },
         {
           "state": "Uttarakhand",
-          "vrdl": [
+          "data": [
             "Government Medical College, Haldwani"
           ]
         },
         {
           "state": "West Bengal",
-          "vrdl": [
+          "data": [
             "National Institute of Cholera and Enteric Diseases, Kolkata",
             "IPGMER, Kolkata",
             "",
