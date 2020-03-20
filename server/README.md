@@ -15,10 +15,10 @@ run the command `npm start`
 ## Available APIs
 
 * Dashboard
-  * http://localhost:8080/finalnumbers
-  * http://localhost:8080/finalnumbers/statewise
+  * http://localhost:3000/finalnumbers
+  * http://localhost:3000/finalnumbers/statewise
 * List of Laboratories
-  * http://localhost:8080/testingsites 
+  * http://localhost:3000/testingsites 
 
 ### Algorithm to findout the crosspoints
 - Add `isUserLocationPoint` flag to `userLocationPoints`
