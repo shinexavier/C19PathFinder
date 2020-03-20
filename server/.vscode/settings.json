@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/14b1f459-e253-423f-ae19-a1d79e1937cf/resourceGroups/C19PathFinder/providers/Microsoft.Web/sites/C19PathFinder",
-    "appService.deploySubpath": ""
-}
