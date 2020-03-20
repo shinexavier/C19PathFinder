@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "debug": "node --inspect ./bin/www"
+    "start": "node src/server",
+    "debug": "node --inspect src.server"
   },
   "dependencies": {
     "bluebird": "^3.7.2",

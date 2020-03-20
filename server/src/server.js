@@ -2,8 +2,8 @@
  * Module dependencies.
  */
 
-const app = require('../app');
-const debug = require('debug')('server:server');
+const app = require('./app');
+const debug = require('debug')('C19:server');
 const http = require('http');
 
 /**
