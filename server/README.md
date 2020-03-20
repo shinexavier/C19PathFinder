@@ -13,11 +13,6 @@ run the command `npm start`
 
 ### Available APIs
 [Postman Collection](https://www.getpostman.com/collections/408465756d4682e64e12)
-* Dashboard
-  * http://localhost:3000/finalnumbers
-  * http://localhost:3000/finalnumbers/statewise
-* List of Laboratories
-  * http://localhost:3000/testingsites 
 
 ### Data Model
 
