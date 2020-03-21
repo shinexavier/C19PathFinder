@@ -33,4 +33,10 @@ var UserSchema = new Schema({
     ref: 'Event' }]
 });
 
+UserSchema.pre('save', function(next) {
+  this.locationHistory.forEach(function(locationPoint) {
+    locationPoint.degreeOfContact = user.degreeOfContact;
+  });
+});
+
 mongoose.model('User', UserSchema);

@@ -49,6 +49,10 @@ var LocationPointSchema = new Schema({
     type: Number,
     required: false
   },
+  degreeOfContact: {
+    type: Number,
+    required: true
+  },
   isPurged: {
     type: Boolean,
     required: true
@@ -74,6 +78,14 @@ LocationPointSchema.pre('save', function(next) {
   }
 
   next();
+});
+
+UserSchema.post('save', function(user, next) {
+  if (!user.degreeOfContact) {
+    // Save locationPoint to VictimLocationPoint
+  } else {
+    next();
+  }
 });
 
 mongoose.model('LocationPoint', LocationPointSchema);
