@@ -157,6 +157,7 @@ run the command `npm start`
       - geoCenter
 - [ ] Refactoring finalNumbers and testingSites APIs
 - [ ] Config API [GET]
+- [ ] Auth API for mobile app
 
 #### Technical
 - [x] Datamodel definition
@@ -165,3 +166,4 @@ run the command `npm start`
 
 ### Open Points
 - [ ] API Spec for Victim's Location History API [GET]
+- [ ] API Spec for Mobile App Auth API and workflow
