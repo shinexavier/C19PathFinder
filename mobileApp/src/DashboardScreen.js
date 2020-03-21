@@ -8,20 +8,15 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   StatusBar,
-  Button,
-  Alert,
-  ActivityIndicator,
 } from 'react-native';
 
-import { WebView } from 'react-native-webview';
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import DocumentPicker from 'react-native-document-picker';
+
+import Config from "react-native-config";
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Container, Header, Content, Card, CardItem, Body, Text, Grid, Col, Row, H1 } from 'native-base';
@@ -36,7 +31,7 @@ const DashboardScreen: () => React$Node = () => {
     console.log("use effect")
     axios
       .get(
-        "http://192.168.225.29:8080/finalnumbers"
+        `${Config.API_URL}/finalnumbers`
       )
       .then(({ data }) => {
         console.log(data)
@@ -73,7 +68,7 @@ const DashboardScreen: () => React$Node = () => {
                   <Row>
                     <Card style={{ width: '100%' }}>
                       <CardItem header>
-                        <H1>Confirmed</H1>
+                        <H1>Currently Sick</H1>
                       </CardItem>
                       <CardItem>
                         <Body>
@@ -105,7 +100,7 @@ const DashboardScreen: () => React$Node = () => {
                       <Col>
                         <Card>
                           <CardItem header>
-                            <H1>Discharged</H1>
+                            <H1>Recovered</H1>
                           </CardItem>
                           <CardItem>
                             <Body>
@@ -117,7 +112,7 @@ const DashboardScreen: () => React$Node = () => {
                       <Col>
                         <Card>
                           <CardItem header>
-                            <H1>Died</H1>
+                            <H1>Deceased</H1>
                           </CardItem>
                           <CardItem>
                             <Body>
