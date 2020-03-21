@@ -162,6 +162,7 @@ This repository contains the code for the server application. It is built on Nod
 #### Technical
 - [x] Datamodel definition
 - [x] Connecting to Azure Cosmos DB
+- [ ] DB Indexing
 - [ ] Azure Redis Cache
 
 ### Open Points
