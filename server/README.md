@@ -149,19 +149,19 @@ run the command `npm start`
 
 ### Tasks
 #### Functional 
-[ ] Victim's Location History API [POST]
-[ ] Victim's Location History API - FILE UPLOAD [POST]
-[ ] Victim's Location History API [GET]
+- [ ] Victim's Location History API [POST]
+- [ ] Victim's Location History API - FILE UPLOAD [POST]
+- [ ] Victim's Location History API [GET]
     - Parameters
       - timestamp
       - geoCenter
-[ ] Refactoring finalNumbers and testingSites APIs
-[ ] Config API [GET]
+- [ ] Refactoring finalNumbers and testingSites APIs
+- [ ] Config API [GET]
 
 #### Technical
-[x] Datamodel definition
-[ ] Connecting to Azure Cosmos DB
-[ ] Azure Redis Cache
+- [x] Datamodel definition
+- [ ] Connecting to Azure Cosmos DB
+- [ ] Azure Redis Cache
 
 ### Open Points
-[ ] API Spec for Victim's Location History API [GET]
+- [ ] API Spec for Victim's Location History API [GET]
