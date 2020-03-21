@@ -76,20 +76,50 @@ const HelpLineNumbers: () => React$Node = () => {
                                     STATE HELP LINE NUMBERS
                                 </H1>
                             </CardItem>
-                            <CardItem>
-                                <Text>Andhra Pradesh</Text>
+                            <CardItem style={styles.state}>
+                                <Text style={styles.stateName}>
+                                    Andhra Pradesh
+                                </Text>
                                 <Right>
-                                    <Text onPress={() =>
-                                        Linking.openURL('tel:+91-866-2410978')
-                                    }>+91-866-2410978</Text>
+                                    <Text
+                                        onPress={() =>
+                                            Linking.openURL(
+                                                'tel:+91-866-2410978'
+                                            )
+                                        }
+                                    >
+                                        +91-866-2410978
+                                    </Text>
+                                </Right>
+                            </CardItem>
+                            <CardItem style={styles.state}>
+                                <Text style={styles.stateName}>
+                                    Arunachal Pradesh
+                                </Text>
+                                <Right>
+                                    <Text
+                                        onPress={() =>
+                                            Linking.openURL(
+                                                'tel:+91-9436055743'
+                                            )
+                                        }
+                                    >
+                                        +91-9436055743
+                                    </Text>
                                 </Right>
                             </CardItem>
                             <CardItem>
-                                <Text>Arunachal Pradesh</Text>
+                                <Text style={styles.stateName}>Assam</Text>
                                 <Right>
-                                    <Text onPress={() =>
-                                        Linking.openURL('tel:+91-9436055743')
-                                    }>+91-9436055743</Text>
+                                    <Text
+                                        onPress={() =>
+                                            Linking.openURL(
+                                                'tel:+91-6913347770'
+                                            )
+                                        }
+                                    >
+                                        +91-6913347770
+                                    </Text>
                                 </Right>
                             </CardItem>
                         </Card>
@@ -139,7 +169,6 @@ const styles = StyleSheet.create({
         paddingRight: 12,
         textAlign: 'right'
     },
-    card: {},
     cardTitle: {
         borderBottomWidth: 1,
         borderColor: '#a50a18'
@@ -148,11 +177,13 @@ const styles = StyleSheet.create({
         color: '#a50a18',
         fontSize: 22
     },
-    cardBody: {},
-    answeredBy: {
-        color: '#a50a18'
+    state: {
+        borderBottomWidth: 1,
+        borderColor: '#c9c8cd'
     },
-    cardFooter: {},
+    stateName: {
+        width: '50%'
+    },
     referenceLink: {
         color: '#1c20c2',
         fontSize: 18
