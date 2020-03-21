@@ -20,6 +20,11 @@ run the command `npm start`
 ```json
 {
   "locationPoint": {
+    "locationPointId": {
+      "type": "string",
+      "require": "true",
+      "description": "Unique identifier for a location point" 
+    },
     "userId": {
       "type": "string",
       "require": "true",
@@ -91,6 +96,21 @@ run the command `npm start`
       "type": "number",
       "require": "true",
       "description": "0 for affected, 1 to 3 are other possible values. Duplicated value from User document"
+    },
+    "lastUpdatedOn": {
+      "type": "number",
+      "require": "true",
+      "description": "Unix timestamp in milliseconds"
+    },
+    "lastUpdatedBy": {
+      "type": "number",
+      "require": "true",
+      "description": "Device Id / Routemap Id"
+    },
+    "isPurged": {
+      "type": "boolean",
+      "require": "false",
+      "description": "True value indicates the location point is removed."
     }
   }
 }
@@ -132,8 +152,16 @@ run the command `npm start`
 [ ] Victim's Location History API [POST]
 [ ] Victim's Location History API - FILE UPLOAD [POST]
 [ ] Victim's Location History API [GET]
+    - Parameters
+      - timestamp
+      - geoCenter
 [ ] Refactoring finalNumbers and testingSites APIs
+[ ] Config API [GET]
 
 #### Technical
 [x] Datamodel definition
 [ ] Connecting to Azure Cosmos DB
+[ ] Azure Redis Cache
+
+### Open Points
+[ ] API Spec for Victim's Location History API [GET]
