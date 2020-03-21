@@ -7,17 +7,17 @@ router.get('/', function (req, res, next) {
     let latestFigures = {
         "version": 1,
         "lastUpdated": {
-          "date": "20 March 2020",
-          "time": "5.20 PM"
+          "date": "21 March 2020",
+          "time": "4.20 PM"
         },
         "passengersScreened": {
           "airport": "14,59,993"
         },
         "confirmedCases": {
-          "indian": 191,
-          "foreign": 32
+          "indian": 219,
+          "foreign": 39
         },
-        "dischargedCases": 22,
+        "dischargedCases": 23,
         "deathCases": 4
       }
     res.json(latestFigures);
@@ -27,8 +27,8 @@ router.get('/statewise', function (req, res, next) {
     let latestFigures = {
         "version": 1,
         "lastUpdated": {
-          "date": "19 March 2020",
-          "time": "6.50 AM"
+          "date": "21 March 2020",
+          "time": "4.20 PM"
         },
         "statistics": [
           {
@@ -52,7 +52,7 @@ router.get('/statewise', function (req, res, next) {
           {
             "state": "Delhi",
             "confirmedCases": {
-              "indian": 16,
+              "indian": 25,
               "foreign": 1
             },
             "dischargedCases": 5,
@@ -61,7 +61,7 @@ router.get('/statewise', function (req, res, next) {
           {
             "state": "Gujarat",
             "confirmedCases": {
-              "indian": 5,
+              "indian": 7,
               "foreign": 0
             },
             "dischargedCases": 0,
@@ -88,8 +88,8 @@ router.get('/statewise', function (req, res, next) {
           {
             "state": "Kerala",
             "confirmedCases": {
-              "indian": 26,
-              "foreign": 2
+              "indian": 33,
+              "foreign": 7
             },
             "dischargedCases": 3,
             "deathCases": 0
@@ -152,7 +152,7 @@ router.get('/statewise', function (req, res, next) {
             "state": "Telengana",
             "confirmedCases": {
               "indian": 8,
-              "foreign": 9
+              "foreign": 11
             },
             "dischargedCases": 1,
             "deathCases": 0
@@ -178,7 +178,7 @@ router.get('/statewise', function (req, res, next) {
           {
             "state": "Ladakh",
             "confirmedCases": {
-              "indian": 10,
+              "indian": 13,
               "foreign": 0
             },
             "dischargedCases": 0,
@@ -187,7 +187,7 @@ router.get('/statewise', function (req, res, next) {
           {
             "state": "Uttar Pradesh",
             "confirmedCases": {
-              "indian": 22,
+              "indian": 23,
               "foreign": 1
             },
             "dischargedCases": 9,
