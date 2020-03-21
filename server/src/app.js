@@ -1,18 +1,58 @@
-const express = require('express');
-const logger = require('morgan');
+/*eslint strict: ["error", "global"]*/
 
-const indexRouter  = require('./controllers/indexController');
-const dashboardRouter  = require('./controllers/dashboardController');
-const testingsitesRouter  = require('./controllers/testingsitesController');
+'use strict';
 
-const app = express();
+var express = require('express');
+var logger = require('morgan');
+var glob = require('glob');
+var path = require('path');
+var config = require('./../resources/config');
+
+
+var app = express();
+
+
+// Load mongoose models
+var models = glob.sync(config.root + '/src/models/*.js');
+models.forEach(function (model) {
+    require(model);
+});
+
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', indexRouter);
-app.use('/finalnumbers', dashboardRouter);
-app.use('/testingsites', testingsitesRouter);
+var controllers = glob.sync(config.root + '/src/controllers/*.js');
+controllers.forEach(function (controller) {
+    require(controller)(app);
+});
+
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+if (app.get('env') === 'development') {
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.json({
+            message: err.message,
+            error: err,
+            title: 'error',
+        });
+    });
+}
+
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.json({
+        message: err.message,
+        error: {},
+        title: 'error',
+    });
+});
+
 
 module.exports = app;

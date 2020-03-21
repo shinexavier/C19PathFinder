@@ -4,13 +4,20 @@
   "private": true,
   "scripts": {
     "start": "node src/server",
-    "debug": "node --inspect src.server"
+    "debug": "node --inspect src/server",
+    "pretest": "eslint --ignore-path .gitignore ."
   },
   "dependencies": {
     "bluebird": "^3.7.2",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "glob": "^7.1.6",
+    "mongoose": "^5.9.5",
     "morgan": "~1.9.1",
     "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-strongloop": "^2.1.0"
   }
 }

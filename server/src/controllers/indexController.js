@@ -1,9 +1,17 @@
-const express = require('express');
-const router = express.Router();
+/*eslint strict: ["error", "global"]*/
 
-/* Heartbeat endpoint */
-router.get('/', function(req, res, next) {
-  res.send('server is up and running!');
-});
+'use strict';
 
-module.exports = router;
+var express = require('express');
+
+var router = express.Router();
+
+module.exports = function(app) {
+  app.use('/', router);
+};
+
+var heartBeatHandler = function(req, res, next) {
+  res.send('server is up and running');
+};
+
+router.get('/', heartBeatHandler);

@@ -1,6 +1,10 @@
-const multer = require('multer');
+/*eslint strict: ["error", "global"]*/
 
-const storage = multer.memoryStorage();
-const httpFileuploadUtil = multer({ storage: storage });
+'use strict';
+
+var multer = require('multer');
+
+var storage = multer.memoryStorage();
+var httpFileuploadUtil = multer({ storage: storage });
 
 module.exports = httpFileuploadUtil;
