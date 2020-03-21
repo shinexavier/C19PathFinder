@@ -143,7 +143,7 @@ const TestCentresScreen: () => React$Node = () => {
         console.log("use effect")
         axios
             .get(
-                "http://192.168.225.29:8080/testingsites"
+                `${Config.API_URL}/testingsites`
             )
             .then(({ data }) => {
                 console.log(data.sites)
@@ -153,7 +153,7 @@ const TestCentresScreen: () => React$Node = () => {
     }, []);
 
     return (
-        <>
+        <View style={styles.container}>
             <StatusBar barStyle="dark-content" />
             {testingSites && <SectionList
                 sections={testingSites}
@@ -163,7 +163,7 @@ const TestCentresScreen: () => React$Node = () => {
                     <Text style={styles.header}>{state}</Text>
                 )}
             />}
-        </>
+        </View>
     );
 };
 
@@ -171,14 +171,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginHorizontal: 16,
+        marginVertical: 10,
       },
       item: {
-        backgroundColor: '#f9c2ff',
-        padding: 20,
-        marginVertical: 8,
+        padding: 5,
+        marginVertical: 4,
       },
       header: {
-        fontSize: 32,
+        fontSize: 20,
+        fontWeight: 'bold'
       },
       title: {
         fontSize: 24,

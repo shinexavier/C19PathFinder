@@ -5323,6 +5323,11 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.8.1, react-is@^16.8.4, react-
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
   integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
 
+react-native-config@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.0.0.tgz#fada8f79996db1eadcee9e221afd713c91f677e5"
+  integrity sha512-ZydFNkGgjPCgJ4nDDGxuoMSsz4HACJH6TyYEDeefnzGW3XS/HXxdiW8SOaOD8B0WACQJHM028ypnwhexJ7hhsA==
+
 react-native-document-picker@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/react-native-document-picker/-/react-native-document-picker-3.3.0.tgz#dc0172c6a0adf290cca0cbb8f4e8e1ea2e6bdd3c"
