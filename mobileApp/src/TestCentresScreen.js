@@ -10,8 +10,8 @@ import Config from "react-native-config";
 function Item({ title, data }) {
   return (
     <Card key={title}>
-      <CardItem header styles={styles.header}>
-        <Text>{title}</Text>
+      <CardItem>
+        <Text style={styles.header}>{title}</Text>
       </CardItem>
       {data.map(item => <CardItem key={item}><Text>{item}</Text></CardItem>)}
     </Card>
