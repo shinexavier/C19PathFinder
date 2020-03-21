@@ -68,7 +68,7 @@ const DashboardScreen: () => React$Node = () => {
                   <Row>
                     <Card style={{ width: '100%' }}>
                       <CardItem header>
-                        <H1>Confirmed</H1>
+                        <H1>Currently Sick</H1>
                       </CardItem>
                       <CardItem>
                         <Body>
@@ -100,7 +100,7 @@ const DashboardScreen: () => React$Node = () => {
                       <Col>
                         <Card>
                           <CardItem header>
-                            <H1>Discharged</H1>
+                            <H1>Recovered</H1>
                           </CardItem>
                           <CardItem>
                             <Body>
@@ -112,7 +112,7 @@ const DashboardScreen: () => React$Node = () => {
                       <Col>
                         <Card>
                           <CardItem header>
-                            <H1>Died</H1>
+                            <H1>Deceased</H1>
                           </CardItem>
                           <CardItem>
                             <Body>

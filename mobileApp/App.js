@@ -22,6 +22,8 @@ import MyRiskScreen from './src/MyRiskScreen';
 import DashboardScreen from './src/DashboardScreen';
 import TestCentresScreen from './src/TestCentresScreen';
 import FAQ from './src/FAQScreen';
+import Symptoms from './src/SymptomsScreen';
+import EmergencyWarningSigns from './src/EmergencyWarningSignsScreen';
 
 const TabView = () => {
   const Tab = createBottomTabNavigator();
@@ -59,6 +61,8 @@ const DrawerView = () => {
       <Drawer.Screen name="Test Centres" component={TestCentresScreen} />
       <Drawer.Screen name="Helpline Numbers" component={TabView} />
       <Drawer.Screen name="FAQ" component={FAQ} />
+      <Drawer.Screen name="Watch for symptoms" component={Symptoms} />
+      <Drawer.Screen name="Emergency Warning Signs" component={EmergencyWarningSigns} />
       <Drawer.Screen name="About" component={TabView} />
     </Drawer.Navigator>);
 };
