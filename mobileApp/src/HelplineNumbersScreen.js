@@ -35,6 +35,169 @@ import {
     ListItem
 } from 'native-base';
 
+function Item({ state, numbers }) {
+    return (
+        <CardItem style={styles.state}>
+            <Text style={styles.stateName}>{state}</Text>
+            <Right>
+            {numbers.map(number => (
+                                        <Text onPress={() => Linking.openURL(`tel:${number}`)}>
+                                        {number}
+                                    </Text>
+                    ))}
+
+            </Right>
+        </CardItem>
+    );
+}
+
+const hln = [
+  {
+    "state": "Andhra Pradesh",
+    "numbers": ["0866-2410978"]
+  },
+  {
+    "state": "Arunachal Pradesh",
+    "numbers": ["9436055743"]
+  },
+  {
+    "state": "Assam",
+    "numbers": ["6913347770"]
+  },
+  {
+    "state": "Bihar",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Chhattisgarh",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Goa",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Gujarat",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Haryana",
+    "numbers": ["8558893911"]
+  },
+  {
+    "state": "Himachal Pradesh",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Jharkhand",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Karnataka",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Kerala",
+    "numbers": ["0471-2552056"]
+  },
+  {
+    "state": "Madhya Pradesh",
+    "numbers": ["0755-2527177"]
+  },
+  {
+    "state": "Maharashtra",
+    "numbers": ["020-26127394"]
+  },
+  {
+    "state": "Manipur",
+    "numbers": ["3852411668"]
+  },
+  {
+    "state": "Meghalaya",
+    "numbers": ["108"]
+  },
+  {
+    "state": "Mizoram",
+    "numbers": ["102"]
+  },
+  {
+    "state": "Nagaland",
+    "numbers": ["7005539653"]
+  },
+  {
+    "state": "Odisha",
+    "numbers": ["9439994859"]
+  },
+  {
+    "state": "Punjab",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Rajasthan",
+    "numbers": ["0141-2225624"]
+  },
+  {
+    "state": "Sikkim",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Tamil Nadu",
+    "numbers": ["044-29510500"]
+  },
+  {
+    "state": "Telangana",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Tripura",
+    "numbers": ["0381-2315879"]
+  },
+  {
+    "state": "Uttarakhand",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Uttar Pradesh",
+    "numbers": ["18001805145"]
+  },
+  {
+    "state": "West Bengal",
+    "numbers": ["1800313444222"]
+  },
+  {
+    "state": "Andaman and Nicobar Islands",
+    "numbers": ["03192-232102"]
+  },
+  {
+    "state": "Chandigarh",
+    "numbers": ["9779558282"]
+  },
+  {
+    "state": "Dadra and Nagar Haveli and Daman & Diu",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Delhi",
+    "numbers": ["011-22307145"]
+  },
+  {
+    "state": "Jammu & Kashmir",
+    "numbers": ["01912520982"]
+  },
+  {
+    "state": "Ladakh",
+    "numbers": ["01982256462"]
+  },
+  {
+    "state": "Lakshadweep",
+    "numbers": ["104"]
+  },
+  {
+    "state": "Puducherry",
+    "numbers": ["104"]
+  },
+]
+
 const HelpLineNumbers: () => React$Node = () => {
     return (
         <>
@@ -76,66 +239,11 @@ const HelpLineNumbers: () => React$Node = () => {
                                     STATE HELP LINE NUMBERS
                                 </H1>
                             </CardItem>
-                            <CardItem style={styles.state}>
-                                <Text style={styles.stateName}>
-                                    Andhra Pradesh
-                                </Text>
-                                <Right>
-                                    <Text
-                                        onPress={() =>
-                                            Linking.openURL(
-                                                'tel:+91-866-2410978'
-                                            )
-                                        }
-                                    >
-                                        +91-866-2410978
-                                    </Text>
-                                </Right>
-                            </CardItem>
-                            <CardItem style={styles.state}>
-                                <Text style={styles.stateName}>
-                                    Arunachal Pradesh
-                                </Text>
-                                <Right>
-                                    <Text
-                                        onPress={() =>
-                                            Linking.openURL(
-                                                'tel:+91-9436055743'
-                                            )
-                                        }
-                                    >
-                                        +91-9436055743
-                                    </Text>
-                                </Right>
-                            </CardItem>
-                            <CardItem style={styles.state}>
-                                <Text style={styles.stateName}>Assam</Text>
-                                <Right>
-                                    <Text
-                                        onPress={() =>
-                                            Linking.openURL(
-                                                'tel:+91-6913347770'
-                                            )
-                                        }
-                                    >
-                                        +91-6913347770
-                                    </Text>
-                                </Right>
-                            </CardItem>
-                            <CardItem>
-                                <Text style={styles.stateName}>Bihar</Text>
-                                <Right>
-                                    <Text
-                                        onPress={() =>
-                                            Linking.openURL(
-                                                'tel:104'
-                                            )
-                                        }
-                                    >
-                                        104
-                                    </Text>
-                                </Right>
-                            </CardItem>
+                            {
+                                hln.map(item => (
+                                  <Item state={item.state} numbers={item.numbers} />
+                              ))
+                            }
                         </Card>
                     </View>
                 </ScrollView>
