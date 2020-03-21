@@ -9,7 +9,8 @@ This repository contains the code for the server application. It is built on Nod
 - run the command `npm install`
 
 ### Running API Server
-run the command `npm start`
+- run the linting `npm run pretest`
+- run the command `npm start`
 
 ### Available APIs
 [Postman Collection](https://www.getpostman.com/collections/408465756d4682e64e12)
