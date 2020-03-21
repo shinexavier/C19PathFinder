@@ -21,9 +21,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MyRiskScreen from './src/MyRiskScreen';
 import DashboardScreen from './src/DashboardScreen';
 import TestCentresScreen from './src/TestCentresScreen';
+import HelplineNumbersScreen from './src/HelplineNumbersScreen';
 import FAQ from './src/FAQScreen';
 import Symptoms from './src/SymptomsScreen';
 import EmergencyWarningSigns from './src/EmergencyWarningSignsScreen';
+import AboutScreen from './src/AboutScreen';
 
 const TabView = () => {
   const Tab = createBottomTabNavigator();
@@ -57,13 +59,13 @@ const DrawerView = () => {
   return (
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen name="Home" component={TabView} />
-      <Drawer.Screen name="Guide" component={TabView} />
+      <Drawer.Screen name="Guide" component={FAQ} />
       <Drawer.Screen name="Test Centres" component={TestCentresScreen} />
-      <Drawer.Screen name="Helpline Numbers" component={TabView} />
+      <Drawer.Screen name="Helpline Numbers" component={HelplineNumbersScreen} />
       <Drawer.Screen name="FAQ" component={FAQ} />
       <Drawer.Screen name="Watch for symptoms" component={Symptoms} />
       <Drawer.Screen name="Emergency Warning Signs" component={EmergencyWarningSigns} />
-      <Drawer.Screen name="About" component={TabView} />
+      <Drawer.Screen name="About" component={AboutScreen} />
     </Drawer.Navigator>);
 };
 
