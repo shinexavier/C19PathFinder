@@ -21,25 +21,20 @@ This repository contains the code for the server application. It is built on Nod
 ```json
 {
   "locationPoint": {
-    "locationPointId": {
+    "_id": {
       "type": "string",
       "require": "true",
       "description": "Unique identifier for a location point" 
     },
-    "userId": {
-      "type": "string",
-      "require": "true",
-      "description": "Database id to the user table"
-    },
-    "latitude": {
+    "latitudeE&": {
       "type": "number",
       "require": "true",
-      "description": "Latitude of the location in degree"
+      "description": "Latitude of the location in degree decimal (multiplied by 10^7)"
     },
     "longitude": {
       "type": "number",
       "require": "true",
-      "description": "Longitude of the location in degree"
+      "description": "Longitude of the location in degree decimal (multiplied by 10^7)"
     },
     "accuracy": {
       "type": "number",
@@ -98,6 +93,11 @@ This repository contains the code for the server application. It is built on Nod
       "require": "true",
       "description": "0 for affected, 1 to 3 are other possible values. Duplicated value from User document"
     },
+    "sourceType": {
+        "type": "string",
+        "require": "true",
+        "description": "Values can be 'app|takeout|manual'"
+    },
     "lastUpdatedOn": {
       "type": "number",
       "require": "true",
@@ -121,15 +121,10 @@ This repository contains the code for the server application. It is built on Nod
 ```json
 {
   "user": {
-    "id": {
-        "type": "string",
-        "require": "true",
-        "description": "Unique identifier for the user"
-    },
     "sourceType": {
         "type": "string",
         "require": "true",
-        "description": "Values can be 'app|server'"
+        "description": "Values can be 'app|takeout|manual|mixed'"
     },
     "sourceId": {
         "type": "string",
@@ -143,7 +138,11 @@ This repository contains the code for the server application. It is built on Nod
     "mail": {
         "type": "string",
         "decription": "Mail id of the user, verified if possible"
-    }
+    },
+    "locationHistory" : [{
+        "type": "LocationPointId",
+        "description": "Master collection of location points corresponding to a user"
+    }]
   }
 }
 ```
