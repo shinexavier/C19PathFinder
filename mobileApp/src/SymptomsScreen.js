@@ -18,7 +18,7 @@ import {
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import { Container, Header, Content, DeckSwiper, Card, CardItem, Body, Text, H1, Left } from 'native-base';
+import { Container, Header, Content, DeckSwiper, Card, CardItem, Body, Text, H1, Left, Right, Title } from 'native-base';
 
 const cards = [
     {
@@ -34,6 +34,13 @@ const Symptoms: () => React$Node = () => {
     <>
       <StatusBar barStyle="dark-content" />
       {/* <SafeAreaView> */}
+      <Container>
+      <Header>
+          <Left/>
+          <Body>
+            <Title>Watch for symptoms</Title>
+          </Body>
+        </Header>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
@@ -68,6 +75,7 @@ const Symptoms: () => React$Node = () => {
 
         </View>
       </ScrollView>
+      </Container>
     </>
   );
 };

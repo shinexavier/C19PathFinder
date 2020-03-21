@@ -20,7 +20,7 @@ import {
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import { DeckSwiper, Card, CardItem, H1, Text } from 'native-base';
+import { Container, Header, Content, DeckSwiper, Card, CardItem, Body, Text, H1, Left, Right, Title } from 'native-base';
 
 
 const EmergencyWarningSigns: () => React$Node = () => {
@@ -29,15 +29,19 @@ const EmergencyWarningSigns: () => React$Node = () => {
     <>
       <StatusBar barStyle="dark-content" />
       {/* <SafeAreaView> */}
+      <Container>
+      <Header>
+          <Left/>
+          <Body>
+            <Title>Emergency Warning Signs</Title>
+          </Body>
+        </Header>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
         <View style={styles.sectionContainer}>
 
               <Card style={{ width: '100%' }}>
-                <CardItem header style={styles.cardTitle}>
-                  <H1 style={styles.cardTitleText}>EMERGENCY WARNING SIGNS</H1>
-                </CardItem>
                 <CardItem>
                     <Text>If you develop <Text style={{fontWeight: 'bold'}}>emergency warning signs</Text> for COVID-19 get <Text style={{fontWeight: 'bold'}}>medical attention immediately</Text>. Emergency warning signs include</Text>
                 </CardItem>
@@ -60,6 +64,7 @@ const EmergencyWarningSigns: () => React$Node = () => {
 
         </View>
       </ScrollView>
+      </Container>
     </>
   );
 };
