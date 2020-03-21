@@ -108,7 +108,7 @@ const HelpLineNumbers: () => React$Node = () => {
                                     </Text>
                                 </Right>
                             </CardItem>
-                            <CardItem>
+                            <CardItem style={styles.state}>
                                 <Text style={styles.stateName}>Assam</Text>
                                 <Right>
                                     <Text
@@ -119,6 +119,20 @@ const HelpLineNumbers: () => React$Node = () => {
                                         }
                                     >
                                         +91-6913347770
+                                    </Text>
+                                </Right>
+                            </CardItem>
+                            <CardItem>
+                                <Text style={styles.stateName}>Bihar</Text>
+                                <Right>
+                                    <Text
+                                        onPress={() =>
+                                            Linking.openURL(
+                                                'tel:104'
+                                            )
+                                        }
+                                    >
+                                        104
                                     </Text>
                                 </Right>
                             </CardItem>
