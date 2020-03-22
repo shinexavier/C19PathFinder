@@ -131,6 +131,10 @@ This repository contains the code for the server application. It is built on Nod
 - [x] Datamodel definition
 - [x] Connecting to Azure Cosmos DB
 - [ ] DB Indexing
+  - Indexing is done as part of mongoose
+  - In Cosmos DB, indexing should be done prior to data insertion
+  - Indexing should be provided for attributes involving in search and sorting
+  - For migration, index should be handled seperately, ref: https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-indexing#migrating-collections-with-indexes
 - [ ] Azure Redis Cache
 
 ### Open Points
