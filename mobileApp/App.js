@@ -26,6 +26,7 @@ import FAQ from './src/FAQScreen';
 import Symptoms from './src/SymptomsScreen';
 import EmergencyWarningSigns from './src/EmergencyWarningSignsScreen';
 import AboutScreen from './src/AboutScreen';
+import UserProfile from './src/UserProfileScreen';
 
 const TabView = () => {
   const Tab = createBottomTabNavigator();
@@ -66,6 +67,7 @@ const DrawerView = () => {
       <Drawer.Screen name="Watch for symptoms" component={Symptoms} />
       <Drawer.Screen name="Emergency Warning Signs" component={EmergencyWarningSigns} />
       <Drawer.Screen name="About" component={AboutScreen} />
+      <Drawer.Screen name="Profile" component={UserProfile} />
     </Drawer.Navigator>);
 };
 
