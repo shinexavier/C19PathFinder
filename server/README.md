@@ -18,134 +18,7 @@ This repository contains the code for the server application. It is built on Nod
 ### Data Model
 
 #### LocationPoint
-```json
-{
-  "locationPoint": {
-    "_id": {
-      "type": "string",
-      "require": "true",
-      "description": "Unique identifier for a location point" 
-    },
-    "latitudeE&": {
-      "type": "number",
-      "require": "true",
-      "description": "Latitude of the location in degree decimal (multiplied by 10^7)"
-    },
-    "longitude": {
-      "type": "number",
-      "require": "true",
-      "description": "Longitude of the location in degree decimal (multiplied by 10^7)"
-    },
-    "accuracy": {
-      "type": "number",
-      "require": "true",
-      "description": "Confidence of Google's coordinate value in  metres / Radius of the location under consideration in metres"
-    },
-    "altitude": {
-      "type": "number",
-      "require": "false",
-      "description": "Altitude of the location"
-    },
-    "verticalAccuracy": {
-      "type": "number",
-      "require": "false",
-      "description": "Confidence of altitude. (Unit yet to find out)"
-    },
-    "timestampMs": {
-      "type": "number",
-      "require": "true",
-      "description": "Unix timestamp in milliseconds"
-    },
-    "elapsedTimeMs": {
-      "type": "number",
-      "require": "false",
-      "description": "Elapsed time in milli seconds"
-    },
-    "activity": {
-      "type": "string",
-      "require": "false",
-      "description": "Google's Activity of prediction with highest confidence.",
-      "values": [        
-        "MOTORCYCLING",
-        "IN_PASSENGER_VEHICLE",
-        "IN_FERRY",
-        "SAILING",
-        "IN_VEHICLE",
-        "SKIING",
-        "IN_TRAM",
-        "STILL",
-        "IN_BUS",
-        "WALKING",
-        "IN_TRAIN",
-        "CYCLING",
-        "FLYING",
-        "RUNNING",
-        "IN_SUBWAY"
-      ]
-    },
-    "activityConfidence": {
-      "type": "number",
-      "require": "false",
-      "description": "Confidence score for the activity recorded"
-    },
-    "degreeOfContact": {
-      "type": "number",
-      "require": "true",
-      "description": "0 for affected, 1 to 3 are other possible values. Duplicated value from User document"
-    },
-    "sourceType": {
-        "type": "string",
-        "require": "true",
-        "description": "Values can be 'app|takeout|manual'"
-    },
-    "lastUpdatedOn": {
-      "type": "number",
-      "require": "true",
-      "description": "Unix timestamp in milliseconds"
-    },
-    "lastUpdatedBy": {
-      "type": "number",
-      "require": "true",
-      "description": "Device Id / Routemap Id"
-    },
-    "isPurged": {
-      "type": "boolean",
-      "require": "false",
-      "description": "True value indicates the location point is removed."
-    }
-  }
-}
-```
-
-#### User
-```json
-{
-  "user": {
-    "sourceType": {
-        "type": "string",
-        "require": "true",
-        "description": "Values can be 'app|takeout|manual|mixed'"
-    },
-    "sourceId": {
-        "type": "string",
-        "require": "true",
-        "description": "For sourceType app -> deviceId, for sourceType server -> routeMapId"
-    },
-    "phone": {
-        "type": "string",
-        "description": "10 digit mobile number, verified if possible"
-    },
-    "mail": {
-        "type": "string",
-        "decription": "Mail id of the user, verified if possible"
-    },
-    "locationHistory" : [{
-        "type": "LocationPointId",
-        "description": "Master collection of location points corresponding to a user"
-    }]
-  }
-}
-```
+[Mongoose Schema Definition](https://github.com/shinexavier/C19PathFinder/tree/master/server/src/models)
 
 ### Tasks
 #### Functional 
@@ -163,6 +36,10 @@ This repository contains the code for the server application. It is built on Nod
 - [x] Datamodel definition
 - [x] Connecting to Azure Cosmos DB
 - [ ] DB Indexing
+  - Indexing is done as part of mongoose
+  - In Cosmos DB, indexing should be done prior to data insertion
+  - Indexing should be provided for attributes involving in search and sorting
+  - For migration, index should be handled seperately, ref: https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-indexing#migrating-collections-with-indexes
 - [ ] Azure Redis Cache
 
 ### Open Points

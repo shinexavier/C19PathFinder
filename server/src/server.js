@@ -25,7 +25,11 @@ server.on('listening', onListening);
 // Connect to db
 mongoose.connect(
   config.db,
-  { useNewUrlParser: true, useUnifiedTopology: true }
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    autoIndex: false,
+  }
 );
 var db = mongoose.connection;
 
