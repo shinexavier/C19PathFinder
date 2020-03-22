@@ -20,6 +20,8 @@
 #### Aggregator Utils - Public Methods
 - aggregate
   - Aggregate location points which are within 100m radius and distance/timeInterval is less than 5Km.
+  - Accuracy is updated for aggregated point as distance + maximum value of points
   - Test for the same is available in `test/aggregatorTests`
+  - Method expects location points to be chronologically ordered (ASC)
 
 

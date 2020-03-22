@@ -135,8 +135,8 @@ function getMidpoint(latitudeE71, longitudeE71, latitudeE72, longitudeE72) {
 module.exports = {
     getLatitude: getLatitude,
     getLongitude: getLongitude,
-    getDistance: getDistance,
     getRadian: getRadian,
     getDegree: getDegree,
+    getDistance: getDistance,
     getMidpoint: getMidpoint
 }
