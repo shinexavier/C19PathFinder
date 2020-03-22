@@ -8,8 +8,8 @@ var Schema = mongoose.Schema;
 
 var VictimLocationPointSchema = new Schema({
   locationPointId: {
-    type: Schema.Types.ObjectId,
-    ref: 'LocationPoint'
+    type: String,
+    required: true,
   },
   latitudeE7: {
     type: Number,
@@ -18,7 +18,7 @@ var VictimLocationPointSchema = new Schema({
       return (value > -900000000 && value < 900000000);
     }
   },
-  longitude7: {
+  longitudeE7: {
     type: Number,
     required: true,
     validate: function(value) {
@@ -29,33 +29,25 @@ var VictimLocationPointSchema = new Schema({
     type: Number,
     required: true
   },
-  altitude: {
-    type: Number,
-    required: false
-  },
-  verticalAccuracy: {
-    type: Number,
-    required: false
-  },
-  timestampMs: {
+  startTimestampMs: {
     type: Number,
     required: true
   },
-  elapsedTimeMs: {
+  endTimestampMs: {
     type: Number,
     required: false
   },
-  activity: {
-    type: String,
-    required: false
-  },
-  activityConfidence: {
+  degreeOfContact: {
     type: Number,
-    required: false
+    required: true
+  },
+  isPurged: {
+    type: Boolean,
+    required: true
   },
   sourceType: {
     type: String,
-    enum: ['app', 'takeout', 'manual'],
+    enum: ['app', 'takeout', 'routeMap', 'mixed'],
     required: true
   },
   lastUpdatedOn: {

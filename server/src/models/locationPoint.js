@@ -7,6 +7,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var LocationPointSchema = new Schema({
+  locationPointId: {
+    type: String,
+    required: true,
+  },
   latitudeE7: {
     type: Number,
     required: true,
@@ -14,7 +18,7 @@ var LocationPointSchema = new Schema({
       return (value > -900000000 && value < 900000000);
     }
   },
-  longitude7: {
+  longitudeE7: {
     type: Number,
     required: true,
     validate: function(value) {
@@ -25,27 +29,11 @@ var LocationPointSchema = new Schema({
     type: Number,
     required: true
   },
-  altitude: {
-    type: Number,
-    required: false
-  },
-  verticalAccuracy: {
-    type: Number,
-    required: false
-  },
-  timestampMs: {
+  startTimestampMs: {
     type: Number,
     required: true
   },
-  elapsedTimeMs: {
-    type: Number,
-    required: false
-  },
-  activity: {
-    type: String,
-    required: false
-  },
-  activityConfidence: {
+  endTimestampMs: {
     type: Number,
     required: false
   },
@@ -59,7 +47,7 @@ var LocationPointSchema = new Schema({
   },
   sourceType: {
     type: String,
-    enum: ['app', 'takeout', 'manual'],
+    enum: ['app', 'takeout', 'routeMap', 'mixed'],
     required: true
   },
   lastUpdatedOn: {
@@ -80,9 +68,9 @@ LocationPointSchema.pre('save', function(next) {
   next();
 });
 
-UserSchema.post('save', function(user, next) {
-  if (!user.degreeOfContact) {
-    // Save locationPoint to VictimLocationPoint
+LocationPointSchema.post('save', function(locationPoint, next) {
+  if (!locationPoint.degreeOfContact) {
+    // Upsert locationPoint to VictimLocatinPoint
   } else {
     next();
   }

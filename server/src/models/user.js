@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
   sourceType: {
     type: String,
-    enum: ['app', 'takeout', 'manual', 'mixed'],
+    enum: ['app', 'takeout', 'routeMap', 'mixed'],
     required: true
   },
   sourceId: {
@@ -30,13 +30,7 @@ var UserSchema = new Schema({
   },
   locationHistory: [{
     type: Schema.Types.ObjectId,
-    ref: 'Event' }]
-});
-
-UserSchema.pre('save', function(next) {
-  this.locationHistory.forEach(function(locationPoint) {
-    locationPoint.degreeOfContact = user.degreeOfContact;
-  });
+    ref: 'LocationPoint' }]
 });
 
 mongoose.model('User', UserSchema);
