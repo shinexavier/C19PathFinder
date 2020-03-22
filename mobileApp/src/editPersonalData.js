@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
     StyleSheet,
+    AsyncStorage,
     ScrollView,
     View,
     StatusBar,
@@ -39,20 +40,33 @@ import {
 //     console.log("setGender called")
 // }
 
+setName = (value) => {
+    console.log(value)
+    AsyncStorage.setItem('name', value);
+    //this.setState({ 'name': value });
+ }
+
+ setAge = (value) => {
+    console.log(value)
+    AsyncStorage.setItem('age', value);
+    //this.setState({ 'name': value });
+ }
+
 const EditPersonalData: () => React$Node = () => {
     const [gender, setGender] = useState();
 
 
 
     return (
+        <>
                     <Form>
                         <Item stackedLabel>
                             <Label>Name</Label>
-                            <Input />
+                            <Input onChangeText = {setName} />
                         </Item>
                         <Item stackedLabel>
                             <Label>Age</Label>
-                            <Input />
+                            <Input onChangeText = {setAge}  />
                         </Item>
                         <Item picker>
                             <Picker
@@ -67,6 +81,7 @@ const EditPersonalData: () => React$Node = () => {
                             </Picker>
                         </Item>
                     </Form>
+                    </>
                     
 
     );
