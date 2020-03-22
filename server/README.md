@@ -84,6 +84,11 @@ This repository contains the code for the server application. It is built on Nod
 ```json
 {
   "user": {
+    "userId": {
+      "type": "string",
+      "require": "true",
+      "description": "Unique identifier for a location point (GUID)" 
+    },
     "sourceType": {
         "type": "string",
         "require": "true",

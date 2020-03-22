@@ -7,6 +7,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
   sourceType: {
     type: String,
     enum: ['app', 'takeout', 'routeMap', 'mixed'],
