@@ -21,17 +21,17 @@ This repository contains the code for the server application. It is built on Nod
 ```json
 {
   "locationPoint": {
-    "_id": {
+    "locationPointId": {
       "type": "string",
       "require": "true",
-      "description": "Unique identifier for a location point" 
+      "description": "Unique identifier for a location point (GUID)" 
     },
-    "latitudeE&": {
+    "latitudeE7": {
       "type": "number",
       "require": "true",
       "description": "Latitude of the location in degree decimal (multiplied by 10^7)"
     },
-    "longitude": {
+    "longitudeE7": {
       "type": "number",
       "require": "true",
       "description": "Longitude of the location in degree decimal (multiplied by 10^7)"
@@ -41,52 +41,15 @@ This repository contains the code for the server application. It is built on Nod
       "require": "true",
       "description": "Confidence of Google's coordinate value in  metres / Radius of the location under consideration in metres"
     },
-    "altitude": {
-      "type": "number",
-      "require": "false",
-      "description": "Altitude of the location"
-    },
-    "verticalAccuracy": {
-      "type": "number",
-      "require": "false",
-      "description": "Confidence of altitude. (Unit yet to find out)"
-    },
-    "timestampMs": {
+    "startTimestampMs": {
       "type": "number",
       "require": "true",
       "description": "Unix timestamp in milliseconds"
     },
-    "elapsedTimeMs": {
+    "endTimestampMs": {
       "type": "number",
       "require": "false",
-      "description": "Elapsed time in milli seconds"
-    },
-    "activity": {
-      "type": "string",
-      "require": "false",
-      "description": "Google's Activity of prediction with highest confidence.",
-      "values": [        
-        "MOTORCYCLING",
-        "IN_PASSENGER_VEHICLE",
-        "IN_FERRY",
-        "SAILING",
-        "IN_VEHICLE",
-        "SKIING",
-        "IN_TRAM",
-        "STILL",
-        "IN_BUS",
-        "WALKING",
-        "IN_TRAIN",
-        "CYCLING",
-        "FLYING",
-        "RUNNING",
-        "IN_SUBWAY"
-      ]
-    },
-    "activityConfidence": {
-      "type": "number",
-      "require": "false",
-      "description": "Confidence score for the activity recorded"
+      "description": "Elapsed time in milliseconds"
     },
     "degreeOfContact": {
       "type": "number",
@@ -124,12 +87,12 @@ This repository contains the code for the server application. It is built on Nod
     "sourceType": {
         "type": "string",
         "require": "true",
-        "description": "Values can be 'app|takeout|manual|mixed'"
+        "description": "Values can be 'app|takeout|routeMap|mixed'"
     },
     "sourceId": {
         "type": "string",
         "require": "true",
-        "description": "For sourceType app -> deviceId, for sourceType server -> routeMapId"
+        "description": "For sourceType app -> deviceId, for sourceType routeMap -> routeMapId"
     },
     "phone": {
         "type": "string",
