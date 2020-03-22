@@ -20,7 +20,7 @@ import {
     Input,
     Label,
     Textarea,
-    Header,
+    Button,
     Content,
     DeckSwiper,
     Card,
@@ -37,6 +37,7 @@ import {
 
 const EditPersonalContact: () => React$Node = () => {
     return (
+        <>
                     <Form>
                         <Item stackedLabel>
                             <Label>Phone</Label>
@@ -52,6 +53,7 @@ const EditPersonalContact: () => React$Node = () => {
                             <Textarea rowSpan={5} bordered style={{width: '100%'}} />
                         </Item>
                     </Form>
+                    </>
     );
 };
 

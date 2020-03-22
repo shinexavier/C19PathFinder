@@ -66,7 +66,7 @@ const UserProfile: () => React$Node = () => {
                                 </Button>
                             </Col>
                             <Col>
-                                <Button full>
+                                <Button full onPress={() => console.log('Simple Button pressed')}>
                                     <Text>Save</Text>
                                 </Button>
                             </Col>
