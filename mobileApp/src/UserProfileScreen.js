@@ -7,33 +7,24 @@
  */
 
 import React, { useState } from 'react';
-import {
-    StyleSheet,
-    ScrollView,
-    View,
-    StatusBar,
-    Linking,
-    Image
-} from 'react-native';
+import { StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import {
     Container,
     Header,
-    Content,
-    DeckSwiper,
-    Card,
-    CardItem,
+    Button,
     Body,
     Text,
-    H1,
     Left,
     Right,
     Title,
     Tab,
     Tabs,
-    ScrollableTab
+    ScrollableTab,
+    Grid,
+    Col
 } from 'native-base';
 
 //import Tab1 from './contact';
@@ -55,14 +46,33 @@ const UserProfile: () => React$Node = () => {
                     </Body>
                     <Right />
                 </Header>
-                <Tabs renderTabBar={() => <ScrollableTab />}>
-                    <Tab heading="Basic Info">
-                        <EditPersonalData />
-                    </Tab>
-                    <Tab heading="Contact">
-                        <EditPersonalContact />
-                    </Tab>
-                </Tabs>
+                <ScrollView
+                    contentInsetAdjustmentBehavior="automatic"
+                    style={styles.scrollView}
+                >
+                    <View style={styles.sectionContainer}>
+                        <Tabs renderTabBar={() => <ScrollableTab />}>
+                            <Tab heading="Basic Info">
+                                <EditPersonalData />
+                            </Tab>
+                            <Tab heading="Contact">
+                                <EditPersonalContact />
+                            </Tab>
+                        </Tabs>
+                        <Grid style={{marginTop: 20}}>
+                            <Col>
+                                <Button block light>
+                                    <Text>Skip</Text>
+                                </Button>
+                            </Col>
+                            <Col>
+                                <Button full>
+                                    <Text>Save</Text>
+                                </Button>
+                            </Col>
+                        </Grid>
+                    </View>
+                </ScrollView>
             </Container>
         </>
     );

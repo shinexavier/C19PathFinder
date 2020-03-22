@@ -20,7 +20,7 @@ import {
     Input,
     Label,
     Picker,
-    Header,
+    Button,
     Content,
     DeckSwiper,
     Card,
@@ -45,12 +45,6 @@ const EditPersonalData: () => React$Node = () => {
 
 
     return (
-        <Container>
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                style={styles.scrollView}
-            >
-                <View style={styles.sectionContainer}>
                     <Form>
                         <Item stackedLabel>
                             <Label>Name</Label>
@@ -73,9 +67,8 @@ const EditPersonalData: () => React$Node = () => {
                             </Picker>
                         </Item>
                     </Form>
-                </View>
-            </ScrollView>
-        </Container>
+                    
+
     );
 };
 

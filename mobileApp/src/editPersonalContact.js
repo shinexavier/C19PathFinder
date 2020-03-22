@@ -19,6 +19,7 @@ import {
     Item,
     Input,
     Label,
+    Textarea,
     Header,
     Content,
     DeckSwiper,
@@ -36,46 +37,21 @@ import {
 
 const EditPersonalContact: () => React$Node = () => {
     return (
-        <Container>
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                style={styles.scrollView}
-            >
-                <View style={styles.sectionContainer}>
-                    <Grid>
-                        <Col>
-                            <Row>
-                                <Text style={styles.label}>Phone</Text>
-                            </Row>
-                            <Row>
-                                <Text style={styles.value}>
-                                    +91 90374 28984
-                                </Text>
-                            </Row>
+                    <Form>
+                        <Item stackedLabel>
+                            <Label>Phone</Label>
+                            <Input />
+                        </Item>
+                        <Item stackedLabel>
+                            <Label>Email</Label>
+                            <Input />
+                        </Item>
 
-                            <Row>
-                                <Text style={styles.label}>Email</Text>
-                            </Row>
-                            <Row>
-                                <Text style={styles.value}>
-                                    jacobnelson79@gmail.com
-                                </Text>
-                            </Row>
-
-                            <Row>
-                                <Text style={styles.label}>Address</Text>
-                            </Row>
-                            <Row>
-                                <Text style={styles.value}>
-                                    Hallelujah, 102 B, Oceanus Serenity,
-                                    Arasummoodu, Kulathoor P O, 695583
-                                </Text>
-                            </Row>
-                        </Col>
-                    </Grid>
-                </View>
-            </ScrollView>
-        </Container>
+                        <Item stackedLabel>
+                            <Label>Address</Label>
+                            <Textarea rowSpan={5} bordered style={{width: '100%'}} />
+                        </Item>
+                    </Form>
     );
 };
 
