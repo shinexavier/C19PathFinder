@@ -4,6 +4,9 @@
 
 
 var mongoose = require('mongoose');
+var LocationPointSchema = require('./locationPoint');
+var EpidemicContactSchema = require('./epidemicContact');
+
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -20,21 +23,12 @@ var UserSchema = new Schema({
     type: String,
     required: true
   },
-  phone: {
-    type: Number,
-    required: false
-  },
-  mail: {
-    type: String,
-    required: false
-  },
-  degreeOfContact: {
-    type: Number,
-    required: true
-  },
-  locationHistory: [{
-    type: Schema.Types.ObjectId,
-    ref: 'LocationPoint' }]
+  phone: Number,
+  mail: String,
+  epidemicContactStatus: EpidemicContactSchema,
+  locationHistory: [LocationPointSchema],
+  epidemicContactHistory: [EpidemicContactSchema],
+  isDeleted: Boolean
 });
 
 mongoose.model('User', UserSchema);

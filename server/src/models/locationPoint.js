@@ -35,14 +35,6 @@ var LocationPointSchema = new Schema({
   },
   endTimestampMs: {
     type: Number,
-    required: false
-  },
-  degreeOfContact: {
-    type: Number,
-    required: true
-  },
-  isPurged: {
-    type: Boolean,
     required: true
   },
   sourceType: {
@@ -50,12 +42,8 @@ var LocationPointSchema = new Schema({
     enum: ['app', 'takeout', 'routeMap', 'mixed'],
     required: true
   },
-  lastUpdatedOn: {
-    type: Number,
-    required: true
-  },
-  lastUpdatedBy: {
-    type: String,
+  isDeleted: {
+    type: Boolean,
     required: true
   }
 });
@@ -68,12 +56,4 @@ LocationPointSchema.pre('save', function(next) {
   next();
 });
 
-LocationPointSchema.post('save', function(locationPoint, next) {
-  if (!locationPoint.degreeOfContact) {
-    // Upsert locationPoint to VictimLocatinPoint
-  } else {
-    next();
-  }
-});
-
-mongoose.model('LocationPoint', LocationPointSchema);
+module.exports = LocationPointSchema;
