@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import { StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
     Container,
@@ -34,6 +35,16 @@ import EditPersonalData from './editPersonalData';
 import EditPersonalContact from './editPersonalContact';
 
 const UserProfile: () => React$Node = () => {
+
+    async function saveUserProfile() {
+        let gender = await AsyncStorage.getItem('gender');
+        const keys = await AsyncStorage.getAllKeys();
+        const result = await AsyncStorage.multiGet(keys);
+        //result.map(req => JSON.parse(req)).forEach(console.log);
+        console.log(result)
+        
+    }
+
     return (
         <>
             <StatusBar barStyle="dark-content" />
@@ -66,7 +77,7 @@ const UserProfile: () => React$Node = () => {
                                 </Button>
                             </Col>
                             <Col>
-                                <Button full onPress={() => console.log('Simple Button pressed')}>
+                                <Button full onPress={() => saveUserProfile()}>
                                     <Text>Save</Text>
                                 </Button>
                             </Col>

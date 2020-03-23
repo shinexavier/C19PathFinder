@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
-    AsyncStorage,
     ScrollView,
     View,
     StatusBar,
@@ -10,6 +9,7 @@ import {
 } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
     Container,
@@ -36,54 +36,68 @@ import {
     ListItem
 } from 'native-base';
 
-// function setGender(){
-//     console.log("setGender called")
-// }
-
-setName = (value) => {
-    console.log(value)
-    AsyncStorage.setItem('name', value);
-    //this.setState({ 'name': value });
- }
-
- setAge = (value) => {
-    console.log(value)
-    AsyncStorage.setItem('age', value);
-    //this.setState({ 'name': value });
- }
-
 const EditPersonalData: () => React$Node = () => {
+    const [name, setName] = useState();
+    const [age, setAge] = useState();
     const [gender, setGender] = useState();
 
+    function setUserName(value){
+        AsyncStorage.setItem('name', value);
+        setName(value)
+    }
 
+    function setUserAge(value){
+        AsyncStorage.setItem('age', value);
+        setAge(value)
+    }    
+
+    function setSelectedGender(value) {
+        console.log('setSelectedGender ', value);
+        AsyncStorage.setItem('gender', value);
+        setGender(value)
+    }
+
+    async function getUserData() {
+        let name = await AsyncStorage.getItem('name');
+        let age = await AsyncStorage.getItem('age');
+        let gender = await AsyncStorage.getItem('gender');
+        //userProfile();
+        console.log("phoneeee ", name)
+        setName(name)
+        setAge(age)
+        setGender(gender)
+        
+    }
+
+    useEffect(() => {
+        getUserData()
+      });
 
     return (
         <>
-                    <Form>
-                        <Item stackedLabel>
-                            <Label>Name</Label>
-                            <Input onChangeText = {setName} />
-                        </Item>
-                        <Item stackedLabel>
-                            <Label>Age</Label>
-                            <Input onChangeText = {setAge}  />
-                        </Item>
-                        <Item picker>
-                            <Picker
-                                mode="dropdown"
-                                iosHeader="Select your SIM"
-                                style={{ width: undefined }}
-                                selectedValue={gender}
-                                onValueChange={(val) => setGender(val)}
-                            >
-                                <Picker.Item label="Male" value="Male" />
-                                <Picker.Item label="Female" value="Female" />
-                            </Picker>
-                        </Item>
-                    </Form>
-                    </>
-                    
-
+            <Form>
+                <Item stackedLabel>
+                    <Label>Name</Label>
+                    <Input onChangeText={(val) => setUserName(val)} value={name} />
+                </Item>
+                <Item stackedLabel>
+                    <Label>Age</Label>
+                    <Input onChangeText={(val) => setUserAge(val)} value={age} keyboardType = 'number-pad' />
+                </Item>
+                <Item picker>
+                    <Picker
+                        mode="dropdown"
+                        iosHeader="Select your SIM"
+                        style={{ width: undefined }}
+                        selectedValue={gender}
+                        onValueChange={val => setSelectedGender(val)}
+                    >
+                        <Picker.Item label="Male" value="Male" />
+                        <Picker.Item label="Female" value="Female" />
+                    </Picker>
+                </Item>
+            </Form>
+        </>
     );
 };
 
