@@ -16,36 +16,36 @@ var LocationPointSchema = new Schema({
     required: true,
     validate: function(value) {
       return (value > -900000000 && value < 900000000);
-    }
+    },
   },
   longitudeE7: {
     type: Number,
     required: true,
     validate: function(value) {
       return (value > -1800000000 && value < 1800000000);
-    }
+    },
   },
   accuracy: {
     type: Number,
-    required: true
+    required: true,
   },
   startTimestampMs: {
     type: Number,
-    required: true
+    required: true,
   },
   endTimestampMs: {
     type: Number,
-    required: true
+    required: true,
   },
   sourceType: {
     type: String,
     enum: ['app', 'takeout', 'routeMap', 'mixed'],
-    required: true
+    required: true,
   },
   isDeleted: {
     type: Boolean,
-    required: true
-  }
+    required: true,
+  },
 });
 
 LocationPointSchema.pre('save', function(next) {
