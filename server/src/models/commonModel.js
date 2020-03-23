@@ -307,6 +307,6 @@ indianstatesstats_common.save(function(err, indiaStatesStats) {
 });
 
 module.exports = {
-  GStats_common: GStats_common,
-  IndianStatesStats_common: IndianStatesStats_common,
+  GStats: GStats_common,
+  IndianStatesStats: IndianStatesStats_common,
 };

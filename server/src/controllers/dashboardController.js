@@ -7,7 +7,7 @@ var express = require('express');
 var commonModel = require('./../models/commonModel');
 
 
-var GStats_common = commonModel.GStats_common;
+var GStats = commonModel.GStats;
 var IndianStatesStats = commonModel.IndianStatesStats;
 var router = express.Router();
 
@@ -18,7 +18,7 @@ module.exports = function(app) {
 
 
 router.get('/global', function(req, res, next) {
-  GStats_common
+  GStats
     .find()
     .sort({
       _id: -1,
