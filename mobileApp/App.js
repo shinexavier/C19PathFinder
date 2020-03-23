@@ -27,6 +27,7 @@ import Symptoms from './src/SymptomsScreen';
 import EmergencyWarningSigns from './src/EmergencyWarningSignsScreen';
 import AboutScreen from './src/AboutScreen';
 import UserProfile from './src/UserProfileScreen';
+import HeatMapScreen from './src/HeatMapScreen';
 
 const TabView = () => {
   const Tab = createBottomTabNavigator();
@@ -40,6 +41,8 @@ const TabView = () => {
           : 'bar-chart';
       } else if (route.name === 'My Risk') {
         iconName = focused ? 'exclamation-triangle' : 'exclamation-triangle';
+      } else if (route.name === 'HeatMap') {
+        iconName = focused ? 'map-o' : 'map-o';
       }
 
       // You can return any component that you like here!
@@ -51,6 +54,7 @@ const TabView = () => {
       inactiveTintColor: 'gray',
     }}>
     <Tab.Screen name="Dashboard" component={DashboardScreen} />
+    <Tab.Screen name="HeatMap" component={HeatMapScreen} />
     <Tab.Screen name="My Risk" component={MyRiskScreen} />
   </Tab.Navigator>);
 };

@@ -19,286 +19,165 @@ import 'react-native-gesture-handler';
 import Config from "react-native-config";
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { Container, Header, Content, Card, CardItem, Body, Text, Grid, Col, Row, H1 } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Body, Text, Grid, Col, Row, H1, H2, H3 } from 'native-base';
 
 import axios from "axios";
 
-// const DashboardScreen: () => React$Node = () => {
+const DashboardScreen: () => React$Node = () => {
 
-//   const [finalNumbers, setFinalNumbers] = useState();
+  const [finalNumbers, setFinalNumbers] = useState();
 
-//   useEffect(() => {
-//     console.log("use effect")
-//     axios
-//       .get(
-//         `${Config.API_URL}/finalnumbers`
-//       )
-//       .then(({ data }) => {
-//         console.log(data)
-//         setFinalNumbers(data);
-//         //setNextTodoId(data.length);
-//       })
-//       .catch(error => console.log(error));
-//   }, []);
+  useEffect(() => {
+    console.log("use effect")
+    axios
+      .get(
+        `${Config.API_URL}/finalnumbers`
+      )
+      .then(({ data }) => {
+        console.log(data)
+        setFinalNumbers(data);
+        //setNextTodoId(data.length);
+      })
+      .catch(error => console.log(error));
+  }, []);
 
-//   return (
-//     <>
-//       <StatusBar barStyle="dark-content" />
-//       <ScrollView
-//         contentInsetAdjustmentBehavior="automatic"
-//         style={styles.scrollView}>
-//         <View style={styles.sectionContainer}>
-//           {
-//             finalNumbers &&
-//             <>
-//               <Grid>
-//                 <Col>
-//                   <Row>
-//                     <Card style={{ width: '100%' }}>
-//                       <CardItem header>
-//                         <H1>Passengers Screened</H1>
-//                       </CardItem>
-//                       <CardItem>
-//                         <Body>
-//                           <Text style={styles.numbers}>{finalNumbers.passengersScreened.airport}</Text>
-//                         </Body>
-//                       </CardItem>
-//                     </Card>
-//                   </Row>
-//                   <Row>
-//                     <Card style={{ width: '100%' }}>
-//                       <CardItem header>
-//                         <H1>Currently Sick</H1>
-//                       </CardItem>
-//                       <CardItem>
-//                         <Body>
-//                           <Grid>
-//                             <Col>
-//                               <Row>
-//                                 <H1>Indians</H1>
-//                               </Row>
-//                               <Row>
-//                                 <Text style={styles.numbers}>{finalNumbers.confirmedCases.indian}</Text>
-//                               </Row>
-//                             </Col>
-//                             <Col>
-//                               <Row>
-//                                 <H1>Foreigners</H1>
-//                               </Row>
-//                               <Row>
-//                                 <Text style={styles.numbers}>{finalNumbers.confirmedCases.foreign}</Text>
-//                               </Row>
-//                             </Col>
-//                           </Grid>
-//                         </Body>
-//                       </CardItem>
-//                     </Card>
-//                   </Row>
-//                   <Row>
-
-//                     <Grid>
-//                       <Col>
-//                         <Card>
-//                           <CardItem header>
-//                             <H1>Recovered</H1>
-//                           </CardItem>
-//                           <CardItem>
-//                             <Body>
-//                               <Text style={styles.numbers}>{finalNumbers.dischargedCases}</Text>
-//                             </Body>
-//                           </CardItem>
-//                         </Card>
-//                       </Col>
-//                       <Col>
-//                         <Card>
-//                           <CardItem header>
-//                             <H1>Deceased</H1>
-//                           </CardItem>
-//                           <CardItem>
-//                             <Body>
-//                               <Text style={styles.numbers}>{finalNumbers.deathCases}</Text>
-//                             </Body>
-//                           </CardItem>
-//                         </Card>
-//                       </Col>
-//                     </Grid>
-//                   </Row>
-//                 </Col>
-//               </Grid>
-//             </>
-//           }
-//         </View>
-//       </ScrollView>
-//     </>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   scrollView: {
-//     backgroundColor: Colors.lighter,
-//   },
-//   engine: {
-//     position: 'absolute',
-//     right: 0,
-//   },
-//   body: {
-//     backgroundColor: Colors.white,
-//   },
-//   sectionContainer: {
-//     marginVertical: 32,
-//     paddingHorizontal: 24,
-//   },
-//   sectionTitle: {
-//     fontSize: 24,
-//     fontWeight: '600',
-//     color: Colors.black,
-//     textAlign: 'center',
-//     paddingTop: 10,
-//   },
-//   sectionDescription: {
-//     marginVertical: 20,
-//     fontSize: 18,
-//     fontWeight: '400',
-//     color: Colors.dark,
-//   },
-//   highlight: {
-//     fontWeight: '700',
-//   },
-//   footer: {
-//     color: Colors.dark,
-//     fontSize: 12,
-//     fontWeight: '600',
-//     padding: 4,
-//     paddingRight: 12,
-//     textAlign: 'right',
-//   },
-//   numbers: {
-//     fontSize: 50,
-//   },
-//   danger: {
-//     backgroundColor: 'red',
-//     color: '#fff',
-//   }
-// });
-
-import MapView, { Heatmap, PROVIDER_GOOGLE } from 'react-native-maps';
-
+  return (
+    <>
+      <StatusBar barStyle="dark-content" />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.scrollView}>
+        <View style={styles.sectionContainer}>
+          {
+            finalNumbers &&
+            <>
+              <Grid>
+                <Col>
+                  <Row>
+                    <Card style={{ width: '100%' }}>
+                      <CardItem>
+                        <Body>
+                          <Text style={[styles.numbers, {color:'#1976d2'}]}>{finalNumbers.passengersScreened.airport}</Text>
+                        </Body>
+                      </CardItem>
+                      <CardItem header>
+                        <H3>PASSENGERS SCREENED</H3>
+                      </CardItem>
+                    </Card>
+                  </Row>
+                  <Row>
+                    <Card style={{ width: '100%' }}>
+                      <CardItem>
+                        <Body>
+                          <Grid>
+                            <Col>
+                              <Row>
+                                <Text style={[styles.numbers, {color:'#d32f2f'}]}>{finalNumbers.confirmedCases.indian}</Text>
+                              </Row>
+                              <Row>
+                                <Text>INDIANS</Text>
+                              </Row>
+                            </Col>
+                            <Col>
+                              <Row>
+                                <Text style={[styles.numbers, {color:'#d32f2f'}]}>{finalNumbers.confirmedCases.foreign}</Text>
+                              </Row>
+                              <Row>
+                                <Text>FOREIGNERS</Text>
+                              </Row>
+                            </Col>
+                          </Grid>
+                        </Body>
+                      </CardItem>
+                      <CardItem header>
+                        <H3>CURRENTLY SICK</H3>
+                      </CardItem>
+                    </Card>
+                  </Row>
+                  <Row>
+                    <Grid>
+                      <Col>
+                        <Card>
+                          <CardItem>
+                            <Body>
+                              <Text style={[styles.numbers, {color:'#00796b'}]}>{finalNumbers.dischargedCases}</Text>
+                            </Body>
+                          </CardItem>
+                          <CardItem header>
+                            <H3>RECOVERED</H3>
+                          </CardItem>
+                        </Card>
+                      </Col>
+                      <Col>
+                        <Card>
+                          <CardItem>
+                            <Body>
+                              <Text style={[styles.numbers, {color:'#616161'}]}>{finalNumbers.deathCases}</Text>
+                            </Body>
+                          </CardItem>
+                          <CardItem header>
+                            <H3>DECEASED</H3>
+                          </CardItem>
+                        </Card>
+                      </Col>
+                    </Grid>
+                  </Row>
+                </Col>
+              </Grid>
+            </>
+          }
+        </View>
+      </ScrollView>
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    height: 400,
-    width: 400,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+  scrollView: {
+    backgroundColor: Colors.lighter,
   },
-  map: {
-    ...StyleSheet.absoluteFillObject,
+  engine: {
+    position: 'absolute',
+    right: 0,
   },
+  body: {
+    backgroundColor: Colors.white,
+  },
+  sectionContainer: {
+    marginVertical: 32,
+    paddingHorizontal: 24,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: Colors.black,
+    textAlign: 'center',
+    paddingTop: 10,
+  },
+  sectionDescription: {
+    marginVertical: 20,
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.dark,
+  },
+  highlight: {
+    fontWeight: '700',
+  },
+  footer: {
+    color: Colors.dark,
+    fontSize: 12,
+    fontWeight: '600',
+    padding: 4,
+    paddingRight: 12,
+    textAlign: 'right',
+  },
+  numbers: {
+    fontSize: 50,
+  },
+  danger: {
+    backgroundColor: 'red',
+    color: '#fff',
+  }
 });
 
-let points = [{ latitude: 6.83646681, longitude: 79.77121907, weight: 1 },
-{ latitude: 6.82776681, longitude: 79.871319, weight: 5 },
-{ latitude: 6.82176681, longitude: 79.871319, weight: 5 },
-{ latitude: 6.83776681, longitude: 79.871319, weight: 5 },
-{ latitude: 6.83176681, longitude: 79.871319, weight: 5 },
-{ latitude: 6.83976681, longitude: 79.861319, weight: 5 },
-{ latitude: 6.83076681, longitude: 79.861319, weight: 4 },
-{ latitude: 6.82776681, longitude: 79.861319, weight: 4 },
-{ latitude: 6.82076681, longitude: 79.871319, weight: 4 },
-{ latitude: 6.82076681, longitude: 79.861319, weight: 4 },
-{ latitude: 6.81076681, longitude: 79.861319, weight: 4 },
-{ latitude: 6.83776681, longitude: 79.869319, weight: 3 },
-{ latitude: 6.83276681, longitude: 79.869319, weight: 3 },
-{ latitude: 6.81976681, longitude: 79.869319, weight: 3 },
-{ latitude: 6.83776681, longitude: 79.867319, weight: 3 },
-{ latitude: 6.83776681, longitude: 79.865319, weight: 3 },
-{ latitude: 6.83646681, longitude: 79.77121907, weight: 2 },
-{ latitude: 6.82776681, longitude: 79.871319, weight: 2 },
-{ latitude: 6.82176681, longitude: 79.871319, weight: 2 },
-{ latitude: 6.83776681, longitude: 79.871319, weight: 2 },
-{ latitude: 6.83176681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.83976681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.83076681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.82776681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.82076681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.82076681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.81076681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.83276681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.81976681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.867319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.865319, weight: 1 },
-{ latitude: 6.84076681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.83646681, longitude: 79.77121907, weight: 1 },
-{ latitude: 6.82776681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.82176681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.83176681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.83976681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.83076681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.82776681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.82076681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.82076681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.81076681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.83276681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.81976681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.867319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.865319, weight: 1 },
-{ latitude: 6.84076681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.841776681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.83646681, longitude: 79.77121907, weight: 1 },
-{ latitude: 6.82776681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.82176681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.83176681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.83976681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.83076681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.82776681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.82076681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.82076681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.81076681, longitude: 79.861319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.83276681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.81976681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.867319, weight: 1 },
-{ latitude: 6.83776681, longitude: 79.865319, weight: 1 },
-{ latitude: 6.84076681, longitude: 79.871319, weight: 1 },
-{ latitude: 6.841776681, longitude: 79.869319, weight: 1 },
-{ latitude: 6.84076681, longitude: 79.871319, weight: 1 },
-
-];
-
-export default () => (
-  <View style={styles.container}>
-    <MapView
-      provider={PROVIDER_GOOGLE}
-      style={styles.map}
-      region={{
-        latitude: 6.82776681, 
-        longitude: 79.871319,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121,
-      }}
-    >
-    <Heatmap
-      provider={PROVIDER_GOOGLE}
-      style={styles.map}
-      points={points}
-      region={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121,
-      }}
-      gradient={{
-        colors: ["#79BC6A", "#BBCF4C", "#EEC20B", "#F29305", "#E50000"],
-        startPoints: [0.01, 0.25, 0.50, 0.75, 1],
-      }} 
-    ></Heatmap>
-    </MapView>
-  </View>
-);
-
-// export default DashboardScreen;
+export default DashboardScreen;
