@@ -61,8 +61,7 @@ const EditPersonalData: () => React$Node = () => {
         let name = await AsyncStorage.getItem('name');
         let age = await AsyncStorage.getItem('age');
         let gender = await AsyncStorage.getItem('gender');
-        //userProfile();
-        console.log("phoneeee ", name)
+
         setName(name)
         setAge(age)
         setGender(gender)

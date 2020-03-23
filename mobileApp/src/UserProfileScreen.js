@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -35,15 +35,34 @@ import EditPersonalData from './editPersonalData';
 import EditPersonalContact from './editPersonalContact';
 
 const UserProfile: () => React$Node = () => {
+    const [isProfileCompleted, profileStatus] = useState(false);
 
-    async function saveUserProfile() {
-        let gender = await AsyncStorage.getItem('gender');
-        const keys = await AsyncStorage.getAllKeys();
-        const result = await AsyncStorage.multiGet(keys);
-        //result.map(req => JSON.parse(req)).forEach(console.log);
-        console.log(result)
-        
+    let profileKeys = ['address', 'age', 'gender', 'phone', 'address', 'email'];
+    async function getProfileStatus() {
+        var notNull = true;
+        for (let i = 0; i < profileKeys.length; i++) {
+            let key = profileKeys[i];
+            let value = await AsyncStorage.getItem(key);
+            console.log(key, ' ', value);
+            if (value === null) {
+                notNull = false;
+                profileStatus(false);
+            }
+        }
+        console.log(notNull);
+        if (notNull) {
+            profileStatus(true);
+            AsyncStorage.setItem('profileCompleted', 'true');
+        }
     }
+
+    function saveUserProfile() {
+        getProfileStatus();
+    }
+
+    useEffect(() => {
+        getProfileStatus();
+    });
 
     return (
         <>
@@ -64,24 +83,53 @@ const UserProfile: () => React$Node = () => {
                     <View style={styles.sectionContainer}>
                         <Tabs renderTabBar={() => <ScrollableTab />}>
                             <Tab heading="Basic Info">
-                                <EditPersonalData />
+                                {isProfileCompleted ? (
+                                    <PersonalData />
+                                ) : (
+                                    <EditPersonalData />
+                                )}
                             </Tab>
                             <Tab heading="Contact">
-                                <EditPersonalContact />
+                                {isProfileCompleted ? (
+                                    <PersonalContact />
+                                ) : (
+                                    <EditPersonalContact />
+                                )}
                             </Tab>
                         </Tabs>
-                        <Grid style={{marginTop: 20}}>
-                            <Col>
-                                <Button block light>
-                                    <Text>Skip</Text>
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button full onPress={() => saveUserProfile()}>
-                                    <Text>Save</Text>
-                                </Button>
-                            </Col>
-                        </Grid>
+                        {isProfileCompleted && (
+                            <Grid style={{ marginTop: 20 }}>
+                                <Col>
+                                    <Button block light>
+                                        <Text>Close</Text>
+                                    </Button>
+                                </Col>
+                                <Col>
+                                    <Button
+                                        full
+                                    >
+                                        <Text>Edit</Text>
+                                    </Button>
+                                </Col>
+                            </Grid>
+                        )}
+                        {!isProfileCompleted && (
+                            <Grid style={{ marginTop: 20 }}>
+                                <Col>
+                                    <Button block light>
+                                        <Text>Skip</Text>
+                                    </Button>
+                                </Col>
+                                <Col>
+                                    <Button
+                                        full
+                                        onPress={() => saveUserProfile()}
+                                    >
+                                        <Text>Save</Text>
+                                    </Button>
+                                </Col>
+                            </Grid>
+                        )}
                     </View>
                 </ScrollView>
             </Container>
