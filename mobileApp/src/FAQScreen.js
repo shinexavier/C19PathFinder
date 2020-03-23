@@ -17,7 +17,7 @@ import {
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import { Container, Header, Content, Card, CardItem, Body, Text, Grid, Col, Row, H1 } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Body, Text, Grid, Col, Row, H1, Left, Right, Title } from 'native-base';
 
 const FAQ: () => React$Node = () => {
 
@@ -25,6 +25,14 @@ const FAQ: () => React$Node = () => {
     <>
       <StatusBar barStyle="dark-content" />
       {/* <SafeAreaView> */}
+      <Container>
+      <Header>
+          <Left/>
+          <Body>
+            <Title>FAQs</Title>
+          </Body>
+          <Right/>
+        </Header>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
@@ -194,6 +202,7 @@ const FAQ: () => React$Node = () => {
           </Grid>
         </View>
       </ScrollView>
+      </Container>
     </>
   );
 };

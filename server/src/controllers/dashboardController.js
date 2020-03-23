@@ -1,6 +1,6 @@
-const express = require('express');
+/*eslint strict: ["error", "global"]*/
 
-const router = express.Router();
+"use strict";
 
 const models = require('../models/');
 

@@ -1,38 +1,47 @@
-/**
- * Module dependencies.
- */
+/*eslint strict: ["error", "global"]*/
 
-const app = require('./app');
-const debug = require('debug')('C19:server');
-const http = require('http');
+'use strict';
 
-/**
- * Get port from environment and store in Express.
- */
+var mongoose = require('mongoose');
+var debug = require('debug')('C19:server');
+var http = require('http');
+var app = require('./app');
+var config = require('./../resources/config');
 
-const port = normalizePort(process.env.PORT || '3000');
+
+// Get port from environment and store in Express
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
+// Create HTTP server.
+var server = http.createServer(app);
 
-const server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
+// Listen on provided port, on all network interfaces.
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-/**
- * Normalize a port into a number, string, or false.
- */
 
+// Connect to db
+mongoose.connect(
+  config.db,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    autoIndex: false,
+  }
+);
+var db = mongoose.connection;
+
+// Throw error on db connection error
+db.on('error', function() {
+  throw new Error('unable to connect to database at ' + config.db);
+});
+
+
+// Normalize a port into a number, string, or false.
 function normalizePort(val) {
-  const port = parseInt(val, 10);
+  var port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -47,16 +56,13 @@ function normalizePort(val) {
   return false;
 }
 
-/**
- * Event listener for HTTP server "error" event.
- */
-
+// Event listener for HTTP server "error" event.
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
-  const bind = typeof port === 'string'
+  var bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
 
@@ -75,13 +81,10 @@ function onError(error) {
   }
 }
 
-/**
- * Event listener for HTTP server "listening" event.
- */
-
+// Event listener for HTTP server "listening" event.
 function onListening() {
-  const addr = server.address();
-  const bind = typeof addr === 'string'
+  var addr = server.address();
+  var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);

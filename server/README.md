@@ -9,7 +9,8 @@ This repository contains the code for the server application. It is built on Nod
 - run the command `npm install`
 
 ### Running API Server
-run the command `npm start`
+- run the linting `npm run pretest`
+- run the command `npm start`
 
 ### Available APIs
 [Postman Collection](https://www.getpostman.com/collections/408465756d4682e64e12)
@@ -17,123 +18,30 @@ run the command `npm start`
 ### Data Model
 
 #### LocationPoint
-```json
-{
-  "locationPoint": {
-    "userId": {
-      "type": "string",
-      "require": "true",
-      "description": "Database id to the user table"
-    },
-    "latitude": {
-      "type": "number",
-      "require": "true",
-      "description": "Latitude of the location in degree"
-    },
-    "longitude": {
-      "type": "number",
-      "require": "true",
-      "description": "Longitude of the location in degree"
-    },
-    "accuracy": {
-      "type": "number",
-      "require": "true",
-      "description": "Confidence of Google's coordinate value in  metres / Radius of the location under consideration in metres"
-    },
-    "altitude": {
-      "type": "number",
-      "require": "false",
-      "description": "Altitude of the location"
-    },
-    "verticalAccuracy": {
-      "type": "number",
-      "require": "false",
-      "description": "Confidence of altitude. (Unit yet to find out)"
-    },
-    "timestampMs": {
-      "type": "number",
-      "require": "true",
-      "description": "Unix timestamp in milliseconds"
-    },
-    "elapsedTimeMs": {
-      "type": "number",
-      "require": "false",
-      "description": "Elapsed time in milli seconds"
-    },
-    "activity": {
-      "type": "string",
-      "require": "false",
-      "description": "Google's Activity of prediction with highest confidence.",
-      "values": [        
-        "MOTORCYCLING",
-        "IN_PASSENGER_VEHICLE",
-        "IN_FERRY",
-        "SAILING",
-        "IN_VEHICLE",
-        "SKIING",
-        "IN_TRAM",
-        "STILL",
-        "IN_BUS",
-        "WALKING",
-        "IN_TRAIN",
-        "CYCLING",
-        "FLYING",
-        "RUNNING",
-        "IN_SUBWAY"
-      ]
-    },
-    "activityConfidence": {
-      "type": "number",
-      "require": "false",
-      "description": "Confidence score for the activity recorded"
-    },
-    "degreeOfContact": {
-      "type": "number",
-      "require": "true",
-      "description": "0 for affected, 1 to 3 are other possible values. Duplicated value from User document"
-    }
-  }
-}
-```
-
-#### User
-```json
-{
-  "user": {
-    "id": {
-        "type": "string",
-        "require": "true",
-        "description": "Unique identifier for the user"
-    },
-    "sourceType": {
-        "type": "string",
-        "require": "true",
-        "description": "Values can be 'app|server'"
-    },
-    "sourceId": {
-        "type": "string",
-        "require": "true",
-        "description": "For sourceType app -> deviceId, for sourceType server -> routeMapId"
-    },
-    "phone": {
-        "type": "string",
-        "description": "10 digit mobile number, verified if possible"
-    },
-    "mail": {
-        "type": "string",
-        "decription": "Mail id of the user, verified if possible"
-    }
-  }
-}
-```
+[Mongoose Schema Definition](https://github.com/shinexavier/C19PathFinder/tree/master/server/src/models)
 
 ### Tasks
 #### Functional 
-[ ] Victim's Location History API [POST]
-[ ] Victim's Location History API - FILE UPLOAD [POST]
-[ ] Victim's Location History API [GET]
-[ ] Refactoring finalNumbers and testingSites APIs
+- [ ] Victim's Location History API [POST]
+- [ ] Victim's Location History API - FILE UPLOAD [POST]
+- [ ] Victim's Location History API [GET]
+    - Parameters
+      - timestamp
+      - geoCenter
+- [ ] Refactoring finalNumbers and testingSites APIs
+- [ ] Config API [GET]
+- [ ] Auth API for mobile app
 
 #### Technical
-[x] Datamodel definition
-[ ] Connecting to Azure Cosmos DB
+- [x] Datamodel definition
+- [x] Connecting to Azure Cosmos DB
+- [ ] DB Indexing
+  - Indexing is done as part of mongoose
+  - In Cosmos DB, indexing should be done prior to data insertion
+  - Indexing should be provided for attributes involving in search and sorting
+  - For migration, index should be handled seperately, ref: https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-indexing#migrating-collections-with-indexes
+- [ ] Azure Redis Cache
+
+### Open Points
+- [ ] API Spec for Victim's Location History API [GET]
+- [ ] API Spec for Mobile App Auth API and workflow
