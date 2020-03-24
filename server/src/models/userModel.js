@@ -17,18 +17,18 @@ var UserSchema = new Schema({
   sourceType: {
     type: String,
     enum: ['app', 'takeout', 'routeMap', 'mixed'],
-    required: true
+    required: true,
   },
   sourceId: {
     type: String,
-    required: true
+    required: true,
   },
   phone: Number,
   mail: String,
   epidemicContactStatus: EpidemicContactSchema,
   locationHistory: [LocationPointSchema],
   epidemicContactHistory: [EpidemicContactSchema],
-  isDeleted: Boolean
+  isDeleted: Boolean,
 });
 
 mongoose.model('User', UserSchema);

@@ -22,10 +22,20 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 
+var connectionString =
+  'mongodb://' +
+  config.COSMOSDB_HOST + ':' +
+  config.COSMOSDB_PORT + '/' +
+  config.COSMOSDB_DBNAME + '?ssl=true&replicaSet=globaldb&retrywrites=false';
+
 // Connect to db
 mongoose.connect(
-  config.db,
+  connectionString,
   {
+    auth: {
+      user: config.COSMODDB_USER,
+      password: config.COSMOSDB_PASSWORD,
+    },
     useNewUrlParser: true,
     useUnifiedTopology: true,
     autoIndex: false,
