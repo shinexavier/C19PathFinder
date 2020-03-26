@@ -14,41 +14,41 @@ var FlaggedLocationPointSchema = new Schema({
   latitudeE7: {
     type: Number,
     required: true,
-    validate: function (value) {
+    validate: function(value) {
       return (value > -900000000 && value < 900000000);
-    }
+    },
   },
   longitudeE7: {
     type: Number,
     required: true,
-    validate: function (value) {
+    validate: function(value) {
       return (value > -1800000000 && value < 1800000000);
-    }
+    },
   },
   accuracy: {
     type: Number,
-    required: true
+    required: true,
   },
   startTimestampMs: {
     type: Number,
-    required: true
+    required: true,
   },
   endTimestampMs: {
     type: Number,
-    required: false
+    required: false,
   },
   epidemicContactDegree: {
     type: Number,
-    required: true
+    required: true,
   },
   epidemicContactTimestampMs: {
     type: Number,
-    required: true
+    required: true,
   },
   isPurged: {
     type: Boolean,
-    required: true
-  }
+    required: true,
+  },
 });
 
 

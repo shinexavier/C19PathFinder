@@ -13,8 +13,8 @@ var EpidemicContactSchema = new Schema({
   },
   timestampMs: {
     type: Number,
-    required: true
-  }
+    required: true,
+  },
 });
 
 
