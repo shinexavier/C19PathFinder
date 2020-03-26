@@ -12,6 +12,7 @@ import { StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import AsyncStorage from '@react-native-community/async-storage';
 import { openDatabase } from 'react-native-sqlite-storage';
+var db = openDatabase({ name: 'C19PathFinder.db' });
 
 import {
     Container,
@@ -60,6 +61,24 @@ const UserProfile: () => React$Node = () => {
     }
 
     function saveUserProfile() {
+
+        db.transaction(function(txn) {
+            console.log("inside transaction user profile screen ***")
+  
+              txn.executeSql(
+                'SELECT * FROM locationPoint', [], 
+                function(tx, result) {
+                    console.log('SELECT result ', result.rows.item(0).latitudeE7, result.rows.length);
+                }
+                , 
+                function(error) {
+                    console.log('error ', error);
+                    //console.log("tx ", tx)
+                }
+            );
+  
+          });
+
         getProfileStatus(true);
         setEditMode(false)
     }
