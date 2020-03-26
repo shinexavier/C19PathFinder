@@ -16,34 +16,25 @@ import {
     Grid,
     Col,
     Row,
-    Header,
-    Content,
-    DeckSwiper,
-    Card,
-    CardItem,
-    Body,
-    Text,
-    H1,
-    Left,
-    Right,
-    Title,
-    List,
-    ListItem
+    Text
 } from 'native-base';
 
 const PersonalData: () => React$Node = () => {
     const [name, setName] = useState();
-    const [age, setAge] = useState();
-    const [gender, setGender] = useState();
+    const [phone, setPhone] = useState();
+    //const [age, setAge] = useState();
+    //const [gender, setGender] = useState();
 
     async function getUserData() {
         let name = await AsyncStorage.getItem('name');
-        let age = await AsyncStorage.getItem('age');
-        let gender = await AsyncStorage.getItem('gender');
+        let phone = await AsyncStorage.getItem('phone');
+        //let age = await AsyncStorage.getItem('age');
+        //let gender = await AsyncStorage.getItem('gender');
         
         setName(name)
-        setAge(age)
-        setGender(gender)
+        setPhone(phone);
+        //setAge(age)
+        //setGender(gender)
         
     }
 
@@ -63,6 +54,13 @@ const PersonalData: () => React$Node = () => {
                     </Row>
 
                     <Row>
+                        <Text style={styles.label}>Phone</Text>
+                    </Row>
+                    <Row>
+                        <Text style={styles.value}>{phone}</Text>
+                    </Row>
+{/*
+                    <Row>
                         <Text style={styles.label}>Age</Text>
                     </Row>
                     <Row>
@@ -75,6 +73,7 @@ const PersonalData: () => React$Node = () => {
                     <Row>
                         <Text style={styles.value}>{gender}</Text>
                     </Row>
+*/}
                 </Col>
             </Grid>
         </View>
