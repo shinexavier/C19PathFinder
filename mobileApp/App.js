@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect, Component } from 'react';
 
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View, Button } from 'react-native';
 
 import 'react-native-gesture-handler';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
@@ -29,12 +29,19 @@ import AboutScreen from './src/AboutScreen';
 import UserProfile from './src/UserProfileScreen';
 import HeatMapScreen from './src/HeatMapScreen';
 
+import { WebView } from 'react-native-webview';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import { openDatabase } from 'react-native-sqlite-storage';
 var db = openDatabase({ name: 'C19PathFinder.db', location: 'default' });
 // import { Drawer } from 'native-base';
 // import SideBar from "./SideBar.js";
+
+const AuthContext = React.createContext();
+
+const SplashScreen = () => {
+    return (<View><Text>Beyond Thoughts</Text></View>);
+}
 
 const TabView = () => {
     const Tab = createBottomTabNavigator();
@@ -231,9 +238,56 @@ const preloadTestingCentres = async () => {
         }
     });
 };
+const terms = require('./src/terms.html')
+
+const TermsAndConditionsScreen = ({ navigation }) => {
+    const { setTOCStatus } = React.useContext(AuthContext);
+    return (<>
+        <WebView
+            originWhitelist={['*']}
+            source={terms} />
+        <Button
+            title='Accept'
+            onPress={async () => {
+                console.log("Accepted");
+                setTOCStatus(true)
+            }} />
+    </>);
+}
+
+/*
+CREATE TABLE IF NOT EXISTS "locationPoint" (
+	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"locationPointId"	TEXT,
+	"latitudeE7"	INTEGER,
+	"longitudeE7"	INTEGER,
+	"accuracy"	INTEGER,
+	"startTimestampMs"	INTEGER,
+	"endTimestampMs"	INTEGER,
+	"sourceType"	TEXT,
+	"isDeleted"	INTEGER
+);
+*/
 
 const App: () => React$Node = () => {
     const [isProfileCompleted, profileStatus] = useState();
+
+    const [state, dispatch] = React.useReducer(
+        (prevState, action) => {
+            switch (action.type) {
+                case 'TOC_ACCEPTED':
+                    return {
+                        ...prevState,
+                        tocStatus: action.tocStatus,
+                        isLoading: false,
+                    };
+            }
+        },
+        {
+            isLoading: true,
+            tocStatus: null,
+        }
+    );
 
     function initiateDB() {
         db.transaction(function(txn) {
@@ -272,6 +326,7 @@ const App: () => React$Node = () => {
     }
 
     useEffect(() => {
+        bootstrapAsync();
         //userProfile();
         initiateDB();
     }, []);
@@ -282,34 +337,66 @@ const App: () => React$Node = () => {
         const result = await AsyncStorage.multiGet(keys);
     }
 
+    /* Check if First time user for displaying TOC */
+    const bootstrapAsync = async () => {
+        let termsAccepted;
+        try {
+            termsAccepted = Boolean(await AsyncStorage.getItem('TermsAccepted'));
+        } catch (e) {
+            termsAccepted = false;
+        }
+        dispatch({ type: 'TOC_ACCEPTED', tocStatus: termsAccepted });
+    };
+
+    /* Reducer for Auth Context */
+    const authContext = React.useMemo(
+        () => ({
+            setTOCStatus: async tocStatus => {
+                await AsyncStorage.setItem('TermsAccepted', 'true');
+                dispatch({ type: 'TOC_ACCEPTED', tocStatus });
+            },
+        }),
+        []
+    );
+
     const Stack = createStackNavigator();
+    if (state.isLoading) {
+        return <SplashScreen />;
+    }
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="C19 Path Finder"
-                    component={DrawerView}
-                    options={({ navigation, route }) => ({
-                        headerLeft: props => (
-                            <TouchableOpacity
-                                onPress={() =>
-                                    navigation.dispatch(
-                                        DrawerActions.toggleDrawer()
-                                    )
-                                }
-                            >
-                                <Icon
-                                    style={{ paddingLeft: 20 }}
-                                    name="bars"
-                                    size={30}
-                                    color="black"
-                                />
-                            </TouchableOpacity>
-                        )
-                    })}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <AuthContext.Provider value={authContext}>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    {state.tocStatus ?
+                        <Stack.Screen
+                            name="C19 Path Finder"
+                            component={DrawerView}
+                            options={({ navigation, route }) => ({
+                                headerLeft: props => (
+                                    <TouchableOpacity
+                                        onPress={() =>
+                                            navigation.dispatch(
+                                                DrawerActions.toggleDrawer()
+                                            )
+                                        }
+                                    >
+                                        <Icon
+                                            style={{ paddingLeft: 20 }}
+                                            name="bars"
+                                            size={30}
+                                            color="black"
+                                        />
+                                    </TouchableOpacity>
+                                )
+                            })}
+                        /> :
+                        <Stack.Screen
+                            name="Terms and Conditions"
+                            component={TermsAndConditionsScreen}
+                        />}
+                </Stack.Navigator>
+            </NavigationContainer>
+        </AuthContext.Provider>
     );
 };
 export default App;
