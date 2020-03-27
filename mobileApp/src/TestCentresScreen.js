@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import {
     StatusBar,
     StyleSheet,
+    ScrollView,
     SectionList,
     FlatList,
     View
 } from 'react-native';
+
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import {
     Container,
@@ -14,8 +17,12 @@ import {
     Card,
     CardItem,
     Text,
+    Left,
+    Title,
+    Body,
     Icon,
-    Right
+    Right,
+    H1
 } from 'native-base';
 
 import axios from 'axios';
@@ -24,8 +31,11 @@ import Config from 'react-native-config';
 function Item({ title, data }) {
     return (
         <Card key={title}>
-            <CardItem>
-                <Text style={styles.header}>{title}</Text>
+            <CardItem header style={styles.cardTitle}>
+            <H1 style={styles.cardTitleText}>
+            {title}
+                                </H1>
+                
             </CardItem>
             {data.map(item => (
                 <CardItem key={item}>
@@ -51,28 +61,29 @@ const TestCentresScreen: () => React$Node = () => {
     }, []);
 
     return (
-        <Container>
+        <>
             <StatusBar barStyle="dark-content" />
-            {/* {testingSites && <SectionList
-        sections={testingSites}
-        keyExtractor={(item, index) => item + index}
-        renderItem={({ item }) => <Item title={item} />}
-        renderSectionHeader={({ section: { state } }) => (
-          <Text style={styles.header}>{state}</Text>
-        )}
-      />} */}
-            {testingSites && (
-                <Content>
-                    {testingSites.map(item => (
-                        <Item title={item.state} data={item.data} />
-                    ))}
-                    {/* <FlatList
-            data={testingSites}
-            renderItem={({ item }) => <Item title={item.state} />}
-            keyExtractor={item => item.state} /> */}
-                </Content>
-            )}
-        </Container>
+            <Container>
+                <Header>
+                    <Left />
+                    <Body>
+                        <Title>Testing Centres</Title>
+                    </Body>
+                </Header>
+                {testingSites && (
+                    <ScrollView
+                        contentInsetAdjustmentBehavior="automatic"
+                        style={styles.scrollView}
+                    >
+                        <View style={styles.sectionContainer}>
+                            {testingSites.map(item => (
+                                <Item title={item.state} data={item.data} />
+                            ))}
+                        </View>
+                    </ScrollView>
+                )}
+            </Container>
+        </>
     );
 };
 
@@ -85,9 +96,22 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold'
     },
-    title: {
-        fontSize: 20
-    }
+    scrollView: {
+        backgroundColor: Colors.lighter
+    },
+    sectionContainer: {
+        marginVertical: 32,
+        paddingHorizontal: 24
+    },
+
+    cardTitle: {
+        borderBottomWidth: 1,
+        borderColor: '#a50a18'
+    },
+    cardTitleText: {
+        color: '#a50a18',
+        fontSize: 22
+    },
 });
 
 export default TestCentresScreen;
