@@ -219,9 +219,7 @@ router.get('/', function(req, res, next) {
         state: 'West Bengal',
         data: [
           'National Institute of Cholera and Enteric Diseases, Kolkata',
-          'IPGMER, Kolkata',
-          '',
-          '',
+          'IPGMER, Kolkata'
         ],
       },
     ],
