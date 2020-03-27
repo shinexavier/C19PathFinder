@@ -21,7 +21,6 @@ import {
 
 import { WebView } from 'react-native-webview';
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
 import DocumentPicker from 'react-native-document-picker';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
