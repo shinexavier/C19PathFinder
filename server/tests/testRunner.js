@@ -4,7 +4,7 @@
 
 
 var glob = require('glob');
-var config = require('./../resources/config');
+var config = require('./../src/utils/config');
 
 var testObjectCollection = [];
 var testObjects =

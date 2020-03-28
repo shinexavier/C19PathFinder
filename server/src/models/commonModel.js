@@ -8,8 +8,8 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var config = require('./../../resources/config');
-var cache = require('../../resources/cache');
+var config = require('../utils/config');
+var cache = require('../utils/cache');
 
 var baseConfig = {
   // Need to consider setting up a secondary index here.

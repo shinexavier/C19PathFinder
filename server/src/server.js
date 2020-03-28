@@ -4,7 +4,6 @@
 
 var http = require('http');
 var app = require('./app');
-var config = require('./../resources/config');
 var db = require('./db');
 
 

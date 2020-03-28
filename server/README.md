@@ -9,7 +9,7 @@ This repository contains the code for the server application. It is built on Nod
 - run the command `npm install`
 
 ### Running API Server
-- run the linting `npm run lint`
+- run the linting `eslint --ignore-path .gitignore <file-name> --fix`
 - run the command `npm start`
 
 ### Setting up Mongo Client
@@ -17,6 +17,9 @@ This repository contains the code for the server application. It is built on Nod
 - Open Connection Manager -> New Connection -> From URI option
 - Give below URI
   - mongodb://cosmos-c19pathfinder-dev:vY6VqOyTpnMtF9AC4B9DZsDf6tq8vB3BNlxq9UqwmUSj6uM2k276uekZ7TJq04BdQRA3zt32PSk3NWwHeurKtg==@cosmos-c19pathfinder-dev.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@cosmos-c19pathfinder-dev@
+
+### For loading the seed data
+- run the command `npm run load-seed-data`
 
 ### Available APIs
 [Postman Collection](https://www.getpostman.com/collections/408465756d4682e64e12)

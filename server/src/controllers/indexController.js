@@ -16,6 +16,4 @@ var heartBeatHandler = function(req, res, next) {
 router.get('/', heartBeatHandler);
 
 
-module.exports = function(app) {
-  app.use('/', router);
-};
+module.exports = router;

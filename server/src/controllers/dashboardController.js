@@ -3,8 +3,8 @@
 
 var express = require('express');
 var commonModel = require('./../models/commonModel');
-var cache = require('../../resources/cache');
-var config = require('./../../resources/config')
+var cache = require('../utils/cache');
+var config = require('../utils/config')
 
 var GStats = commonModel.GStats;
 var IndianStatesStats = commonModel.IndianStatesStats;
@@ -33,9 +33,6 @@ var responseDispatcher = function (req, res, next) {
 
 var router = express.Router();
 
-module.exports = function (app) {
-  app.use('/', router);
-};
 
 router.get('/dashboard/global',
   cache.get,
@@ -117,3 +114,5 @@ function show(list) {
     console.log('Retrieved Document from DB: {0}', JSON.stringify(item));
   });
 }
+
+module.exports = router;

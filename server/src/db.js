@@ -4,7 +4,7 @@
 
 var mongoose = require('mongoose');
 var glob = require('glob');
-var config = require('./../resources/config');
+var config = require('./utils/config');
 
 
 // Plugin bluebird promise implementation

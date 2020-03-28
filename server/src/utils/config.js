@@ -4,7 +4,7 @@
 var path = require('path');
 
 
-var rootPath = path.normalize(__dirname + '/..');
+var rootPath = path.normalize(__dirname + './../../');
 
 // Load config values from env file
 require('dotenv').config();

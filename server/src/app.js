@@ -4,7 +4,7 @@
 
 var express = require('express');
 var glob = require('glob');
-var config = require('./../resources/config');
+var config = require('./utils/config');
 
 
 var app = express();
@@ -13,7 +13,9 @@ app.use(express.urlencoded({ extended: false }));
 
 var controllers = glob.sync(config.ROOT + '/src/controllers/*.js');
 controllers.forEach(function(controller) {
-  require(controller)(app);
+  // require(controller)(app);
+  var router = require(controller); 
+  app.use(router);
 });
 
 app.use(function(req, res, next) {

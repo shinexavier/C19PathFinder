@@ -3,10 +3,10 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "start": "node src/server",
-        "test": "node tests/testRunner",
+        "start": "node './src/server'",
+        "test": "node './tests/testRunner'",
         "load-seed-data": "node src/utils/loadSeedData",
-        "debug": "node --inspect src/server",
+        "debug": "node --inspect './src/server'",
         "lint": "eslint --ignore-path .gitignore ."
     },
     "dependencies": {

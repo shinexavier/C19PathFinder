@@ -3,7 +3,7 @@
 'use strict';
 
 
-var config = require('../resources/config');
+var config = require('./../src/utils/config');
 var mongoose = require('mongoose');
 
 var connectionString =
