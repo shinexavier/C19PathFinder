@@ -16,6 +16,23 @@ var config = {
     COSMOSDB_HOST: 'c19pathfinder.mongo.cosmos.azure.com',
     COSMOSDB_PORT: 10255,
     ROOT: rootPath,
+    DATA_APIS: {
+      GStats: {
+        name: 'GStats',
+        ckey: null,
+        lastupdatedon: null
+      },
+      IndianStatesStats: {
+        name: 'IndianStatesStats',
+        ckey: null,
+        lastupdatedon: null
+      },
+      IndianTestSiteStats: {
+        name: 'IndianTestSiteStats',
+        ckey: null,
+        lastupdatedon: null
+      }
+    }
   },
 
   dev_vai: {
@@ -26,6 +43,23 @@ var config = {
     COSMOSDB_PORT: 10255,
     COSMOSDB_DBNAME: 'cosmos-c19pathfinder-dev',
     ROOT: rootPath,
+    DATA_APIS: {
+      GStats: {
+        name: 'GStats',
+        ckey: null,
+        lastupdatedon: null
+      },
+      IndianStatesStats: {
+        name: 'IndianStatesStats',
+        ckey: null,
+        lastupdatedon: null
+      },
+      IndianTestSiteStats: {
+        name: 'IndianTestSiteStats',
+        ckey: null,
+        lastupdatedon: null
+      }
+    }
   },
 
   test: {},
