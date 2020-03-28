@@ -164,43 +164,7 @@ const DashboardScreen: () => React$Node = props => {
                                         </Picker>
                                     </Row>
                                     <Col>
-                                        {selectedState === 'India' &&
-                                            finalNumbers && finalNumbers.passengersScreened && finalNumbers.passengersScreened
-                                                .airport && (
-                                                <Row>
-                                                    <Card
-                                                        style={{
-                                                            width: '100%'
-                                                        }}
-                                                    >
-                                                        <CardItem>
-                                                            <Body>
-                                                                <Text
-                                                                    style={[
-                                                                        styles.numbers,
-                                                                        {
-                                                                            color:
-                                                                                '#1976d2'
-                                                                        }
-                                                                    ]}
-                                                                >
-                                                                    {
-                                                                        finalNumbers
-                                                                            .passengersScreened
-                                                                            .airport
-                                                                    }
-                                                                </Text>
-                                                            </Body>
-                                                        </CardItem>
-                                                        <CardItem header>
-                                                            <H3>
-                                                                PASSENGERS
-                                                                SCREENED
-                                                            </H3>
-                                                        </CardItem>
-                                                    </Card>
-                                                </Row>
-                                            )}
+                                        
                                         <Row>
                                             <Card style={{ width: '100%' }}>
                                                 <CardItem>
