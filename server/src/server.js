@@ -8,7 +8,6 @@ var http = require('http');
 var app = require('./app');
 var config = require('./../resources/config');
 
-
 // Get port from environment and store in Express
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -45,7 +44,7 @@ var db = mongoose.connection;
 
 // Throw error on db connection error
 db.on('error', function() {
-  throw new Error('unable to connect to database at ' + config.db);
+  throw new Error('unable to connect to database at ' + config.COSMOSDB_DBNAME);
 });
 
 
