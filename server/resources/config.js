@@ -1,70 +1,40 @@
 /*eslint strict: ["error", "global"]*/
-
 'use strict';
 
 var path = require('path');
 
 
 var rootPath = path.normalize(__dirname + '/..');
-var env = process.env.NODE_ENV || 'development';
+
+// Load config values from env file
+require('dotenv').config();
+
 
 var config = {
-  development: {
-    COSMODDB_USER: 'c19pathfinder',
-    COSMOSDB_PASSWORD: 'FuCxw270GwZs0gXonNZBsCd6uwD0Didsw8Xgh369XSiSlNaNBzV6sVzKen463VATZU01gtxs8DB4s4D24PgBjg==',
-    COSMOSDB_DBNAME: 'cosmos-c19pathfinder-qa',
-    COSMOSDB_HOST: 'c19pathfinder.mongo.cosmos.azure.com',
-    COSMOSDB_PORT: 10255,
-    ROOT: rootPath,
-    DATA_APIS: {
-      GStats: {
-        name: 'GStats',
-        ckey: null,
-        lastupdatedon: null
-      },
-      IndianStatesStats: {
-        name: 'IndianStatesStats',
-        ckey: null,
-        lastupdatedon: null
-      },
-      IndianTestSiteStats: {
-        name: 'IndianTestSiteStats',
-        ckey: null,
-        lastupdatedon: null
-      }
+  COSMOSDB_HOST: process.env.COSMOSDB_HOST,
+  COSMOSDB_PORT: process.env.COSMOSDB_PORT,
+  COSMODDB_USER: process.env.COSMODDB_USER,
+  COSMOSDB_PASSWORD: process.env.COSMOSDB_PASSWORD,
+  COSMOSDB_DBNAME: process.env.COSMOSDB_DBNAME,
+  ROOT: rootPath,
+  DATA_APIS: {
+    GStats: {
+      name: 'GStats',
+      ckey: null,
+      lastupdatedon: null
+    },
+    IndianStatesStats: {
+      name: 'IndianStatesStats',
+      ckey: null,
+      lastupdatedon: null
+    },
+    IndianTestSiteStats: {
+      name: 'IndianTestSiteStats',
+      ckey: null,
+      lastupdatedon: null
     }
-  },
-
-  dev_vai: {
-    COSMODDB_USER: 'cosmos-c19pathfinder-dev',
-    COSMOSDB_PASSWORD: 'vY6VqOyTpnMtF9AC4B9DZsDf6tq8vB3BNlxq9UqwmUSj6uM2k276' +
-      'uekZ7TJq04BdQRA3zt32PSk3NWwHeurKtg%3D%3D',
-    COSMOSDB_HOST: 'cosmos-c19pathfinder-dev.mongo.cosmos.azure.com',
-    COSMOSDB_PORT: 10255,
-    COSMOSDB_DBNAME: 'cosmos-c19pathfinder-dev',
-    ROOT: rootPath,
-    DATA_APIS: {
-      GStats: {
-        name: 'GStats',
-        ckey: null,
-        lastupdatedon: null
-      },
-      IndianStatesStats: {
-        name: 'IndianStatesStats',
-        ckey: null,
-        lastupdatedon: null
-      },
-      IndianTestSiteStats: {
-        name: 'IndianTestSiteStats',
-        ckey: null,
-        lastupdatedon: null
-      }
-    }
-  },
-
-  test: {},
-
-  production: {},
+  }
 };
 
-module.exports = config[env];
+
+module.exports = config;

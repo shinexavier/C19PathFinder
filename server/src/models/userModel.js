@@ -1,11 +1,10 @@
 /*eslint strict: ["error", "global"]*/
-
 'use strict';
 
 
 var mongoose = require('mongoose');
-var LocationPointSchema = require('./locationPoint');
-var EpidemicContactSchema = require('./epidemicContact');
+var LocationPointSchema = require('./locationPointModel');
+var EpidemicContactSchema = require('./epidemicContactModel');
 
 var Schema = mongoose.Schema;
 
@@ -24,7 +23,7 @@ var UserSchema = new Schema({
     required: true,
   },
   phone: Number,
-  mail: String,
+  name: String,
   epidemicContactStatus: EpidemicContactSchema,
   locationHistory: [LocationPointSchema],
   epidemicContactHistory: [EpidemicContactSchema],

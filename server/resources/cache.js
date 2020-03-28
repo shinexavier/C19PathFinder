@@ -21,7 +21,9 @@ function getCacheKey(req) {
 
 function set(req, res, next) {
     const key = getCacheKey(req)
-    const val = res.locals.data
+    console.log(res.locals.data);
+    const val = JSON.parse(JSON.stringify(res.locals.data))
+    console.log(val)
     cache.set(key, val)
     console.log('Updated Cache - {0}):{1}', key, val)
     return next()
@@ -33,8 +35,9 @@ function set(req, res, next) {
  * @param  {} val
  */
 function setD(key, val) {
-    cache.set(key, val)
-    console.log('Updated Cache in WB Mode - {0}):{1}', key, val)
+    const cleanedVal = JSON.parse(JSON.stringify(val))
+    cache.set(key, cleanedVal)
+    console.log('Updated Cache in WB Mode - {0}):{1}', key, cleanedVal)
 }
 
 function get(req, res, next) {

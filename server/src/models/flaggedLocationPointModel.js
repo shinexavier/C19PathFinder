@@ -1,5 +1,4 @@
 /*eslint strict: ["error", "global"]*/
-
 'use strict';
 
 
@@ -47,6 +46,7 @@ var FlaggedLocationPointSchema = new Schema({
   },
   isPurged: {
     type: Boolean,
+    default: false,
     required: true,
   },
 });
