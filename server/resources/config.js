@@ -11,9 +11,8 @@ var env = process.env.NODE_ENV || 'development';
 var config = {
   development: {
     COSMODDB_USER: 'c19pathfinder',
-    COSMOSDB_PASSWORD: '85IbEdFg3cfCVGm1T5PXhHNsynrcJ6e8tZa3U7HP1l9Rk0mNNr3Y' +
-      'DGhmgZMcumRPzoLdpPO2ooGfEJvm9FDG4g==',
-    COSMOSDB_DBNAME: 'c19pfstore',
+    COSMOSDB_PASSWORD: 'FuCxw270GwZs0gXonNZBsCd6uwD0Didsw8Xgh369XSiSlNaNBzV6sVzKen463VATZU01gtxs8DB4s4D24PgBjg==',
+    COSMOSDB_DBNAME: 'cosmos-c19pathfinder-qa',
     COSMOSDB_HOST: 'c19pathfinder.mongo.cosmos.azure.com',
     COSMOSDB_PORT: 10255,
     ROOT: rootPath,
