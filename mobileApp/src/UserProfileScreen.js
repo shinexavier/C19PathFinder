@@ -12,7 +12,7 @@ import { StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import AsyncStorage from '@react-native-community/async-storage';
 import { openDatabase } from 'react-native-sqlite-storage';
-var db = openDatabase({ name: 'C19PathFinder.db' });
+var db = openDatabase({ name: 'C19PathFinder.db', location: 'default' });
 
 import {
     Container,
@@ -40,20 +40,20 @@ const UserProfile: () => React$Node = () => {
     const [isProfileCompleted, profileStatus] = useState(false);
     const [editMode, toggleEditMode] = useState();
 
-    let profileKeys = ['address', 'age', 'gender', 'phone', 'address', 'email'];
+    let profileKeys = ['name', 'phone'];
     // tem - toggle edit mode
     async function getProfileStatus(tem) {
         var notNull = true;
         for (let i = 0; i < profileKeys.length; i++) {
             let key = profileKeys[i];
             let value = await AsyncStorage.getItem(key);
-            //console.log(key, ' ', value);
+            
             if (value === null) {
                 notNull = false;
                 profileStatus(false);
             }
         }
-        //console.log(notNull);
+        
         if (notNull) {
             profileStatus(true);
             AsyncStorage.setItem('profileCompleted', 'true');
@@ -61,7 +61,7 @@ const UserProfile: () => React$Node = () => {
     }
 
     function saveUserProfile() {
-
+/*
         db.transaction(function(txn) {
             console.log("inside transaction user profile screen ***")
   
@@ -78,7 +78,7 @@ const UserProfile: () => React$Node = () => {
             );
   
           });
-
+*/
         getProfileStatus(true);
         setEditMode(false)
     }
