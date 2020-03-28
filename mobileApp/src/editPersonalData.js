@@ -38,14 +38,20 @@ import {
 
 const EditPersonalData: () => React$Node = () => {
     const [name, setName] = useState();
-    const [age, setAge] = useState();
-    const [gender, setGender] = useState();
+    const [phone, setPhone] = useState();
+    //const [age, setAge] = useState();
+    //const [gender, setGender] = useState();
 
     function setUserName(value){
         AsyncStorage.setItem('name', value);
         setName(value)
     }
 
+    function setUserPhone(value){
+        AsyncStorage.setItem('phone', value);
+        setPhone(value)
+    }
+/*
     function setUserAge(value){
         AsyncStorage.setItem('age', value);
         setAge(value)
@@ -56,15 +62,17 @@ const EditPersonalData: () => React$Node = () => {
         AsyncStorage.setItem('gender', value);
         setGender(value)
     }
-
+*/
     async function getUserData() {
         let name = await AsyncStorage.getItem('name');
-        let age = await AsyncStorage.getItem('age');
-        let gender = await AsyncStorage.getItem('gender');
+        let phone = await AsyncStorage.getItem('phone');
+        //let age = await AsyncStorage.getItem('age');
+        //let gender = await AsyncStorage.getItem('gender');
 
         setName(name)
-        setAge(age)
-        setGender(gender)
+        setPhone(phone)
+        //setAge(age)
+        //setGender(gender)
         
     }
 
@@ -79,6 +87,11 @@ const EditPersonalData: () => React$Node = () => {
                     <Label>Name</Label>
                     <Input onChangeText={(val) => setUserName(val)} value={name} />
                 </Item>
+                <Item stackedLabel>
+                    <Label>Phone</Label>
+                    <Input keyboardType = 'phone-pad' onChangeText={(val) => setUserPhone(val)} value={phone} />
+                </Item>
+                {/*
                 <Item stackedLabel>
                     <Label>Age</Label>
                     <Input onChangeText={(val) => setUserAge(val)} value={age} keyboardType = 'number-pad' />
@@ -95,6 +108,7 @@ const EditPersonalData: () => React$Node = () => {
                         <Picker.Item label="Female" value="Female" />
                     </Picker>
                 </Item>
+                */}
             </Form>
         </>
     );

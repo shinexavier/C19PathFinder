@@ -11,6 +11,8 @@ import { StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import AsyncStorage from '@react-native-community/async-storage';
+import { openDatabase } from 'react-native-sqlite-storage';
+var db = openDatabase({ name: 'C19PathFinder.db', location: 'default' });
 
 import {
     Container,
@@ -36,20 +38,22 @@ import EditPersonalContact from './editPersonalContact';
 
 const UserProfile: () => React$Node = () => {
     const [isProfileCompleted, profileStatus] = useState(false);
+    const [editMode, toggleEditMode] = useState();
 
-    let profileKeys = ['address', 'age', 'gender', 'phone', 'address', 'email'];
-    async function getProfileStatus() {
+    let profileKeys = ['name', 'phone'];
+    // tem - toggle edit mode
+    async function getProfileStatus(tem) {
         var notNull = true;
         for (let i = 0; i < profileKeys.length; i++) {
             let key = profileKeys[i];
             let value = await AsyncStorage.getItem(key);
-            console.log(key, ' ', value);
+            
             if (value === null) {
                 notNull = false;
                 profileStatus(false);
             }
         }
-        console.log(notNull);
+        
         if (notNull) {
             profileStatus(true);
             AsyncStorage.setItem('profileCompleted', 'true');
@@ -57,12 +61,39 @@ const UserProfile: () => React$Node = () => {
     }
 
     function saveUserProfile() {
-        getProfileStatus();
+/*
+        db.transaction(function(txn) {
+            console.log("inside transaction user profile screen ***")
+  
+              txn.executeSql(
+                'SELECT * FROM locationPoint', [], 
+                function(tx, result) {
+                    console.log('SELECT result ', result.rows.item(0).latitudeE7, result.rows.length);
+                }
+                , 
+                function(error) {
+                    console.log('error ', error);
+                    //console.log("tx ", tx)
+                }
+            );
+  
+          });
+*/
+        getProfileStatus(true);
+        setEditMode(false)
     }
 
+    function setEditMode(mode) {
+        AsyncStorage.setItem('profileEdit', mode + '');
+        toggleEditMode(mode);
+    }
+
+// https://css-tricks.com/run-useeffect-only-once/
+
     useEffect(() => {
+        console.log('use effect');
         getProfileStatus();
-    });
+    }, [editMode]);
 
     return (
         <>
@@ -81,23 +112,32 @@ const UserProfile: () => React$Node = () => {
                     style={styles.scrollView}
                 >
                     <View style={styles.sectionContainer}>
+                    {isProfileCompleted && !editMode ? (
+                                    <PersonalData />
+                                ) : (
+                                    <EditPersonalData />
+                                )}
+                        {/*
                         <Tabs renderTabBar={() => <ScrollableTab />}>
                             <Tab heading="Basic Info">
-                                {isProfileCompleted ? (
+                                {isProfileCompleted && !editMode ? (
                                     <PersonalData />
                                 ) : (
                                     <EditPersonalData />
                                 )}
                             </Tab>
+                            
                             <Tab heading="Contact">
-                                {isProfileCompleted ? (
+                                {isProfileCompleted && !editMode ? (
                                     <PersonalContact />
                                 ) : (
                                     <EditPersonalContact />
                                 )}
                             </Tab>
+                                
                         </Tabs>
-                        {isProfileCompleted && (
+                        */}
+                        {isProfileCompleted && !editMode && (
                             <Grid style={{ marginTop: 20 }}>
                                 <Col>
                                     <Button block light>
@@ -107,13 +147,14 @@ const UserProfile: () => React$Node = () => {
                                 <Col>
                                     <Button
                                         full
+                                        onPress={() => setEditMode(true)}
                                     >
                                         <Text>Edit</Text>
                                     </Button>
                                 </Col>
                             </Grid>
                         )}
-                        {!isProfileCompleted && (
+                        {(!isProfileCompleted || editMode) && (
                             <Grid style={{ marginTop: 20 }}>
                                 <Col>
                                     <Button block light>
@@ -151,49 +192,6 @@ const styles = StyleSheet.create({
     sectionContainer: {
         marginVertical: 32,
         paddingHorizontal: 24
-    },
-    sectionTitle: {
-        fontSize: 24,
-        fontWeight: '600',
-        color: Colors.black,
-        textAlign: 'center',
-        paddingTop: 10
-    },
-    sectionDescription: {
-        marginVertical: 20,
-        fontSize: 18,
-        fontWeight: '400',
-        color: Colors.dark
-    },
-    highlight: {
-        fontWeight: '700'
-    },
-    footer: {
-        color: Colors.dark,
-        fontSize: 12,
-        fontWeight: '600',
-        padding: 4,
-        paddingRight: 12,
-        textAlign: 'right'
-    },
-    cardTitle: {
-        borderBottomWidth: 1,
-        borderColor: '#a50a18'
-    },
-    cardTitleText: {
-        color: '#a50a18',
-        fontSize: 22
-    },
-    state: {
-        borderBottomWidth: 1,
-        borderColor: '#c9c8cd'
-    },
-    stateName: {
-        width: '50%'
-    },
-    referenceLink: {
-        color: '#1c20c2',
-        fontSize: 18
     }
 });
 

@@ -3,7 +3,7 @@
 'use strict';
 
 
-var config = require('../../resources/config');
+var config = require('../resources/config');
 var mongoose = require('mongoose');
 
 var connectionString =
@@ -11,6 +11,8 @@ var connectionString =
   config.COSMOSDB_HOST + ':' +
   config.COSMOSDB_PORT + '/' +
   config.COSMOSDB_DBNAME + '?ssl=true&replicaSet=globaldb&retrywrites=false';
+
+console.log(connectionString);
 
 var baseConfig = {
   // If you've got a lot of different data types, you could also consider
