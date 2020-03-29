@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const db = require('./../../src/db');
+const db = require('../../src/db');
 const TestObject = require('../TestObject');
 
-const name = 'FlaggedLocationPointTest';
+const name = 'FlaggedLocationPointModelTest';
 const flaggedLocationPointObject = {
   locationPointId: 'test',
   latitudeE7: 85236111,
@@ -28,13 +28,15 @@ function run() {
   return flaggedLocationPoint.save();
 }
 
-function tearDown(doc) {
+async function tearDown(doc) {
   const FlaggedLocationPointModel = mongoose.model('FlaggedLocationPoint');
-  const deletedCount = FlaggedLocationPointModel.remove({ _id: doc._id });
-  return deletedCount === 1;
+  const resultObject = await FlaggedLocationPointModel.deleteMany({
+    _id: doc._id,
+  });
+  return resultObject && resultObject.deletedCount === 1;
 }
 
-const locationPointTest = new TestObject(name, setup, run, null);
+const locationPointTest = new TestObject(name, setup, run, tearDown);
 
 module.exports = function (testObjectCollection) {
   testObjectCollection.push(locationPointTest);

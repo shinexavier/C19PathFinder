@@ -20,7 +20,7 @@ const testObjectPromises = testObjects.map((testObject, index) => {
     .then((isSuccess) => {
       console.log(
         `${index + 1}/${totalNumberOfTests}: ${testObject.name} - ${
-          isSuccess ? 'SUCCESS' : 'FAILED'
+          isSuccess === true ? 'SUCCESS' : 'FAILED'
         }`
       );
     })

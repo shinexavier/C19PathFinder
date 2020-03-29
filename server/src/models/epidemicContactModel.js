@@ -1,8 +1,3 @@
-/*eslint strict: ["error", "global"]*/
-
-'use strict';
-
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -17,5 +12,4 @@ var EpidemicContactSchema = new Schema({
   },
 });
 
-
-module.exports = EpidemicContactSchema;
+mongoose.model('EpidemicContact', EpidemicContactSchema);

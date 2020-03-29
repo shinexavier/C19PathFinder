@@ -1,8 +1,3 @@
-/*eslint strict: ["error", "global"]*/
-
-'use strict';
-
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -14,15 +9,15 @@ var LocationPointSchema = new Schema({
   latitudeE7: {
     type: Number,
     required: true,
-    validate: function(value) {
-      return (value > -900000000 && value < 900000000);
+    validate: function (value) {
+      return value > -900000000 && value < 900000000;
     },
   },
   longitudeE7: {
     type: Number,
     required: true,
-    validate: function(value) {
-      return (value > -1800000000 && value < 1800000000);
+    validate: function (value) {
+      return value > -1800000000 && value < 1800000000;
     },
   },
   accuracy: {
@@ -39,16 +34,17 @@ var LocationPointSchema = new Schema({
   },
   sourceType: {
     type: String,
-    enum: ['app', 'takeout', 'routeMap', 'mixed'],
+    enum: ['app', 'takeout', 'routeMap'],
     required: true,
   },
   isDeleted: {
     type: Boolean,
+    default: false,
     required: true,
   },
 });
 
-LocationPointSchema.pre('save', function(next) {
+LocationPointSchema.pre('save', function (next) {
   if (!this.lastUpdatedOn) {
     this.lastUpdatedOn = new Date().getTime();
   }
@@ -56,4 +52,4 @@ LocationPointSchema.pre('save', function(next) {
   next();
 });
 
-module.exports = LocationPointSchema;
+mongoose.model('LocationPoint', LocationPointSchema);
