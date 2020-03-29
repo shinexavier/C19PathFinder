@@ -1,10 +1,24 @@
-/*eslint strict: ["error", "global"]*/
+const multer = require('multer');
+const path = require('path');
+const config = require('./../utils/config');
 
-'use strict';
+const excelUploadDir = path.join(
+  config.ROOT,
+  config.FILE_UPLOAD_PATH,
+  './excel'
+);
 
-var multer = require('multer');
+var excelUpload = multer({
+  dest: excelUploadDir,
+  fileFilter: function multerFileFilter(req, file, callback) {
+    var extension = path.extname(file.originalname);
+    if (extension !== '.xlsx') {
+      return callback(new Error('Only .xlsx are allowed'));
+    }
+    callback(null, true);
+  },
+});
 
-var storage = multer.memoryStorage();
-var httpFileuploadUtil = multer({ storage: storage });
-
-module.exports = httpFileuploadUtil;
+module.exports = {
+  excelUpload: excelUpload,
+};

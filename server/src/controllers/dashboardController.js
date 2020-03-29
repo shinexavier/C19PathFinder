@@ -1,10 +1,7 @@
-/*eslint strict: ["error", "global"]*/
-'use strict';
-
 var express = require('express');
 var commonModel = require('./../models/commonModel');
 var cache = require('../utils/cache');
-var config = require('../utils/config')
+var config = require('../utils/config');
 
 var GStats = commonModel.GStats;
 var IndianStatesStats = commonModel.IndianStatesStats;
@@ -20,8 +17,9 @@ var getAPIStats = function () {
     return content;
   } else {
     var apiStats = {};
-    Object.values(config.DATA_APIS).map((api) =>
-      (apiStats[api.name] = api.lastupdatedon));
+    Object.values(config.DATA_APIS).map(
+      (api) => (apiStats[api.name] = api.lastupdatedon)
+    );
     cache.setD(key, apiStats);
     return apiStats;
   }
@@ -33,13 +31,12 @@ var responseDispatcher = function (req, res, next) {
 
 var router = express.Router();
 
-
-router.get('/dashboard/global',
+router.get(
+  '/dashboard/global',
   cache.get,
   function (req, res, next) {
     config.DATA_APIS.GStats.ckey = cache.getCacheKey(req); //Iniializing Cache Key for this Data API
-    GStats
-      .find()
+    GStats.find()
       .sort({
         _id: -1,
       })
@@ -54,14 +51,15 @@ router.get('/dashboard/global',
       });
   },
   cache.set,
-  responseDispatcher);
+  responseDispatcher
+);
 
-router.get('/dashboard/india/states',
+router.get(
+  '/dashboard/india/states',
   cache.get,
   function (req, res, next) {
     config.DATA_APIS.IndianStatesStats.ckey = cache.getCacheKey(req); //Iniializing Cache Key for this Data API
-    IndianStatesStats
-      .find()
+    IndianStatesStats.find()
       .sort({
         _id: -1,
       })
@@ -76,14 +74,15 @@ router.get('/dashboard/india/states',
       });
   },
   cache.set,
-  responseDispatcher);
+  responseDispatcher
+);
 
-router.get('/dashboard/india/testsites',
+router.get(
+  '/dashboard/india/testsites',
   cache.get,
   function (req, res, next) {
     config.DATA_APIS.IndianTestSiteStats.ckey = cache.getCacheKey(req); //Iniializing Cache Key for this Data API
-    IndianTestSiteStats
-      .find()
+    IndianTestSiteStats.find()
       .sort({
         _id: -1,
       })
@@ -98,16 +97,19 @@ router.get('/dashboard/india/testsites',
       });
   },
   cache.set,
-  responseDispatcher);
+  responseDispatcher
+);
 
-router.get('/apistats',
+router.get(
+  '/apistats',
   function (req, res, next) {
     var foundAPIStats = getAPIStats();
     //show(foundAPIStats);
     res.locals.data = foundAPIStats; //Temp Storage
     return next();
   },
-  responseDispatcher);
+  responseDispatcher
+);
 
 function show(list) {
   list.forEach(function (item) {
@@ -115,4 +117,7 @@ function show(list) {
   });
 }
 
-module.exports = router;
+module.exports = {
+  path: '/',
+  router: router,
+};

@@ -1,31 +1,25 @@
-/*eslint strict: ["error", "global"]*/
-'use strict';
+const express = require('express');
+const glob = require('glob');
+const config = require('./utils/config');
 
-
-var express = require('express');
-var glob = require('glob');
-var config = require('./utils/config');
-
-
-var app = express();
+const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-var controllers = glob.sync(config.ROOT + '/src/controllers/*.js');
-controllers.forEach(function(controller) {
-  // require(controller)(app);
-  var router = require(controller); 
-  app.use(router);
+const controllers = glob.sync(config.ROOT + '/src/controllers/*.js');
+controllers.forEach(function (controller) {
+  let routerObject = require(controller);
+  app.use(routerObject.path, routerObject.router);
 });
 
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+app.use(function (req, res, next) {
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function (err, req, res, next) {
     console.log(err);
     res.status(err.status || 500);
     res.json({
@@ -36,7 +30,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   console.log(err);
   res.status(err.status || 500);
   res.json({
@@ -45,6 +39,5 @@ app.use(function(err, req, res, next) {
     title: 'error',
   });
 });
-
 
 module.exports = app;
