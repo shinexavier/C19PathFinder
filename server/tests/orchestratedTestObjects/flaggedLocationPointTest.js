@@ -1,61 +1,41 @@
-/*eslint strict: ["error", "global"]*/
+const mongoose = require('mongoose');
+const db = require('./../../src/db');
+const TestObject = require('../TestObject');
 
-'use strict';
-
-
-var mongoose = require('mongoose');
-var db = require('./../../src/db');
-var TestObject = require('../TestObject');
-
-
-var name = 'FlaggedLocationPointTest';
-var isSuccess = false;
-
-
-var locationPointTest = new TestObject(
-  name,
-  setup,
-  run,
-  tearDown,
-  isSuccess);
-
+const name = 'FlaggedLocationPointTest';
+const flaggedLocationPointObject = {
+  locationPointId: 'test',
+  latitudeE7: 85236111,
+  longitudeE7: 769502777,
+  accuracy: 80,
+  startTimestampMs: 819150840000,
+  endTimestampMs: 819154440000,
+  epidemicContactDegree: 0,
+  epidemicContactTimestampMs: 819150840000,
+};
 
 function setup() {
-
-};
+  return db.connect();
+}
 
 function run() {
-  return db.connect().then(function() {
-    var FlaggedLocationPoint = mongoose.model('FlaggedLocationPoint');
-    var flaggedLocationPointObject = {
-      locationPointId: 'test',
-      latitudeE7: 85236111,
-      longitudeE7: 769502777,
-      accuracy: 80,
-      startTimestampMs: 819150840000,
-      endTimestampMs: 819154440000,
-      epidemicContactDegree: 0,
-      epidemicContactTimestampMs: 819150840000,
-    };
-    var flaggedLocationPoint =
-            new FlaggedLocationPoint(flaggedLocationPointObject);
-    return flaggedLocationPoint
-      .save()
-      .then(function(err, obj) {
-        if (err) {
-          console.error(err);
-          locationPointTest.isSuccess = false;
-        }
+  const FlaggedLocationPointModel = mongoose.model('FlaggedLocationPoint');
 
-        locationPointTest.isSuccess = true;
-      });
-  });
-};
+  const flaggedLocationPoint = new FlaggedLocationPointModel(
+    flaggedLocationPointObject
+  );
 
-function tearDown() {
-};
+  return flaggedLocationPoint.save();
+}
 
-module.exports = function(testObjectCollection) {
+function tearDown(doc) {
+  const FlaggedLocationPointModel = mongoose.model('FlaggedLocationPoint');
+  const deletedCount = FlaggedLocationPointModel.remove({ _id: doc._id });
+  return deletedCount === 1;
+}
+
+const locationPointTest = new TestObject(name, setup, run, null);
+
+module.exports = function (testObjectCollection) {
   testObjectCollection.push(locationPointTest);
 };
-

@@ -1,14 +1,12 @@
-/*eslint strict: ["error", "global"]*/
+function stub() {
+  return Promise.resolve(true);
+}
 
-'use strict';
-
-
-var TestObject = function(name, setup, run, tearDown, isSuccess) {
-  this.name = name;
-  this.setup = setup;
-  this.run = run;
-  this.tearDown = tearDown;
-  this.isSuccess = isSuccess;
-};
+function TestObject(name, setup, run, tearDown) {
+  this.name = name || 'unnamed';
+  this.setup = setup || stub;
+  this.run = run || stub;
+  this.tearDown = tearDown || stub;
+}
 
 module.exports = TestObject;

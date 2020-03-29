@@ -1,42 +1,35 @@
-/*eslint strict: ["error", "global"]*/
+const glob = require('glob');
+const config = require('../src/utils/config');
 
-'use strict';
+const testObjects = [];
+const testModules = glob.sync(
+  `${config.ROOT}/tests/orchestratedTestObjects/*.js`
+);
 
-
-var glob = require('glob');
-var config = require('./../src/utils/config');
-
-var testObjectCollection = [];
-var testObjects =
-    glob.sync(config.ROOT + '/tests/orchestratedTestObjects/*.js');
-
-testObjects.forEach(function(testObject) {
-  require(testObject)(testObjectCollection);
+testModules.forEach((testObject) => {
+  require(testObject)(testObjects);
 });
 
-// var totalNumberOfTests = testObjectCollection.length;
+const totalNumberOfTests = testObjects.length;
 
-testObjectCollection.forEach(function(testObject, index) {
-  // testObject
-  //     .setup()
-  //     .then(testObject.run)
-  //     .then(testObject.tearDown)
-  //     .then(function () {
-  //         console.log(`${index + 1}/${totalNumberOfTests}: ${testObject.name}
-  //   - ${testObject.isSuccess ? 'SUCCESS' : 'FAILED'}`);
-  //     })
-  //     .catch(function (err) {
-  //         console.log(
-  //   `${index + 1}/${totalNumberOfTests}: ${testObject.name} - failed`);
-  //     })
-  testObject
-    .run()
-    .then(function() {
-      console.log('SUCCESS');
+const testObjectPromises = testObjects.map((testObject, index) => {
+  return testObject
+    .setup()
+    .then(testObject.run)
+    .then(testObject.tearDown)
+    .then((isSuccess) => {
+      console.log(
+        `${index + 1}/${totalNumberOfTests}: ${testObject.name} - ${
+          isSuccess ? 'SUCCESS' : 'FAILED'
+        }`
+      );
     })
-    .catch(function(err) {
-      if (err) {
-        console.log('FAILED');
-      }
+    .catch((err) => {
+      console.log(`${testObject.name} - failed with following error`);
+      console.log(err);
     });
+});
+
+Promise.all(testObjectPromises).then(function () {
+  process.exit(1);
 });
