@@ -33,6 +33,21 @@ var config = {
       lastupdatedon: null,
     },
   },
+  UPLOAD_EXCEL_HEADER_VALUES: [
+    'Patient ID',
+    'Latitude',
+    'Longitude',
+    'Date',
+    'Time',
+    'Proximity',
+    'Elapsed Time',
+  ],
+  SOURCE_TYPES: {
+    APP: 'app',
+    TAKEOUT: 'takeout',
+    ROUTEMAP: 'routeMap',
+    MIXED: 'mixed',
+  },
 };
 
 module.exports = config;
