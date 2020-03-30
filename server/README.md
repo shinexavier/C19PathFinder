@@ -9,7 +9,7 @@ This repository contains the code for the server application. It is built on Nod
 - run the command `npm install`
 
 ### Running API Server
-- run the linting `eslint --ignore-path .gitignore <file-name> --fix`
+- run the linting `npx eslint --ignore-path .gitignore <file-name> --fix`
 - run the command `npm start`
 
 ### Setting up Mongo Client

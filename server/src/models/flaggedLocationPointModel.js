@@ -1,7 +1,3 @@
-/*eslint strict: ["error", "global"]*/
-'use strict';
-
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -13,15 +9,15 @@ var FlaggedLocationPointSchema = new Schema({
   latitudeE7: {
     type: Number,
     required: true,
-    validate: function(value) {
-      return (value > -900000000 && value < 900000000);
+    validate: function (value) {
+      return value > -900000000 && value < 900000000;
     },
   },
   longitudeE7: {
     type: Number,
     required: true,
-    validate: function(value) {
-      return (value > -1800000000 && value < 1800000000);
+    validate: function (value) {
+      return value > -1800000000 && value < 1800000000;
     },
   },
   accuracy: {
@@ -50,6 +46,5 @@ var FlaggedLocationPointSchema = new Schema({
     required: true,
   },
 });
-
 
 mongoose.model('FlaggedLocationPoint', FlaggedLocationPointSchema);

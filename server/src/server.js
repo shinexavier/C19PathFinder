@@ -1,14 +1,9 @@
-/*eslint strict: ["error", "global"]*/
-'use strict';
-
-
 var http = require('http');
 var app = require('./app');
 var db = require('./db');
 
-
 // Connect to the db
-db.connect().then(function() {
+db.connect().then(function () {
   // Get port from environment and store in Express
   var port = normalizePort(process.env.PORT || '3000');
   app.set('port', port);
@@ -20,7 +15,6 @@ db.connect().then(function() {
   server.listen(port);
   server.on('error', onError);
   server.on('listening', onListening);
-
 
   // Normalize a port into a number, string, or false.
   function normalizePort(val) {
@@ -45,9 +39,7 @@ db.connect().then(function() {
       throw error;
     }
 
-    var bind = typeof port === 'string'
-      ? 'Pipe ' + port
-      : 'Port ' + port;
+    var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
     // handle specific listen errors with friendly messages
     switch (error.code) {
@@ -67,10 +59,7 @@ db.connect().then(function() {
   // Event listener for HTTP server "listening" event.
   function onListening() {
     var addr = server.address();
-    var bind = typeof addr === 'string'
-      ? 'pipe ' + addr
-      : 'port ' + addr.port;
+    var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     console.log('Listening on ' + bind);
   }
-
 });
