@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect, Component } from 'react';
 
-import { Text, TouchableOpacity, View, Button } from 'react-native';
+import { Text, TouchableOpacity, View, Button, DeviceEventEmitter, NativeModules } from 'react-native';
 
 import 'react-native-gesture-handler';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
@@ -157,6 +157,21 @@ const App: () => React$Node = () => {
         //userProfile();
         initiateDB();
         initiateLocation();
+        const subscription = DeviceEventEmitter.addListener(
+            NativeModules.LocationManager.JS_LOCATION_EVENT_NAME,
+            (e) => {
+                console.log(
+                    `Received Coordinates from native side at ${new Date(
+                        e.timestamp,
+                    ).toTimeString()}: `,
+                    e.latitude,
+                    e.longitude,
+                );
+            },
+        );
+        return function cleanup() {
+            subscription.remove();
+        }
     }, []);
 
     async function userProfile() {

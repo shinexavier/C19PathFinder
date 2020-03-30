@@ -195,6 +195,7 @@ export async function initiateLocation() {
         isLocationEnabled = await requestLocationPermission();
     }
     if (isLocationEnabled) {
+        console.log('Start background location');
         NativeModules.LocationManager.startBackgroundLocation();
     }
 }
