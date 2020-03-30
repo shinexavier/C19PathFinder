@@ -1,3 +1,4 @@
+import { PermissionsAndroid, NativeModules } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import { openDatabase } from 'react-native-sqlite-storage';
@@ -186,4 +187,45 @@ export async function bootstrapApp(dispatch) {
         termsAccepted = false;
     }
     dispatch({ type: 'TOC_ACCEPTED', tocStatus: termsAccepted });
+};
+
+export async function initiateLocation() {
+    let isLocationEnabled = await checkLocationPermission();
+    if (!isLocationEnabled) {
+        isLocationEnabled = await requestLocationPermission();
+    }
+    if (isLocationEnabled) {
+        NativeModules.LocationManager.startBackgroundLocation();
+    }
+}
+
+export async function checkLocationPermission() {
+    const granted = await PermissionsAndroid.check(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    );
+    console.log(`Location permission: ${granted}`)
+    return granted;
+}
+
+async function requestLocationPermission() {
+    try {
+        const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+            {
+                title: 'Location Permission',
+                message:
+                    'C19PathFinder needs to access your location in order to work',
+                buttonNegative: 'Cancel',
+                buttonPositive: 'OK',
+            },
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (err) {
+        console.warn(err);
+        return false;
+    }
 };
