@@ -1,9 +1,10 @@
-var http = require('http');
-var app = require('./app');
-var db = require('./db');
+const http = require('http');
+const db = require('./db');
 
 // Connect to the db
 db.connect().then(function () {
+  const app = require('./app');
+
   // Get port from environment and store in Express
   var port = normalizePort(process.env.PORT || '3000');
   app.set('port', port);

@@ -1,12 +1,16 @@
 const express = require('express');
 const excelUpload = require('./../utils/httpFileuploadUtil').excelUpload;
-const readXlsxFile = require('read-excel-file/node');
+const parseUploadFile = require('./../services/uploadService').parseUploadFile;
 const router = express.Router();
 
 function uploadHandler(req, res, next) {
-  readXlsxFile(req.file.path).then((rows) => {
-    res.json(rows);
-  });
+  parseUploadFile(req.file.path)
+    .then(() => {
+      res.send('file upload is successful');
+    })
+    .catch((err) => {
+      res.send(`file upload failed with error: ${err.message}`);
+    });
 }
 
 router.get('/upload', [excelUpload.single('file'), uploadHandler]);
