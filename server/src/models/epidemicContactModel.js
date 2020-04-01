@@ -6,7 +6,7 @@ var EpidemicContactSchema = new Schema({
     type: Number,
     required: true,
   },
-  timestampMs: {
+  estimatedTimeOfContact: {
     type: Number,
     required: true,
   },

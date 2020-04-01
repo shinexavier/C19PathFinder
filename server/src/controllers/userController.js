@@ -1,19 +1,26 @@
 const express = require('express');
-const excelUpload = require('./../utils/httpFileuploadUtil').excelUpload;
+const routeMapUpload = require('./../utils/fileuploadUtil').routeMapUpload;
 const parseUploadFile = require('./../services/uploadService').parseUploadFile;
+const userService = require('./../services/userService');
 const router = express.Router();
 
 function uploadHandler(req, res, next) {
   parseUploadFile(req.file.path)
-    .then(() => {
-      res.send('file upload is successful');
+    .then(userService.insertMany)
+    .then((users) => {
+      return res.json(users);
     })
-    .catch((err) => {
-      res.send(`file upload failed with error: ${err.message}`);
+    .catch((error) => {
+      if (error.code = 400) {
+        console.log(error);
+        return res.send(`file upload failed with error: ${error.message}`);
+      } else {
+        return next(error);
+      }      
     });
 }
 
-router.get('/upload', [excelUpload.single('file'), uploadHandler]);
+router.get('/route-map-upload', [routeMapUpload.single('file'), uploadHandler]);
 
 module.exports = {
   path: '/user',

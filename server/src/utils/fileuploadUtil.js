@@ -1,24 +1,24 @@
 const multer = require('multer');
 const path = require('path');
-const config = require('./../utils/config');
+const config = require('./config');
 
-const excelUploadDir = path.join(
+const routeMapUploadDir = path.join(
   config.ROOT,
   config.FILE_UPLOAD_PATH,
-  './excel'
+  './routeMaps'
 );
 
-var excelUpload = multer({
-  dest: excelUploadDir,
+var routeMapUpload = multer({
+  dest: routeMapUploadDir,
   fileFilter: function multerFileFilter(req, file, callback) {
     var extension = path.extname(file.originalname);
-    if (extension !== '.xlsx') {
-      return callback(new Error('Only .xlsx are allowed'));
+    if (extension !== '.csv') {
+      return callback(new Error('Only .csv are allowed'));
     }
     callback(null, true);
   },
 });
 
 module.exports = {
-  excelUpload: excelUpload,
+  routeMapUpload: routeMapUpload,
 };
