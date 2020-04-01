@@ -1,6 +1,6 @@
 const geographicCoordinateSystemUtils = require('./geographicCoordinateSystemUtils');
 
-const TIMESTAMPMS_VALUE_15_DAYS = 15 * 24 * 60 * 60 * 1000;
+const TIMESTAMPMS_VALUE_15_DAYS = Math.abs((new Date().getTime()) - (15 * 24 * 60 * 60 * 1000));
 const ACCURACY_THRESHOLD_FILTERING = 100;
 const ACCURACY_THRESHOLD_AGGREGATION = 1000;
 const DISTANCE_THRESHOLD = 100;
