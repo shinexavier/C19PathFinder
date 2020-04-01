@@ -1,7 +1,3 @@
-/*eslint strict: ["error", "global"]*/
-'use strict';
-
-
 var mongoose = require('mongoose');
 var LocationPointSchema = require('./locationPointModel');
 var EpidemicContactSchema = require('./epidemicContactModel');

@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect, Component } from 'react';
 
-import { Text, TouchableOpacity, View, Button } from 'react-native';
+import { Text, TouchableOpacity, View, Button, DeviceEventEmitter, NativeModules } from 'react-native';
 
 import 'react-native-gesture-handler';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
@@ -32,7 +32,7 @@ import HeatMapScreen from './src/HeatMapScreen';
 import { WebView } from 'react-native-webview';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import {initiateDB, bootstrapApp } from './src/SetupTasks';
+import { initiateDB, bootstrapApp, initiateLocation } from './src/SetupTasks';
 
 // import { Drawer } from 'native-base';
 // import SideBar from "./SideBar.js";
@@ -156,6 +156,22 @@ const App: () => React$Node = () => {
         bootstrapApp(dispatch);
         //userProfile();
         initiateDB();
+        initiateLocation();
+        const subscription = DeviceEventEmitter.addListener(
+            NativeModules.LocationManager.JS_LOCATION_EVENT_NAME,
+            (e) => {
+                console.log(
+                    `Received Coordinates from native side at ${new Date(
+                        e.timestamp,
+                    ).toTimeString()}: `,
+                    e.latitude,
+                    e.longitude,
+                );
+            },
+        );
+        return function cleanup() {
+            subscription.remove();
+        }
     }, []);
 
     async function userProfile() {
