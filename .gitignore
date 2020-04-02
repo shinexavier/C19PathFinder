@@ -1,4 +1,4 @@
 node_modules/
 .vscode/
 .deployment
-server/resources/upload/excel/
+server/resources/upload/routeMaps/

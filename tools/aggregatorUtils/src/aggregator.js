@@ -10,7 +10,6 @@ const MAX_MOVEMENT_VELOCITY = 5 * 1000 / (60 * 60 * 1000);
 
 const getEnrichedLocationPoint = function (locationPoints, index) {
     const locationPoint = locationPoints[index];
-
     if (!locationPoint) {
         return null
     } else if (+(locationPoint['timestampMs']) > TIMESTAMPMS_VALUE_15_DAYS &&
@@ -54,6 +53,11 @@ const aggregate = function (locationPoints) {
     const aggregatedLocationPoints = [];
     let i = 0;
     let currentLocationPoint = getEnrichedLocationPoint(locationPoints, i);
+    
+    while(i < locationPoints.length && !currentLocationPoint) {
+        currentLocationPoint = getEnrichedLocationPoint(locationPoints, ++i);
+    }
+
     let nextLocationPoint;
 
     while (i < locationPoints.length && !!currentLocationPoint) {

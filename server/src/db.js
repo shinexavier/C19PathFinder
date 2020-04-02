@@ -34,7 +34,6 @@ function connect() {
 
       var models = glob.sync(config.ROOT + '/src/models/*.js');
       models.forEach(function (model) {
-        // console.log(model);
         require(model);
       });
     })

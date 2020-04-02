@@ -28,6 +28,7 @@ import EmergencyWarningSigns from './src/EmergencyWarningSignsScreen';
 import AboutScreen from './src/AboutScreen';
 import UserProfile from './src/UserProfileScreen';
 import HeatMapScreen from './src/HeatMapScreen';
+import LocationLogScreen from './src/ LocationLogScreen';
 
 import { WebView } from 'react-native-webview';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -36,6 +37,9 @@ import { initiateDB, bootstrapApp, initiateLocation } from './src/SetupTasks';
 
 // import { Drawer } from 'native-base';
 // import SideBar from "./SideBar.js";
+
+import { openDatabase } from 'react-native-sqlite-storage';
+var db = openDatabase({ name: 'C19PathFinder.db', location: 'default' });
 
 const AuthContext = React.createContext();
 
@@ -97,6 +101,7 @@ const DrawerView = () => {
             />
             <Drawer.Screen name="About" component={AboutScreen} />
             <Drawer.Screen name="Profile" component={UserProfile} />
+            <Drawer.Screen name="Location Log" component={LocationLogScreen} />
         </Drawer.Navigator>
     );
 };
@@ -167,6 +172,15 @@ const App: () => React$Node = () => {
                     e.latitude,
                     e.longitude,
                 );
+                db.transaction(function (txn) {
+                    txn.executeSql(
+                        `INSERT INTO "gpsLog" ("latitudeE7","longitudeE7",timestampMs) VALUES (${e.latitude},${e.longitude},${e.timestamp})`,
+                        [],
+                        function (tx, result) { },
+                        function (error) {
+                        }
+                    );
+                });
             },
         );
         return function cleanup() {

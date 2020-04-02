@@ -48,6 +48,12 @@ var config = {
     ROUTEMAP: 'routeMap',
     MIXED: 'mixed',
   },
+  DEGREE_OF_CONTACT: {
+    INFECTED: 0,
+    FIRST_DEGREE: 1,
+    SECOND_DEGREE: 2,
+    THIRD_DEGREE: 3,
+  },
 };
 
 module.exports = config;
