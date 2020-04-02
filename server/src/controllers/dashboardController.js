@@ -117,7 +117,6 @@ function show(list) {
   });
 }
 
-module.exports = {
-  path: '/',
-  router: router,
+module.exports = (app) => {
+  app.use('/', router);
 };

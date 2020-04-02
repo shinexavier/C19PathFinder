@@ -22,7 +22,6 @@ function uploadHandler(req, res, next) {
 
 router.get('/route-map-upload', [routeMapUpload.single('file'), uploadHandler]);
 
-module.exports = {
-  path: '/user',
-  router: router,
+module.exports = (app) => {
+  app.use('/user', router);
 };

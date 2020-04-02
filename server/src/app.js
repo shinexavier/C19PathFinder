@@ -8,8 +8,7 @@ app.use(express.urlencoded({ extended: false }));
 
 const controllers = glob.sync(config.ROOT + '/src/controllers/*.js');
 controllers.forEach(function (controller) {
-  let routerObject = require(controller);
-  app.use(routerObject.path, routerObject.router);
+  require(controller)(app);
 });
 
 app.use(function (req, res, next) {

@@ -8,7 +8,6 @@ var heartBeatHandler = function (req, res, next) {
 
 router.get('/', heartBeatHandler);
 
-module.exports = {
-  path: '/',
-  router: router,
+module.exports = (app) => {
+  app.use('/', router);
 };
