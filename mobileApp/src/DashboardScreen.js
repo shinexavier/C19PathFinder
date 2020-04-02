@@ -223,11 +223,14 @@ const DashboardScreen: () => React$Node = props => {
                 setConfirmedCases(cc);
                 setRecoveredCases(stateData[i].dischargedCases);
                 setDeceasedCases(stateData[i].deathCases);
+                let ac = cc - stateData[i].dischargedCases;
+                setActiveCases(ac);
                 break;
             } else {
                 setConfirmedCases(0);
                 setRecoveredCases(0);
                 setDeceasedCases(0);
+                setActiveCases(0);
             }
         }
         //getNumbers(val);
@@ -364,10 +367,6 @@ const DashboardScreen: () => React$Node = props => {
                                         height="600"
                                         stroke="red"
                                         viewBox="0 50 630 650"
-                                        style={{
-                                            borderColor: 'black',
-                                            borderWidth: 1
-                                        }}
                                     >
                                         <SvgText
                                             fill="#696969"
@@ -776,6 +775,16 @@ const DashboardScreen: () => React$Node = props => {
                                                 textAnchor="middle"
                                             >
                                                 Active
+                                            </SvgText>
+                                            <SvgText
+                                                x="240"
+                                                y="750"
+                                                stroke="#177cff"
+                                                fill="#177cff"
+                                                fontSize="25"
+                                                textAnchor="middle"
+                                            >
+                                                {activeCases}
                                             </SvgText>
                                         </G>
                                         <G>
