@@ -174,6 +174,14 @@ export function initiateDB() {
                 //console.log("")
             }
         );
+
+        txn.executeSql(
+            'CREATE TABLE IF NOT EXISTS gpsLog (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, latitudeE7	INTEGER, longitudeE7	INTEGER, timestampMs	INTEGER)',
+            [],
+            function (tx, result) { },
+            function (error) {
+            }
+        );
     });
     preloadStates();
     preloadTestingCentres();
