@@ -31,19 +31,20 @@ This repository contains the code for the server application. It is built on Nod
 
 ### Tasks
 #### Functional 
-- [ ] Victim's Location History API [POST]
-- [ ] Victim's Location History API - FILE UPLOAD [POST]
+- [x] Routemap Upload / User Upload  [POST]
+- [x] User upload verification
+- [x] User [GET]
+- [ ] User [POST]
 - [ ] Victim's Location History API [GET]
     - Parameters
       - timestamp
-      - geoCenter
-- [ ] Refactoring finalNumbers and testingSites APIs
 - [ ] Config API [GET]
 - [ ] Auth API for mobile app
 
 #### Technical
 - [x] Datamodel definition
 - [x] Connecting to Azure Cosmos DB
+- [ ] Enable logging of mongoose queries
 - [ ] DB Indexing
   - Indexing is done as part of mongoose
   - In Cosmos DB, indexing should be done prior to data insertion

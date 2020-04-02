@@ -83,6 +83,7 @@ function getLocationPoint(uploadUserPoint) {
     startTimestampMs: startTimestampMs,
     endTimestampMs: endTimestampMs,
     sourceType: config.SOURCE_TYPES.ROUTEMAP,
+    isDeleted: false,
   };
 
   return new LocationPoint(locationPointObject);
@@ -95,6 +96,7 @@ function getUser(patientId, locationPoint) {
   user.sourceType = config.SOURCE_TYPES.ROUTEMAP;
   user.sourceId = patientId;
   user.locationHistory = [locationPoint];
+  user.isDeleted = false;
   user.isVerified = false;
   return user;
 }

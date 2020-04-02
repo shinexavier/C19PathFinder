@@ -23,8 +23,16 @@ var UserSchema = new Schema({
   epidemicContactStatus: EpidemicContactSchema,
   locationHistory: [LocationPointSchema],
   epidemicContactHistory: [EpidemicContactSchema],
-  isDeleted: Boolean,
-  isVerified: Boolean,
+  isDeleted: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
+  isVerified: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
 });
 
 mongoose.model('User', UserSchema);
