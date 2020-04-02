@@ -24,6 +24,7 @@ var UserSchema = new Schema({
   locationHistory: [LocationPointSchema],
   epidemicContactHistory: [EpidemicContactSchema],
   isDeleted: Boolean,
+  isVerified: Boolean,
 });
 
 mongoose.model('User', UserSchema);
