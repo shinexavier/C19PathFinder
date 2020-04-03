@@ -36,7 +36,35 @@ The project leverages the following software components to achieve its core obje
   * This would also have option to define the scan rules.
  
 
-## What this project is not?
+## Release Notes v1.0
 
-1. 
+1. Mobile App
+  * Android version only
+  * Capability to export and import Locations info for the past 14 days (the considered incubation time)
+  * You could either export directly from Google Takeout or leverage the web view provided by the app
+  * The app would seek appropriate permission and continuously track your location from the time of installation
+  * The app would display State-wise India Covid-19 statistics on an intuitive map
+  * The app would display a heat-map of the victims along with your location info (indicating your risk vs safety)
+  * The app would provide basic awareness info on Covid-19
+  
+2. Mobile Backend Service
+  * APIs for Statistics & Dashboards
+  * APIs for Heatmaps
+  * CSV Import of Victim Route map
+  
+## Team Info
+
+The following team members burned their midnight lamps to make this possible (despite their pressing work schedules).
+
+  * Shine Xavier
+  * Arun Antony
+  * Jacob Nelson
+  * Vaisakh Babu
+  * Jeswin Thomas Simon
+  
+They wish to thank their families, supporters, friends and employer who made this fruitful collaboration possible!
+
+There's more to be done and less a time for us humanity against this big fight with Covid-19 (and many such trojans that can question our very own existance). Come join hands for a better tomorrow...
+
+
 
