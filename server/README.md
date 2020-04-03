@@ -35,7 +35,8 @@ This repository contains the code for the server application. It is built on Nod
 - [x] User upload verification
 - [x] User [GET]
 - [ ] User [POST]
-- [x] Victim's Location History API [GET]
+- [x] Victim's Location History API - with no parameters [GET]
+- [ ] Victim's Location History API [GET]
     - Parameters
       - timestamp
 - [ ] Config API [GET]
