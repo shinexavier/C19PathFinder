@@ -27,24 +27,12 @@ app.use(function (req, res, next) {
   next(err);
 });
 
-if (app.get('env') === 'development') {
-  app.use(function (err, req, res, next) {
-    console.log(err);
-    res.status(err.status || 500);
-    res.json({
-      message: err.message,
-      error: err,
-      title: 'error',
-    });
-  });
-}
-
 app.use(function (err, req, res, next) {
   console.log(err);
   res.status(err.status || 500);
   res.json({
     message: err.message,
-    error: {},
+    error: err,
     title: 'error',
   });
 });

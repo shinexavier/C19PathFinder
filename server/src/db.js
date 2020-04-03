@@ -8,6 +8,9 @@ var config = require('./utils/config');
 // Plugin bluebird promise implementation
 mongoose.Promise = require('bluebird');
 
+// Enabling mongoose debug to true for query logging
+mongoose.set('debug', true);
+
 var connectionString =
   'mongodb://' +
   config.COSMOSDB_HOST +
