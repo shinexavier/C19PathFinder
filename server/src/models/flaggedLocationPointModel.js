@@ -45,6 +45,10 @@ var FlaggedLocationPointSchema = new Schema({
     default: false,
     required: true,
   },
+  lastUpdatedOn: {
+    type: Number,
+    required: true,
+  },
 });
 
 mongoose.model('FlaggedLocationPoint', FlaggedLocationPointSchema);

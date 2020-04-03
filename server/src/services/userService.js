@@ -45,6 +45,7 @@ function getFlaggedLocationPoints(user) {
       flaggedLocationPoint.epidemicContactTimestampMs =
         user.epidemicContactStatus.estimatedTimeOfContact;
       flaggedLocationPoint.isPurged = false;
+      flaggedLocationPoint.lastUpdatedOn = new Date().getTime();
 
       return flaggedLocationPoint;
     });
@@ -63,8 +64,7 @@ function verifyUser(userId) {
       session.startTransaction();
     })
     .then(() => {
-      return User.findOne(
-        { userId: userId },
+      return User.findOne({ userId: userId }).select(
         'locationHistory epidemicContactStatus'
       );
     })
@@ -88,9 +88,9 @@ function verifyUser(userId) {
 
 // Method to check whether the user is verified or not
 function isUserVerified(userId) {
-  return User.findOne({ userId: userId, isDeleted: false }, 'isVerified').then(
-    (user) => user && user.isVerified
-  );
+  return User.findOne({ userId: userId, isDeleted: false })
+    .select('isVerified')
+    .then((user) => user && user.isVerified);
 }
 
 module.exports = {
