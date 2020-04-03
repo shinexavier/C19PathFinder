@@ -37,67 +37,42 @@ import {
 
 const EmergencyWarningSigns: () => React$Node = () => {
     return (
-        <>
-            <StatusBar barStyle="dark-content" />
-            {/* <SafeAreaView> */}
-            <Container>
-                <Header>
-                    <Left />
-                    <Body>
-                        <Title>Emergency Warning Signs</Title>
-                    </Body>
-                </Header>
-                <ScrollView
-                    contentInsetAdjustmentBehavior="automatic"
-                    style={styles.scrollView}
-                >
-                    <View style={styles.sectionContainer}>
-                        <Card style={{ width: '100%' }}>
-                            <CardItem>
-                                <Text>
-                                    If you develop{' '}
-                                    <Text style={{ fontWeight: 'bold' }}>
-                                        emergency warning signs
-                                    </Text>{' '}
-                                    for COVID-19 get{' '}
-                                    <Text style={{ fontWeight: 'bold' }}>
-                                        medical attention immediately
-                                    </Text>
-                                    . Emergency warning signs include
-                                </Text>
-                            </CardItem>
-                            <CardItem>
-                                <Text>
-                                    1. Difficulty breathing or shortness of
-                                    breath
-                                </Text>
-                            </CardItem>
-                            <CardItem>
-                                <Text>
-                                    2. Persistent pain or pressure in the chest
-                                </Text>
-                            </CardItem>
-                            <CardItem>
-                                <Text>
-                                    3. New confusion or inability to arouse
-                                </Text>
-                            </CardItem>
-                            <CardItem>
-                                <Text>4. Bluish lips or face</Text>
-                            </CardItem>
-                            <CardItem footer>
-                                <Text style={styles.answeredBy}>
-                                    Disclaimer: This list is not all inclusive.
-                                    Please consult your medical provider for any
-                                    other symptoms that are severe or
-                                    concerning.
-                                </Text>
-                            </CardItem>
-                        </Card>
-                    </View>
-                </ScrollView>
-            </Container>
-        </>
+        <View>
+            <Card style={{ width: '100%' }}>
+                <CardItem>
+                    <Text>
+                        If you develop{' '}
+                        <Text style={{ fontWeight: 'bold' }}>
+                            emergency warning signs
+                        </Text>{' '}
+                        for COVID-19 get{' '}
+                        <Text style={{ fontWeight: 'bold' }}>
+                            medical attention immediately
+                        </Text>
+                        . Emergency warning signs include
+                    </Text>
+                </CardItem>
+                <CardItem>
+                    <Text>1. Difficulty breathing or shortness of breath</Text>
+                </CardItem>
+                <CardItem>
+                    <Text>2. Persistent pain or pressure in the chest</Text>
+                </CardItem>
+                <CardItem>
+                    <Text>3. New confusion or inability to arouse</Text>
+                </CardItem>
+                <CardItem>
+                    <Text>4. Bluish lips or face</Text>
+                </CardItem>
+                <CardItem footer>
+                    <Text style={styles.answeredBy}>
+                        Disclaimer: This list is not all inclusive. Please
+                        consult your medical provider for any other symptoms
+                        that are severe or concerning.
+                    </Text>
+                </CardItem>
+            </Card>
+        </View>
     );
 };
 

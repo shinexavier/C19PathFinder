@@ -46,7 +46,7 @@ function Item({ title, data }) {
     );
 }
 
-const TestCentresScreen: () => React$Node = () => {
+const TestCentres: () => React$Node = () => {
     const [testingSites, setTestingSites] = useState();
 
     useEffect(() => {
@@ -98,29 +98,11 @@ const TestCentresScreen: () => React$Node = () => {
     }, []);
 
     return (
-        <>
-            <StatusBar barStyle="dark-content" />
-            <Container>
-                <Header>
-                    <Left />
-                    <Body>
-                        <Title>Testing Centres</Title>
-                    </Body>
-                </Header>
-                {testingSites && (
-                    <ScrollView
-                        contentInsetAdjustmentBehavior="automatic"
-                        style={styles.scrollView}
-                    >
-                        <View style={styles.sectionContainer}>
-                            {testingSites.map(item => (
-                                <Item title={item.state} data={item.data} />
-                            ))}
-                        </View>
-                    </ScrollView>
-                )}
-            </Container>
-        </>
+        <View>
+            {testingSites.map(item => (
+                <Item title={item.state} data={item.data} />
+            ))}
+        </View>
     );
 };
 
@@ -151,4 +133,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default TestCentresScreen;
+export default TestCentres;
