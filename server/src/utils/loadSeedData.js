@@ -21,11 +21,11 @@ db.connect().then(function () {
       airport: 1459993,
     },
     confirmedCases: {
-      indian: 191,
-      foreign: 32,
+      indian: 2546,
+      foreign: 0,
     },
-    dischargedCases: 22,
-    deathCases: 4,
+    dischargedCases: 162,
+    deathCases: 62,
   });
 
   gstats_common.save(function (err, gStats) {
@@ -38,149 +38,14 @@ db.connect().then(function () {
     statistics: [{
       state: 'Andhra Pradesh',
       confirmedCases: {
-        indian: 3,
-        foreign: 0,
-      },
-      dischargedCases: 0,
-      deathCases: 0,
-    },
-    {
-      state: 'Chhattisgarh',
-      confirmedCases: {
-        indian: 1,
-        foreign: 0,
-      },
-      dischargedCases: 0,
-      deathCases: 0,
-    },
-    {
-      state: 'Delhi',
-      confirmedCases: {
-        indian: 16,
-        foreign: 1,
-      },
-      dischargedCases: 5,
-      deathCases: 1,
-    },
-    {
-      state: 'Gujarat',
-      confirmedCases: {
-        indian: 5,
-        foreign: 0,
-      },
-      dischargedCases: 0,
-      deathCases: 0,
-    },
-    {
-      state: 'Haryana',
-      confirmedCases: {
-        indian: 3,
-        foreign: 14,
-      },
-      dischargedCases: 0,
-      deathCases: 0,
-    },
-    {
-      state: 'Karnataka',
-      confirmedCases: {
-        indian: 15,
+        indian: 132,
         foreign: 0,
       },
       dischargedCases: 1,
       deathCases: 1,
     },
     {
-      state: 'Kerala',
-      confirmedCases: {
-        indian: 26,
-        foreign: 2,
-      },
-      dischargedCases: 3,
-      deathCases: 0,
-    },
-    {
-      state: 'Maharashtra',
-      confirmedCases: {
-        indian: 49,
-        foreign: 3,
-      },
-      dischargedCases: 0,
-      deathCases: 1,
-    },
-    {
-      state: 'Odisha',
-      confirmedCases: {
-        indian: 2,
-        foreign: 0,
-      },
-      dischargedCases: 0,
-      deathCases: 0,
-    },
-    {
-      state: 'Puducherry',
-      confirmedCases: {
-        indian: 1,
-        foreign: 0,
-      },
-      dischargedCases: 0,
-      deathCases: 0,
-    },
-    {
-      state: 'Punjab',
-      confirmedCases: {
-        indian: 2,
-        foreign: 0,
-      },
-      dischargedCases: 0,
-      deathCases: 1,
-    },
-    {
-      state: 'Rajasthan',
-      confirmedCases: {
-        indian: 15,
-        foreign: 2,
-      },
-      dischargedCases: 3,
-      deathCases: 0,
-    },
-    {
-      state: 'Tamil Nadu',
-      confirmedCases: {
-        indian: 3,
-        foreign: 0,
-      },
-      dischargedCases: 1,
-      deathCases: 0,
-    },
-    {
-      state: 'Telengana',
-      confirmedCases: {
-        indian: 8,
-        foreign: 9,
-      },
-      dischargedCases: 1,
-      deathCases: 0,
-    },
-    {
-      state: 'Chandigarh',
-      confirmedCases: {
-        indian: 1,
-        foreign: 0,
-      },
-      dischargedCases: 0,
-      deathCases: 0,
-    },
-    {
-      state: 'Jammu & Kashmir',
-      confirmedCases: {
-        indian: 4,
-        foreign: 0,
-      },
-      dischargedCases: 0,
-      deathCases: 0,
-    },
-    {
-      state: 'Ladakh',
+      state: 'Andaman and Nicobar Islands',
       confirmedCases: {
         indian: 10,
         foreign: 0,
@@ -189,31 +54,260 @@ db.connect().then(function () {
       deathCases: 0,
     },
     {
-      state: 'Uttar Pradesh',
+      state: 'Arunachal Pradesh',
       confirmedCases: {
-        indian: 22,
-        foreign: 1,
-      },
-      dischargedCases: 9,
-      deathCases: 0,
-    },
-    {
-      state: 'Uttarakhand',
-      confirmedCases: {
-        indian: 3,
+        indian: 10,
         foreign: 0,
       },
       dischargedCases: 0,
       deathCases: 0,
     },
     {
-      state: 'West Bengal',
+      state: 'Assam',
+      confirmedCases: {
+        indian: 16,
+        foreign: 0,
+      },
+      dischargedCases: 0,
+      deathCases: 0,
+    },
+
+    {
+      state: 'Bihar',
+      confirmedCases: {
+        indian: 29,
+        foreign: 0,
+      },
+      dischargedCases: 0,
+      deathCases: 1,
+    },    
+    {
+      state: 'Chandigarh',
+      confirmedCases: {
+        indian: 18,
+        foreign: 0,
+      },
+      dischargedCases: 0,
+      deathCases: 1,
+    },         
+    {
+      state: 'Chhattisgarh',
+      confirmedCases: {
+        indian: 9,
+        foreign: 0,
+      },
+      dischargedCases: 3,
+      deathCases: 0,
+    },
+    {
+      state: 'Delhi',
+      confirmedCases: {
+        indian: 219,
+        foreign: 0,
+      },
+      dischargedCases: 8,
+      deathCases: 4,
+    },
+    {
+      state: 'Goa',
+      confirmedCases: {
+        indian: 6,
+        foreign: 0,
+      },
+      dischargedCases: 0,
+      deathCases: 0,
+    },    
+    {
+      state: 'Gujarat',
+      confirmedCases: {
+        indian: 95,
+        foreign: 0,
+      },
+      dischargedCases: 10,
+      deathCases: 8,
+    },
+    {
+      state: 'Haryana',
+      confirmedCases: {
+        indian: 49,
+        foreign: 0,
+      },
+      dischargedCases: 24,
+      deathCases: 0,
+    },
+
+    {
+      state: 'Himachal Pradesh',
+      confirmedCases: {
+        indian: 6,
+        foreign: 0,
+      },
+      dischargedCases: 1,
+      deathCases: 1,
+    },  
+    {
+      state: 'Jammu and Kashmir',
+      confirmedCases: {
+        indian: 75,
+        foreign: 0,
+      },
+      dischargedCases: 3,
+      deathCases: 2,
+    }, 
+    {
+      state: 'Jharkhand',
       confirmedCases: {
         indian: 2,
         foreign: 0,
       },
       dischargedCases: 0,
       deathCases: 0,
+    },                
+    {
+      state: 'Karnataka',
+      confirmedCases: {
+        indian: 124,
+        foreign: 0,
+      },
+      dischargedCases: 10,
+      deathCases: 3,
+    },
+    {
+      state: 'Kerala',
+      confirmedCases: {
+        indian: 286,
+        foreign: 0,
+      },
+      dischargedCases: 27,
+      deathCases: 2,
+    },
+
+    {
+      state: 'Ladakh',
+      confirmedCases: {
+        indian: 14,
+        foreign: 0,
+      },
+      dischargedCases: 3,
+      deathCases: 0,
+    },   
+    {
+      state: 'Madhya Pradesh',
+      confirmedCases: {
+        indian: 104,
+        foreign: 0,
+      },
+      dischargedCases: 0,
+      deathCases: 6,
+    },        
+    {
+      state: 'Maharashtra',
+      confirmedCases: {
+        indian: 335,
+        foreign: 0,
+      },
+      dischargedCases: 42,
+      deathCases: 16,
+    },
+    {
+      state: 'Manipur',
+      confirmedCases: {
+        indian: 2,
+        foreign: 0,
+      },
+      dischargedCases: 0,
+      deathCases: 0,
+    },
+    {
+      state: 'Mizoram',
+      confirmedCases: {
+        indian: 1,
+        foreign: 0,
+      },
+      dischargedCases: 0,
+      deathCases: 0,
+    },        
+    {
+      state: 'Odisha',
+      confirmedCases: {
+        indian: 5,
+        foreign: 0,
+      },
+      dischargedCases: 0,
+      deathCases: 0,
+    },
+    {
+      state: 'Puducherry',
+      confirmedCases: {
+        indian: 5,
+        foreign: 0,
+      },
+      dischargedCases: 1,
+      deathCases: 0,
+    },
+    {
+      state: 'Punjab',
+      confirmedCases: {
+        indian: 48,
+        foreign: 0,
+      },
+      dischargedCases: 1,
+      deathCases: 5,
+    },
+    {
+      state: 'Rajasthan',
+      confirmedCases: {
+        indian: 167,
+        foreign: 0,
+      },
+      dischargedCases: 3,
+      deathCases: 0,
+    },
+    {
+      state: 'Tamil Nadu',
+      confirmedCases: {
+        indian: 309,
+        foreign: 0,
+      },
+      dischargedCases: 6,
+      deathCases: 1,
+    },
+    {
+      state: 'Telengana',
+      confirmedCases: {
+        indian: 158,
+        foreign: 0,
+      },
+      dischargedCases: 1,
+      deathCases: 7,
+    },
+    {
+      state: 'Uttarakhand',
+      confirmedCases: {
+        indian: 10,
+        foreign: 0,
+      },
+      dischargedCases: 2,
+      deathCases: 0,
+    },    
+    {
+      state: 'Uttar Pradesh',
+      confirmedCases: {
+        indian: 172,
+        foreign: 0,
+      },
+      dischargedCases: 14,
+      deathCases: 2,
+    },
+
+    {
+      state: 'West Bengal',
+      confirmedCases: {
+        indian: 63,
+        foreign: 0,
+      },
+      dischargedCases: 3,
+      deathCases: 3,
     },
     ],
   });

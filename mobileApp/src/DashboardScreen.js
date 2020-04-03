@@ -223,7 +223,7 @@ const DashboardScreen: () => React$Node = props => {
                 setConfirmedCases(cc);
                 setRecoveredCases(stateData[i].dischargedCases);
                 setDeceasedCases(stateData[i].deathCases);
-                let ac = cc - stateData[i].dischargedCases;
+                let ac = cc - stateData[i].dischargedCases - stateData[i].deathCases;
                 setActiveCases(ac);
                 break;
             } else {
