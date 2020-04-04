@@ -19,7 +19,7 @@ const AboutAppScreen = () => {
         
         <WebView
             originWhitelist={['*']}
-            source={{ uri: `${Config.API_URL}/terms.html` }}
+            source={{ uri: `${Config.API_URL}/about.html` }}
             renderLoading={renderLoadingView} startInLoadingState={true}
             scalesPageToFit={false}  />  
     );

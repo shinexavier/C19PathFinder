@@ -528,11 +528,9 @@ const DashboardScreen: () => React$Node = props => {
             <StatusBar barStyle="dark-content" />
             <Container>
                 <Header>
-                    <Left />
                     <Body>
                         <Title>C19 Path Finder</Title>
                     </Body>
-                    <Right />
                 </Header>
                 <ScrollView
                     contentInsetAdjustmentBehavior="automatic"
