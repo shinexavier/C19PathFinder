@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Promise = require('bluebird');
 
 const User = mongoose.model('User');
 const FlaggedLocationPoint = mongoose.model('FlaggedLocationPoint');
@@ -6,6 +7,18 @@ const FlaggedLocationPoint = mongoose.model('FlaggedLocationPoint');
 // Method to get a single user by userId
 function getUser(userId) {
   return User.findOne({ userId: userId, isDeleted: false });
+}
+
+// Method to update user
+function upsertUser(userId, userObject) {
+  const conditions = { userId: userId };
+  const options = {
+    new: true,
+    upsert: true,
+    fields: '-_id -__v',
+  };
+
+  return User.findOneAndUpdate(conditions, userObject, options);
 }
 
 // Method to bulk insert user
@@ -64,9 +77,7 @@ function verifyUser(userId) {
       session.startTransaction();
     })
     .then(() => {
-      return User.findOne({ userId: userId }).select(
-        'locationHistory epidemicContactStatus'
-      );
+      return User.findOne({ userId: userId });
     })
     .then((user) => {
       user.isVerified = true;
@@ -90,11 +101,13 @@ function verifyUser(userId) {
 function isUserVerified(userId) {
   return User.findOne({ userId: userId, isDeleted: false })
     .select('isVerified')
+    .lean()
     .then((user) => user && user.isVerified);
 }
 
 module.exports = {
   getUser: getUser,
+  upsertUser: upsertUser,
   insertMany: insertMany,
   isUserVerified: isUserVerified,
   verifyUser: verifyUser,

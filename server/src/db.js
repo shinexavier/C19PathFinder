@@ -31,6 +31,7 @@ function connect() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       autoIndex: false,
+      useFindAndModify: false,
     })
     .then(function () {
       console.log('connected to database: ' + config.COSMOSDB_DBNAME);

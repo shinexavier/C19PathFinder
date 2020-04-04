@@ -2,6 +2,7 @@ const express = require('express');
 const routeMapUpload = require('./../utils/fileuploadUtil').routeMapUpload;
 const uploadService = require('./../services/uploadService');
 const userService = require('./../services/userService');
+
 const router = express.Router();
 
 async function getUserHandler(req, res, next) {
@@ -20,6 +21,18 @@ async function getUserHandler(req, res, next) {
   }
 
   return res.json(user);
+}
+
+async function updateUserHandler(req, res, next) {
+  const userId = req.params.userId;
+  const userObject = req.body;
+  
+  return userService
+    .upsertUser(userId, userObject)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch(next);
 }
 
 async function routeMapUploadHandler(req, res, next) {
@@ -75,6 +88,7 @@ async function verifyUserHandler(req, res, next) {
 }
 
 router.get('/:userId', getUserHandler);
+router.put('/:userId', updateUserHandler);
 router.get('/upload/route-map', [
   routeMapUpload.single('file'),
   routeMapUploadHandler,

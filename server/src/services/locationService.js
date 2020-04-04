@@ -8,7 +8,9 @@ function getFlaggedLocationPoints() {
     lastUpdatedOn: 0,
     __v: 0,
   };
-  return FlaggedLocationPoint.find({ isPurged: false }).select(projections);
+  return FlaggedLocationPoint.find({ isPurged: false })
+    .select(projections)
+    .lean();
 }
 
 module.exports = {
