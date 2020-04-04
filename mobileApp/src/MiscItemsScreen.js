@@ -16,13 +16,13 @@ const MiscItemsListScreen = ({ navigation }) => {
                 color="black" />
             <Text style={styles.listTitle}>About</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('Profile')}>
+        {/* <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('Profile')}>
             <Icon style={{ paddingRight: 10 }}
                 name="user-o"
                 size={20}
                 color="black" />
             <Text style={styles.listTitle}>Profile</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity style={styles.listItem} onPress={() => navigation.navigate('General Information')}>
             <Icon style={{ paddingRight: 10 }}
                 name="book"

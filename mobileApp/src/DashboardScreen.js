@@ -388,18 +388,18 @@ const DashboardScreen: () => React$Node = props => {
     //let stateData = []
 
     function getStates() {
-        db.transaction(function(txn) {
+        db.transaction(function (txn) {
             let s = [];
             txn.executeSql(
                 'SELECT * FROM state',
                 [],
-                function(tx, res) {
+                function (tx, res) {
                     for (let i = 0; i < res.rows.length; i++) {
                         s.push(res.rows.item(i).name);
                     }
                     setStates(s);
                 },
-                function(error) {}
+                function (error) { }
             );
         });
     }
@@ -456,28 +456,28 @@ const DashboardScreen: () => React$Node = props => {
     }
 
     function getNumbers(state) {
-            axios
-                .get(`${Config.API_URL}/dashboard/global`)
-                .then(({ data }) => {
-                    console.log(data);
-                    //setFinalNumbers(data);
-                    let cc =
+        axios
+            .get(`${Config.API_URL}/dashboard/global`)
+            .then(({ data }) => {
+                console.log(data);
+                //setFinalNumbers(data);
+                let cc =
                     data[0].confirmedCases.foreign +
                     data[0].confirmedCases.indian;
-                    setConfirmedCases(cc);
+                setConfirmedCases(cc);
                 setRecoveredCases(data[0].dischargedCases);
                 setDeceasedCases(data[0].deathCases);
                 let ac = cc - data[0].dischargedCases - data[0].deathCases;
                 setActiveCases(ac);
-                })
-                .catch(error =>
-                    console.log(
-                        'National Level final numbers fetching error:',
-                        error
-                    )
-                );
-        
-            
+            })
+            .catch(error =>
+                console.log(
+                    'National Level final numbers fetching error:',
+                    error
+                )
+            );
+
+
         axios
             .get(`${Config.API_URL}/dashboard/india/states`)
             .then(({ data }) => {
@@ -488,7 +488,7 @@ const DashboardScreen: () => React$Node = props => {
                 console.log('Statewise final numbers fetching error: ', error)
             );
 
-        
+
     }
 
     useEffect(() => {
@@ -527,6 +527,13 @@ const DashboardScreen: () => React$Node = props => {
         <>
             <StatusBar barStyle="dark-content" />
             <Container>
+                <Header>
+                    <Left />
+                    <Body>
+                        <Title>C19 Path Finder</Title>
+                    </Body>
+                    <Right />
+                </Header>
                 <ScrollView
                     contentInsetAdjustmentBehavior="automatic"
                     style={styles.scrollView}

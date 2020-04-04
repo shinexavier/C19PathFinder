@@ -49,8 +49,8 @@ const HeatMapScreen = ({navigation}) => (
       region={{
         latitude: takeoutData[0].latitudeE7 / 1e7,
         longitude: takeoutData[0].longitudeE7 / 1e7,
-        latitudeDelta: 0.3,
-        longitudeDelta: 0.3,
+        latitudeDelta: 3,
+        longitudeDelta: 3,
       }}
       customMapStyle={Aubergine}
     >
