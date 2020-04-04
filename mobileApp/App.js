@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect, Component } from 'react';
 
-import { Text, TouchableOpacity, View,ActivityIndicator, ImageBackground, Button, DeviceEventEmitter, NativeModules } from 'react-native';
+import { Text, TouchableOpacity, View, ActivityIndicator, ImageBackground, Button, DeviceEventEmitter, NativeModules } from 'react-native';
 
 import 'react-native-gesture-handler';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
@@ -50,6 +50,20 @@ const SplashScreen = () => {
     }}></ImageBackground>);
 }
 
+const MapStackView = () => {
+    const Stack = createStackNavigator();
+    return (<Stack.Navigator>
+        <Stack.Screen
+            name="Map View"
+            component={HeatMapScreen}
+        />
+        <Stack.Screen
+            name="My Risk"
+            component={MyRiskScreen}
+        />
+    </Stack.Navigator>);
+}
+
 const TabView = () => {
     const Tab = createBottomTabNavigator();
     return (
@@ -78,7 +92,7 @@ const TabView = () => {
             }}
         >
             <Tab.Screen name="Dashboard" component={DashboardScreen} />
-            <Tab.Screen name="HeatMap" component={HeatMapScreen} />
+            <Tab.Screen name="HeatMap" component={MapStackView} />
             {/* <Tab.Screen name="My Risk" component={MyRiskScreen} /> */}
         </Tab.Navigator>
     );
