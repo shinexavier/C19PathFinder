@@ -15,8 +15,9 @@ import {
 
 import 'react-native-gesture-handler';
 
-import MapView, { Heatmap, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Heatmap, PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
+import { takeoutData, patient_pkd } from './data/MockData';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject,
-    height: 400,
+    // height: 400,
   },
 });
 
@@ -37,72 +38,6 @@ let points = [
   { latitude: 6.82176681, longitude: 79.871319, weight: 3 },
   { latitude: 6.83776681, longitude: 79.871319, weight: 4 },
   { latitude: 6.8317, longitude: 79.8713, weight: 5 },
-  // { latitude: 6.83976681, longitude: 79.861319, weight: 5 },
-  // { latitude: 6.83076681, longitude: 79.861319, weight: 4 },
-  // { latitude: 6.82776681, longitude: 79.861319, weight: 4 },
-  // { latitude: 6.82076681, longitude: 79.871319, weight: 4 },
-  // { latitude: 6.82076681, longitude: 79.861319, weight: 4 },
-  // { latitude: 6.81076681, longitude: 79.861319, weight: 4 },
-  // { latitude: 6.83776681, longitude: 79.869319, weight: 3 },
-  // { latitude: 6.83276681, longitude: 79.869319, weight: 3 },
-  // { latitude: 6.81976681, longitude: 79.869319, weight: 3 },
-  // { latitude: 6.83776681, longitude: 79.867319, weight: 3 },
-  // { latitude: 6.83776681, longitude: 79.865319, weight: 3 },
-  // { latitude: 6.83646681, longitude: 79.77121907, weight: 2 },
-  // { latitude: 6.82776681, longitude: 79.871319, weight: 2 },
-  // { latitude: 6.82176681, longitude: 79.871319, weight: 2 },
-  // { latitude: 6.83776681, longitude: 79.871319, weight: 2 },
-  // { latitude: 6.83176681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.83976681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.83076681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.82776681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.82076681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.82076681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.81076681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.83276681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.81976681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.867319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.865319, weight: 1 },
-  // { latitude: 6.84076681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.83646681, longitude: 79.77121907, weight: 1 },
-  // { latitude: 6.82776681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.82176681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.83176681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.83976681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.83076681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.82776681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.82076681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.82076681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.81076681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.83276681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.81976681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.867319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.865319, weight: 1 },
-  // { latitude: 6.84076681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.841776681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.83646681, longitude: 79.77121907, weight: 1 },
-  // { latitude: 6.82776681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.82176681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.83176681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.83976681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.83076681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.82776681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.82076681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.82076681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.81076681, longitude: 79.861319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.83276681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.81976681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.867319, weight: 1 },
-  // { latitude: 6.83776681, longitude: 79.865319, weight: 1 },
-  // { latitude: 6.84076681, longitude: 79.871319, weight: 1 },
-  // { latitude: 6.841776681, longitude: 79.869319, weight: 1 },
-  // { latitude: 6.84076681, longitude: 79.871319, weight: 1 },
-
 ];
 
 const HeatMapScreen = () => (
@@ -111,29 +46,48 @@ const HeatMapScreen = () => (
       provider={PROVIDER_GOOGLE}
       style={styles.map}
       region={{
-        latitude: 6.82776681,
-        longitude: 79.871319,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121,
+        latitude: takeoutData[0].latitudeE7 / 1e7,
+        longitude: takeoutData[0].longitudeE7 / 1e7,
+        latitudeDelta: 0.3,
+        longitudeDelta: 0.3,
       }}
     >
       <Heatmap
         provider={PROVIDER_GOOGLE}
         style={styles.map}
-        points={points}
-        region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
-        }}
+        points={patient_pkd.map(point => { return { latitude: point.latitudeE7 / 1e7, longitude: point.longitudeE7 / 1e7, weight: 3 } })}
+        // region={{
+        //   latitude: 37.78825,
+        //   longitude: -122.4324,
+        //   latitudeDelta: 0.015,
+        //   longitudeDelta: 0.0121,
+        // }}
         gradient={{
           colors: ["#79BC6A", "#BBCF4C", "#EEC20B", "#F29305", "#E50000"],
           startPoints: [0.01, 0.25, 0.50, 0.75, 1],
         }}
       ></Heatmap>
+      {takeoutData.map((marker, index) => (
+        <Marker
+          key={`${index}${marker.latitudeE7}${marker.longitudeE7}`}
+          coordinate={{ latitude: marker.latitudeE7 / 1e7, longitude: marker.longitudeE7 / 1e7 }}
+          // image={require('./images/blue-marker-smaller.png')}
+          title={"Your Location"}
+          description={`From ${new Date(marker.startTimestampMs)} \nto ${new Date(marker.endTimestampMs)} `}
+        />
+      ))}
+      {/* {patient_pkd.map(marker => (
+        <Marker
+          key={`${marker.latitudeE7}${marker.longitudeE7}`}
+          coordinate={{ latitude: marker.latitudeE7 / 1e7, longitude: marker.longitudeE7 / 1e7 }}
+          title={"Patient Location"}
+          description={`From ${new Date(marker.startTimestampMs)} \nto ${new Date(marker.endTimestampMs)} `}
+        />
+      ))} */}
     </MapView>
-    <Button style={{marginBottom:20}} title="Show my Data"></Button>
+    <View style={{ marginBottom: 20 }}>
+      <Button title="Show my Risk"></Button>
+    </View>
   </View>
 );
 

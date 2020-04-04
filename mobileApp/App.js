@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect, Component } from 'react';
 
-import { Text, TouchableOpacity, View, Button, DeviceEventEmitter, NativeModules } from 'react-native';
+import { Text, TouchableOpacity, View,ActivityIndicator, ImageBackground, Button, DeviceEventEmitter, NativeModules } from 'react-native';
 
 import 'react-native-gesture-handler';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
@@ -27,6 +27,7 @@ import GeneralInformation from './src/GeneralInformationScreen';
 
 import { WebView } from 'react-native-webview';
 import AsyncStorage from '@react-native-community/async-storage';
+import Config from 'react-native-config';
 
 import { initiateDB, bootstrapApp, initiateLocation } from './src/SetupTasks';
 
@@ -38,9 +39,15 @@ var db = openDatabase({ name: 'C19PathFinder.db', location: 'default' });
 
 const AuthContext = React.createContext();
 
+const splashImage = require('./src/images/mask-image2.jpg')
+
 // TODO:- Design splashscreen
 const SplashScreen = () => {
-    return (<View><Text>Beyond Thoughts</Text></View>);
+    return (<ImageBackground source={splashImage} style={{
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
+    }}></ImageBackground>);
 }
 
 const TabView = () => {
@@ -72,7 +79,7 @@ const TabView = () => {
         >
             <Tab.Screen name="Dashboard" component={DashboardScreen} />
             <Tab.Screen name="HeatMap" component={HeatMapScreen} />
-            <Tab.Screen name="My Risk" component={MyRiskScreen} />
+            {/* <Tab.Screen name="My Risk" component={MyRiskScreen} /> */}
         </Tab.Navigator>
     );
 };
@@ -89,14 +96,26 @@ const DrawerView = () => {
     );
 };
 
-const terms = require('./src/terms.html')
+const terms = require('./src/terms.html');
+
+const renderLoadingView = () => {
+    return (
+        <ActivityIndicator
+            color='#bc2b78'
+            style={{ position: "absolute", left: 0, right: 0, bottom: 0, top: 0, }}
+            size="large"
+            hidesWhenStopped={true}
+        />
+    );
+}
 
 const TermsAndConditionsScreen = ({ navigation }) => {
     const { setTOCStatus } = React.useContext(AuthContext);
     return (<>
         <WebView
             originWhitelist={['*']}
-            source={terms} />
+            source={{ uri: `${Config.API_URL}/terms.html` }}
+            renderLoading={renderLoadingView} startInLoadingState={true} />
         <Button
             title='Accept'
             onPress={async () => {

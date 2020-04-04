@@ -99,7 +99,7 @@ const TestCentres: () => React$Node = () => {
 
     return (
         <View>
-            {testingSites.map(item => (
+            {testingSites && testingSites.map(item => (
                 <Item title={item.state} data={item.data} />
             ))}
         </View>
