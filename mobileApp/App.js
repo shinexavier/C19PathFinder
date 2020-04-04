@@ -24,6 +24,7 @@ import AboutScreen from './src/AboutScreen';
 import UserProfile from './src/UserProfileScreen';
 import HeatMapScreen from './src/HeatMapScreen';
 import GeneralInformation from './src/GeneralInformationScreen';
+import MiscItemsScreen from './src/MiscItemsScreen';
 
 import { WebView } from 'react-native-webview';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -54,7 +55,7 @@ const MapStackView = () => {
     const Stack = createStackNavigator();
     return (<Stack.Navigator>
         <Stack.Screen
-            name="Map View"
+            name="Risk Heatmap"
             component={HeatMapScreen}
         />
         <Stack.Screen
@@ -80,6 +81,8 @@ const TabView = () => {
                             : 'exclamation-triangle';
                     } else if (route.name === 'HeatMap') {
                         iconName = focused ? 'map-o' : 'map-o';
+                    } else if (route.name === 'Info') {
+                        iconName = focused ? 'list-ul' : 'list-ul';
                     }
 
                     // You can return any component that you like here!
@@ -93,6 +96,7 @@ const TabView = () => {
         >
             <Tab.Screen name="Dashboard" component={DashboardScreen} />
             <Tab.Screen name="HeatMap" component={MapStackView} />
+            <Tab.Screen name="Info" component={MiscItemsScreen} />
             {/* <Tab.Screen name="My Risk" component={MyRiskScreen} /> */}
         </Tab.Navigator>
     );
@@ -228,29 +232,29 @@ const App: () => React$Node = () => {
     return (
         <AuthContext.Provider value={authContext}>
             <NavigationContainer>
-                <Stack.Navigator>
+                <Stack.Navigator headerMode="none">
                     {state.tocStatus ?
                         <Stack.Screen
                             name="C19 Path Finder"
-                            component={DrawerView}
-                            options={({ navigation, route }) => ({
-                                headerLeft: props => (
-                                    <TouchableOpacity
-                                        onPress={() =>
-                                            navigation.dispatch(
-                                                DrawerActions.toggleDrawer()
-                                            )
-                                        }
-                                    >
-                                        <Icon
-                                            style={{ paddingLeft: 20 }}
-                                            name="bars"
-                                            size={30}
-                                            color="black"
-                                        />
-                                    </TouchableOpacity>
-                                )
-                            })}
+                            component={TabView}
+                            // options={({ navigation, route }) => ({
+                            //     headerLeft: props => (
+                            //         <TouchableOpacity
+                            //             onPress={() =>
+                            //                 navigation.dispatch(
+                            //                     DrawerActions.toggleDrawer()
+                            //                 )
+                            //             }
+                            //         >
+                            //             <Icon
+                            //                 style={{ paddingLeft: 20 }}
+                            //                 name="bars"
+                            //                 size={30}
+                            //                 color="black"
+                            //             />
+                            //         </TouchableOpacity>
+                            //     )
+                            // })}
                         /> :
                         <Stack.Screen
                             name="Terms and Conditions"
