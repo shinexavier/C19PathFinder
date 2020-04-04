@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1 id="c19pathfinder">C19PathFinder</h1>
+    <h2 id="about">About</h2>
+    <p>This project is an earnest attempt by a group of passionate software engineers to leverage technology and throw some light on the recent onset of <strong>Covid-19 (Corono)</strong> virus which has turned out to be a serious pandemic.</p>
+    <p>To contain this virus outbreak, it is absolutely critical to understand the path of it&#39;s transmission so that safety and preventive measures can be taken. The project intends to capture the path of virus through an infected person or potential <em>vectors (virus carriers)</em>. At this point the authorities are desperately trying to find, isolate and help the victims plus more importantly find potential <em>vectors</em>.</p>
+    <blockquote>
+    <p>The sad or scariest thing is that people are <ins>unaware</ins> of their pathway crossings (location co-ordinates) with any victims (making them potential <em>vectors</em>) and thus are <ins>unable to prevent</ins> further transmission to others including their near and loved ones.</p>
+    </blockquote>
+    <p>This critical information that the project intends to unearth would be of grave help to everyone (including Govt. and Health authorities) in terms of forming an understanding on the following:</p>
+    <ul>
+    <li>Virus <em>transmission path</em></li>
+    <li>Potential <em>vectors</em></li>
+    <li>Geographically <em>affected zones</em></li>
+    <li>Geographically <em>safe zones</em></li>
+    </ul>
+    <h2 id="approach">Approach</h2>
+    <p>The project leverages the following software components to achieve its core objective:</p>
+    <ul>
+    <li><p>Smart Mobile Application</p>
+    <ul>
+    <li>The mobile application should be <strong>downloaded</strong> and <strong>installed</strong> by everyone on their smart phone.</li>
+    <li>The mobile application attempts to <strong>continuously</strong> capture the travel path of an individual through the <strong>location services</strong> in his smart phone and scans for potential pathway crossings with a victim or potential <em>vector</em> around the same time.</li>
+    </ul>
+    </li>
+    <li><p>Mobile Backend Service</p>
+    <ul>
+    <li>This component would provide the necessary Rest APIs for providing the victim/vector pathway to the connected mobile application for any specific scan iteration.</li>
+    <li>The component would store all the positive scan results (in the form of pathway or location co-ordinates) from individual mobile applications and collate, batch this for subsequent scan iterations.</li>
+    <li>Reporting APIs for individuals and authorities.</li>
+    </ul>
+    </li>
+    <li><p>Admin Interface (Web/Mobile)</p>
+    <ul>
+    <li>This would house the various reports that would be consumed by individuals and authorities.</li>
+    <li>This would also have option to define the scan rules.</li>
+    </ul>
+    </li>
+    </ul>
+    <h2 id="release-notes-v1-0">Release Notes v1.0</h2>
+    <ol>
+    <li><p>Mobile App</p>
+    <ul>
+    <li>Android version only</li>
+    <li>Capability to export and import Locations info for the past 14 days (the considered incubation time)</li>
+    <li>You could either export directly from Google Takeout or leverage the web view provided by the app</li>
+    <li>The app would seek appropriate permission and continuously track your location from the time of installation</li>
+    <li>The app would display State-wise India Covid-19 statistics on an intuitive map</li>
+    <li>The app would display a heat-map of the victims along with your location info (indicating your risk vs safety)</li>
+    <li>The app would provide basic awareness info on Covid-19</li>
+    </ul>
+    </li>
+    <li><p>Mobile Backend Service</p>
+    <ul>
+    <li>APIs for Statistics &amp; Dashboards</li>
+    <li>APIs for Heatmaps</li>
+    <li>CSV Import of Victim Route map</li>
+    </ul>
+    </li>
+    </ol>
+    <h2 id="team-info">Team Info</h2>
+    <p>The following team members burned their midnight lamps to make this possible (despite their pressing work schedules).</p>
+    <ul>
+    <li><a href="https://in.linkedin.com/in/shinexavier" target="_blank">Shine Xavier</a></li>
+    <li><a href="https://in.linkedin.com/in/arun-antony-pmp%C2%AE-csm%C2%AE-46885b78" target="_blank">Arun Antony</a></li>
+    <li><a href="https://in.linkedin.com/in/jnelson79" target="_blank">Jacob Nelson</a></li>
+    <li><a href="https://www.linkedin.com/in/bvaisakh/" target="_blank">Vaisakh Babu</a></li>
+    <li><a href="https://www.linkedin.com/in/jeswin-simon/" target="_blank">Jeswin Thomas Simon</a></li>
+    </ul>
+    <p>They wish to thank their families, supporters, friends and employer who made this fruitful collaboration possible!</p>
+    <p>There&#39;s more to be done and less a time for us humanity against this big fight with Covid-19 (and many such trojans that can question our very own existance). Come join hands for a better tomorrow...</p>
+    
+</body>
+</html>
