@@ -18,6 +18,7 @@ import 'react-native-gesture-handler';
 import MapView, { Heatmap, PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 
 import { takeoutData, patient_pkd } from './data/MockData';
+import { Aubergine } from './data/MapConfig';
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +41,7 @@ let points = [
   { latitude: 6.8317, longitude: 79.8713, weight: 5 },
 ];
 
-const HeatMapScreen = () => (
+const HeatMapScreen = ({navigation}) => (
   <View style={styles.container}>
     <MapView
       provider={PROVIDER_GOOGLE}
@@ -48,9 +49,10 @@ const HeatMapScreen = () => (
       region={{
         latitude: takeoutData[0].latitudeE7 / 1e7,
         longitude: takeoutData[0].longitudeE7 / 1e7,
-        latitudeDelta: 0.3,
-        longitudeDelta: 0.3,
+        latitudeDelta: 3,
+        longitudeDelta: 3,
       }}
+      customMapStyle={Aubergine}
     >
       <Heatmap
         provider={PROVIDER_GOOGLE}
@@ -86,7 +88,7 @@ const HeatMapScreen = () => (
       ))} */}
     </MapView>
     <View style={{ marginBottom: 20 }}>
-      <Button title="Show my Risk"></Button>
+      <Button title="Show my Risk" onPress={() => navigation.navigate('My Risk')}></Button>
     </View>
   </View>
 );
