@@ -34,7 +34,7 @@ This repository contains the code for the server application. It is built on Nod
 - [x] Routemap Upload / User Upload  [POST]
 - [x] User upload verification
 - [x] User [GET]
-- [ ] User [POST]
+- [x] Create/Update User
 - [x] Victim's Location History API - with no parameters [GET]
 - [ ] Victim's Location History API [GET]
     - Parameters
