@@ -6,11 +6,14 @@
         "start": "node ./src/server",
         "test": "node ./tests/testRunner",
         "load-seed-data": "node src/utils/loadSeedData",
+        "scrape-data": "node src/utils/scraper",
         "debug": "node --inspect ./src/server",
         "lint": "eslint --ignore-path .gitignore ."
     },
     "dependencies": {
+        "axios": "^0.19.2",
         "bluebird": "^3.7.2",
+        "cheerio": "^1.0.0-rc.3",
         "compression": "^1.7.4",
         "dotenv": "^4.0.0",
         "express": "~4.16.1",
