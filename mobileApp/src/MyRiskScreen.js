@@ -22,6 +22,8 @@ import {
 import { WebView } from 'react-native-webview';
 import 'react-native-gesture-handler';
 import DocumentPicker from 'react-native-document-picker';
+import { zip, unzip, unzipAssets, subscribe } from 'react-native-zip-archive';
+import { MainBundlePath, DocumentDirectoryPath } from 'react-native-fs';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -30,16 +32,20 @@ async function uploadFile() {
     const res = await DocumentPicker.pick({
       type: [DocumentPicker.types.allFiles],
     });
-    Alert.alert(
-      `${res.uri},
-      ${res.type}, // mime type
-      ${res.name},
-      ${res.size}`
-    );
     console.log(`${res.uri},
     ${res.type}, // mime type
     ${res.name},
     ${res.size}`);
+    const sourcePath = 'document/raw%3A%2Fstorage%2Femulated%2F0%2FDownload%2Ftakeout-20200315T064101Z-001.zip';
+    const targetPath = DocumentDirectoryPath;
+    const charset = 'UTF-8';
+    unzip(sourcePath, targetPath, charset)
+      .then((path) => {
+        console.log(`unzip completed at ${path}`)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
   } catch (err) {
     if (DocumentPicker.isCancel(err)) {
       // User cancelled the picker, exit any dialogs or menus and move on
