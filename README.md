@@ -61,9 +61,7 @@ The following team members burned their midnight lamps to make this possible (de
   * Jacob Nelson
   * Vaisakh Babu
   * Jeswin Thomas Simon
-  
-They wish to thank their families, supporters, friends and employer who made this fruitful collaboration possible!
-
+ 
 There's more to be done and less a time for us humanity against this big fight with Covid-19 (and many such trojans that can question our very own existance). Come join hands for a better tomorrow...
 
 
